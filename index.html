@@ -125,6 +125,63 @@
 					</tbody>
 					</table>
 					</blockquote>
+					
+					<h3 class="section-heading">Current Trend in Karnataka</h3>
+					<p id="updatedTimeKA" style="font-size: 11px">Last updated on: </p>
+					<blockquote>
+					<table class="table table-hover">
+					<thead class="covidHeadingKA">
+					<tr>
+						<th class="table-header-center">Confirmed</th>
+						<th class="table-header-center">Active</th>
+						<th class="table-header-center">Recovered</th>
+						<th class="table-header-center">Deceased</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr class="covidValueKA" id="covidValueKA">
+					</tr>
+					</tbody>
+					</table>
+					</blockquote>
+					
+					<h3 class="section-heading">Current Trend in Andhra Pradesh</h3>
+					<p id="updatedTimeAP" style="font-size: 11px">Last updated on: </p>
+					<blockquote>
+					<table class="table table-hover">
+					<thead class="covidHeadingAP">
+					<tr>
+						<th class="table-header-center">Confirmed</th>
+						<th class="table-header-center">Active</th>
+						<th class="table-header-center">Recovered</th>
+						<th class="table-header-center">Deceased</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr class="covidValueAP" id="covidValueAP">
+					</tr>
+					</tbody>
+					</table>
+					</blockquote>
+					
+					<h3 class="section-heading">Current Trend in Telangana</h3>
+					<p id="updatedTimeTG" style="font-size: 11px">Last updated on: </p>
+					<blockquote>
+					<table class="table table-hover">
+					<thead class="covidHeadingTG">
+					<tr>
+						<th class="table-header-center">Confirmed</th>
+						<th class="table-header-center">Active</th>
+						<th class="table-header-center">Recovered</th>
+						<th class="table-header-center">Deceased</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr class="covidValueTG" id="covidValueTG">
+					</tr>
+					</tbody>
+					</table>
+					</blockquote>
 				</div>
 			</div>
 		</div>
@@ -230,7 +287,40 @@
 							+ '<td>'+ stateDetails["recovered"] + '</td>'
 							+ '<td>'+ stateDetails["deaths"] + '</td>';
 							$( "#covidValueTN" ).append(valueTemplate);
-						}		
+						}	
+						
+						if (stateDetails["statecode"] === 'KA') {
+							updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
+							$( "#updatedTimeKA" ).append(updatedTimeTemplate);
+							
+							valueTemplate = '<td>'+ stateDetails["confirmed"] + '</td>'
+							+ '<td>'+ stateDetails["active"] + '</td>'
+							+ '<td>'+ stateDetails["recovered"] + '</td>'
+							+ '<td>'+ stateDetails["deaths"] + '</td>';
+							$( "#covidValueKA" ).append(valueTemplate);
+						}	
+						
+						if (stateDetails["statecode"] === 'AP') {
+							updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
+							$( "#updatedTimeAP" ).append(updatedTimeTemplate);
+							
+							valueTemplate = '<td>'+ stateDetails["confirmed"] + '</td>'
+							+ '<td>'+ stateDetails["active"] + '</td>'
+							+ '<td>'+ stateDetails["recovered"] + '</td>'
+							+ '<td>'+ stateDetails["deaths"] + '</td>';
+							$( "#covidValueAP" ).append(valueTemplate);
+						}	
+						
+						if (stateDetails["statecode"] === 'TG') {
+							updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
+							$( "#updatedTimeTG" ).append(updatedTimeTemplate);
+							
+							valueTemplate = '<td>'+ stateDetails["confirmed"] + '</td>'
+							+ '<td>'+ stateDetails["active"] + '</td>'
+							+ '<td>'+ stateDetails["recovered"] + '</td>'
+							+ '<td>'+ stateDetails["deaths"] + '</td>';
+							$( "#covidValueTG" ).append(valueTemplate);
+						}	
 					}
                 }, 
                 error: function(xhr, status, error) {
