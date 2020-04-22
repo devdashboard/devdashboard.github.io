@@ -87,6 +87,44 @@
 					</tbody>
 					</table>
 					</blockquote>
+					
+					<h3 class="section-heading">Current Trend in Kerala</h3>
+					<p id="updatedTimeKL" style="font-size: 11px">Last updated on: </p>
+					<blockquote>
+					<table class="table table-hover">
+					<thead class="covidHeadingKL">
+					<tr>
+						<th class="table-header-center">Confirmed</th>
+						<th class="table-header-center">Active</th>
+						<th class="table-header-center">Recovered</th>
+						<th class="table-header-center">Deceased</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr class="covidValueKL" id="covidValueKL">
+					</tr>
+					</tbody>
+					</table>
+					</blockquote>
+					
+					<h3 class="section-heading">Current Trend in TamilNadu</h3>
+					<p id="updatedTimeTN" style="font-size: 11px">Last updated on: </p>
+					<blockquote>
+					<table class="table table-hover">
+					<thead class="covidHeadingTN">
+					<tr>
+						<th class="table-header-center">Confirmed</th>
+						<th class="table-header-center">Active</th>
+						<th class="table-header-center">Recovered</th>
+						<th class="table-header-center">Deceased</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr class="covidValueTN" id="covidValueTN">
+					</tr>
+					</tbody>
+					</table>
+					</blockquote>
 				</div>
 			</div>
 		</div>
@@ -170,7 +208,29 @@
 							+ '<td>'+ stateDetails["recovered"] + '</td>'
 							+ '<td>'+ stateDetails["deaths"] + '</td>';
 							$( "#covidValue" ).append(valueTemplate);
-						}						
+						}
+
+						if (stateDetails["statecode"] === 'KL') {
+							updatedTimeTemplate = stateDetails["lastupdatedtimeKL"] + " IST";
+							$( "#updatedTime" ).append(updatedTimeTemplate);
+							
+							valueTemplate = '<td>'+ stateDetails["confirmed"] + '</td>'
+							+ '<td>'+ stateDetails["active"] + '</td>'
+							+ '<td>'+ stateDetails["recovered"] + '</td>'
+							+ '<td>'+ stateDetails["deaths"] + '</td>';
+							$( "#covidValueKL" ).append(valueTemplate);
+						}		
+						
+						if (stateDetails["statecode"] === 'TN') {
+							updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
+							$( "#updatedTimeTN" ).append(updatedTimeTemplate);
+							
+							valueTemplate = '<td>'+ stateDetails["confirmed"] + '</td>'
+							+ '<td>'+ stateDetails["active"] + '</td>'
+							+ '<td>'+ stateDetails["recovered"] + '</td>'
+							+ '<td>'+ stateDetails["deaths"] + '</td>';
+							$( "#covidValueTN" ).append(valueTemplate);
+						}		
 					}
                 }, 
                 error: function(xhr, status, error) {
