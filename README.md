@@ -1,4 +1,4 @@
-Repository is utilized as Dashboard to project the data based upon the seasons
+Repository is utilized as Dashboard to project the data based upon the time and economical situations
 
 -------------
 CURRENT USAGE
@@ -23,9 +23,9 @@ Our dashboard represents India region with the statistics related to the followi
 4. Andhra Pradesh
 5. Telangana
 
-We are providing hyperlinks to,
+We have provided hyperlinks to,
 
-1. Worldometer - To know about the Corona statistics of the Globe
+1. Worldometer - To know about the Corona statistics globally
 2. MHA, India - To know about the circular released by Government of India
 
 ------------
