@@ -1,4 +1,8 @@
-Repository is utilized as Dashboard to project the data based upon the time and economical situations
+---------
+OBJECTIVE
+---------
+
+Based upon the time and economical situations, to use this repository as a generic Dashboard to project the data
 
 -------------
 CURRENT USAGE
