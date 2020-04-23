@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Corona Dashboard (Lite)">
+    <meta name="author" content="Gokulan Viswanathan">
+	
+	<link rel="icon" type="image/jpg" sizes="16x16" href="./images/corona-title-image.jpg">
+	 
+    <title>Covid'19 Statistics</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+	<link href="styles/custom-style.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <!-- <header class="intro-header" style="background-image: url('images/simple-background-grey.png')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h2>Covid'19 Statewise Statistics</h2>
+                        <hr class="medium">
+						<span class="subheading">Lite version</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header> -->
+
+	
+	<!-- Main Content -->
+    <article>
+		<div class="container" id="tabl">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+					<br>
+					<button onclick="location.href = './index.html';">Back</button>
+					<h3 class="section-heading">Districts of Telangana</h3>
+					<!-- <p id="updatedTime" style="font-size: 11px">Last updated on: </p> -->
+					<blockquote>
+					<table class="table table-hover">
+					<thead class="covidHeading">
+					<tr>
+						<th class="table-header-center">District</th>
+						<th class="table-header-center">Confirmed</th>
+						<th class="table-header-center">Active</th>
+						<th class="table-header-center">Recovered</th>
+						<th class="table-header-center">Deceased</th>
+					</tr>
+					</thead>
+					<tbody class="covidValue" id="covidValue">
+					<!-- <tr class="covidValue" id="covidValue">
+					</tr> -->
+					</tbody>
+					</table>
+					</blockquote>
+				</div>
+			</div>
+		</div>
+	</article>
+
+	<center>
+		<div id="gitrepo">
+			<a style="font-size: 11px" href="https://www.worldometers.info/coronavirus/" target="_blank">Click here to view the global statistics</a> 
+		</div>
+		
+		<div id="gitrepo">
+			<a style="font-size: 11px" href="https://www.mha.gov.in/notifications/circulars-covid-19" target="_blank">Click here to view the circular published by MHA department</a> 
+		</div>
+	</center>
+	
+	<hr>
+	
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <center>
+                            <li>
+                                <a data-toggle="tooltip" title="Facebook" href="https://facebook.com/gokulan90" target="_blank" class="social"><img src="images/icon-facebook.png" width="36" height="36" draggable="false"></a>
+							</li>
+							<p></p>
+							<p style="font-size:9px">Disclaimer: This page is best viewed in Google Chrome desktop browser with a zoom level at 100%</p>
+                        </center>
+                    </ul>
+                </div>
+            </div>
+		</div>
+		
+	</footer>
+	
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/script/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="script/jqBootstrapValidation.js"></script>
+    <script src="script/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+	<script src="script/clean-blog.min.js"></script>
+	
+	<script>
+    
+    function formatDate(date) {
+      var utc = date.toUTCString() // 'ddd, DD MMM YYYY HH:mm:ss GMT'
+      return utc.slice(8, 12) + utc.slice(5, 7)+", "+ utc.slice(12, 16)
+    }
+	
+    function comp(a, b) {
+        return  new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
+    }
+
+    function callCovidStateApi() {
+        $.ajax(
+            {
+                method: "GET",
+                url: "https://api.covid19india.org/state_district_wise.json",
+                success: function(resData) {                					
+					var statewise = resData["Telangana"];
+					var districtDetails = statewise["districtData"];
+					
+					for (var eachDistrict in districtDetails) {
+						var entry = districtDetails[eachDistrict];
+						valueTemplate = '<tr><td>'+ eachDistrict + '</td>'
+						+ '<td>'+ entry["confirmed"] + '</td>'
+						+ '<td>'+ entry["active"] + '</td>'
+						+ '<td>'+ entry["recovered"] + '</td>'
+						+ '<td>'+ entry["deceased"] + '</td></tr>';
+						$( "#covidValue" ).append(valueTemplate);
+					}
+				
+                }, 
+                error: function(xhr, status, error) {
+                    alert(error);
+                }
+        });
+    }
+    callCovidStateApi();
+    </script>
+
+</body>
+
+</html>
