@@ -4,7 +4,7 @@ Repository is utilized as Dashboard to project the data based upon the time and 
 CURRENT USAGE
 -------------
 
-Currently used as a Dashboard to show the statistics related to Corona Virus 2019.
+Currently, this repository used as a Dashboard to show the statistics related to Corona Virus 2019.
 
 This repository is rendered in web browser as 'https://devdashboard.github.io'
 
