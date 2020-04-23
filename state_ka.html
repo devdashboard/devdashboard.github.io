@@ -60,9 +60,9 @@
 					<tr>
 						<th class="table-header-center">District</th>
 						<th class="table-header-center">Confirmed</th>
-						<th class="table-header-center">Active</th>
+						<!-- <th class="table-header-center">Active</th>
 						<th class="table-header-center">Recovered</th>
-						<th class="table-header-center">Deceased</th>
+						<th class="table-header-center">Deceased</th> -->
 					</tr>
 					</thead>
 					<tbody class="covidValue" id="covidValue">
@@ -144,10 +144,10 @@
 					for (var eachDistrict in districtDetails) {
 						var entry = districtDetails[eachDistrict];
 						valueTemplate = '<tr><td>'+ eachDistrict + '</td>'
-						+ '<td>'+ entry["confirmed"] + '</td>'
-						+ '<td>'+ entry["active"] + '</td>'
-						+ '<td>'+ entry["recovered"] + '</td>'
-						+ '<td>'+ entry["deceased"] + '</td></tr>';
+						+ '<td>'+ entry["confirmed"] + '</td>';
+						//+ '<td>'+ entry["active"] + '</td>'
+						//+ '<td>'+ entry["recovered"] + '</td>'
+						//+ '<td>'+ entry["deceased"] + '</td></tr>';
 						$( "#covidValue" ).append(valueTemplate);
 					}
 				
