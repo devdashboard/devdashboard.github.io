@@ -36,4 +36,5 @@ We have provided hyperlinks to,
 CONTRIBUTORS
 ------------
 
-1. Gokulan Viswanathan - https://www.facebook.com/gokulan90
+1. ArunKumar - https://github.com/ArunnK13
+2. Gokulan Viswanathan - https://www.facebook.com/gokulan90
