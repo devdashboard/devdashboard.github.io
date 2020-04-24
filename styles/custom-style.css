@@ -33,6 +33,7 @@ a img:focus {
 blockquote {
   color: #777777;
   font-style: italic;
+  border: none !important;
 }
 hr.small {
   max-width: 100px;
@@ -391,4 +392,32 @@ img::-moz-selection {
 }
 body {
   -webkit-tap-highlight-color: #0085A1;
+}
+
+.header-confirmed{
+  color: #ff073a
+}
+
+
+.header-active{
+  color:#007bff
+}
+
+
+.header-recovered{
+  color: #28a745
+}
+
+
+.header-dead{
+  color: #6c757d
+}
+
+.header-fontstyle{
+  font-family: archia
+}
+
+th,td{
+  width: 25%;
+  
 }

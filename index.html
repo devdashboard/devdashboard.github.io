@@ -5,183 +5,192 @@
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-7RC5F8T37Z"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
 
-	  gtag('config', 'G-7RC5F8T37Z');
+		gtag('config', 'G-7RC5F8T37Z');
 	</script>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Corona Dashboard (Lite)">
-    <meta name="author" content="Gokulan Viswanathan">
-	
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Corona Dashboard (Lite)">
+	<meta name="author" content="Gokulan Viswanathan">
+
 	<link rel="icon" type="image/jpg" sizes="16x16" href="./images/corona-title-image.jpg">
-	 
-    <title>Covid'19 India</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<title>Covid'19 India</title>
 
-    <!-- Theme CSS -->
+	<!-- Bootstrap Core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Theme CSS -->
 	<link href="styles/custom-style.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<!-- Custom Fonts -->
+	<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+		type='text/css'>
+	<link
+		href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+		rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
 
-    <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('images/simple-background-grey.png')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h2>Covid'19 India Statistics</h2>
-                        <hr class="medium">
+	<!-- Page Header -->
+	<!-- Set your background image for this header on the line below. -->
+	<header class="intro-header" style="background-image: url('images/simple-background-grey.png')">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+					<div class="site-heading">
+						<h2>Covid'19 India Statistics</h2>
+						<hr class="medium">
 						<span class="subheading">Lite version</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row" >
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" id = "repoContainer"> 
-            </div>
-        </div>
+	<!-- Main Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" id="repoContainer">
+			</div>
+		</div>
 	</div>
 
-	
+
 	<!-- Main Content -->
-    <article>
+	<article>
 		<div class="container" id="tabl">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-
-					<h3 class="section-heading">Current Trend in India</h3>
-					<p id="updatedTime" style="font-size: 11px">Last updated on: </p>
-					<blockquote>
-					<table class="table table-hover">
-					<thead class="covidHeading">
-					<tr>
-						<th class="table-header-center">Confirmed</th>
-						<th class="table-header-center">Active</th>
-						<th class="table-header-center">Recovered</th>
-						<th class="table-header-center">Deceased</th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr class="covidValue" id="covidValue">
-					</tr>
-					</tbody>
-					</table>
-					</blockquote>
-					
-					<h3 class="section-heading">Current Trend in Kerala</h3>
-					<p id="updatedTimeKL" style="font-size: 11px">Last updated on: </p>
-					<blockquote>
-					<table class="table table-hover">
-					<thead class="covidHeadingKL">
-					<tr>
-						<th class="table-header-center">Confirmed</th>
-						<th class="table-header-center">Active</th>
-						<th class="table-header-center">Recovered</th>
-						<th class="table-header-center">Deceased</th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr class="covidValueKL" id="covidValueKL">
-					</tr>
-					</tbody>
-					</table>
-					</blockquote>
-					
-					<h3 class="section-heading">Current Trend in TamilNadu</h3>
-					<p id="updatedTimeTN" style="font-size: 11px">Last updated on: </p>
-					<blockquote>
-					<table class="table table-hover">
-					<thead class="covidHeadingTN">
-					<tr>
-						<th class="table-header-center">Confirmed</th>
-						<th class="table-header-center">Active</th>
-						<th class="table-header-center">Recovered</th>
-						<th class="table-header-center">Deceased</th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr class="covidValueTN" id="covidValueTN">
-					</tr>
-					</tbody>
-					</table>
-					</blockquote>
-					
-					<h3 class="section-heading">Current Trend in Karnataka</h3>
-					<p id="updatedTimeKA" style="font-size: 11px">Last updated on: </p>
-					<blockquote>
-					<table class="table table-hover">
-					<thead class="covidHeadingKA">
-					<tr>
-						<th class="table-header-center">Confirmed</th>
-						<th class="table-header-center">Active</th>
-						<th class="table-header-center">Recovered</th>
-						<th class="table-header-center">Deceased</th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr class="covidValueKA" id="covidValueKA">
-					</tr>
-					</tbody>
-					</table>
-					</blockquote>
-					
-					<h3 class="section-heading">Current Trend in Andhra Pradesh</h3>
-					<p id="updatedTimeAP" style="font-size: 11px">Last updated on: </p>
-					<blockquote>
-					<table class="table table-hover">
-					<thead class="covidHeadingAP">
-					<tr>
-						<th class="table-header-center">Confirmed</th>
-						<th class="table-header-center">Active</th>
-						<th class="table-header-center">Recovered</th>
-						<th class="table-header-center">Deceased</th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr class="covidValueAP" id="covidValueAP">
-					</tr>
-					</tbody>
-					</table>
-					</blockquote>
-					
-					<h3 class="section-heading">Current Trend in Telangana</h3>
-					<p id="updatedTimeTG" style="font-size: 11px">Last updated on: </p>
-					<blockquote>
-					<table class="table table-hover">
-					<thead class="covidHeadingTG">
-					<tr>
-						<th class="table-header-center">Confirmed</th>
-						<th class="table-header-center">Active</th>
-						<th class="table-header-center">Recovered</th>
-						<th class="table-header-center">Deceased</th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr class="covidValueTG" id="covidValueTG">
-					</tr>
-					</tbody>
-					</table>
-					</blockquote>
+					<div class="states-box">
+						<h3 class="section-heading" style="padding-left: 5px">Current Trend in India</h3>
+						<p id="updatedTime" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+						<blockquote>
+							<table class="table table-hover">
+								<thead class="covidHeading">
+									<tr>
+										<th class="table-header-center header-confirmed">Confirmed</th>
+										<th class="table-header-center header-active">Active</th>
+										<th class="table-header-center header-recovered">Recovered</th>
+										<th class="table-header-center header-dead">Deceased</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="covidValue" id="covidValue">
+									</tr>
+								</tbody>
+							</table>
+						</blockquote>
+					</div>
+					<div class="states-box">
+						<h3 class="section-heading" style="padding-left: 5px">Current Trend in Kerala</h3>
+						<p id="updatedTimeKL" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+						<blockquote>
+							<table class="table table-hover">
+								<thead class="covidHeadingKL">
+									<tr>
+										<th class="table-header-center header-confirmed">Confirmed</th>
+										<th class="table-header-center header-active">Active</th>
+										<th class="table-header-center header-recovered">Recovered</th>
+										<th class="table-header-center header-dead">Deceased</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="covidValueKL" id="covidValueKL">
+									</tr>
+								</tbody>
+							</table>
+						</blockquote>
+					</div>
+					<div class="states-box">
+						<h3 class="section-heading" style="padding-left: 5px">Current Trend in TamilNadu</h3>
+						<p id="updatedTimeTN" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+						<blockquote>
+							<table class="table table-hover">
+								<thead class="covidHeadingTN">
+									<tr>
+										<th class="table-header-center header-confirmed">Confirmed</th>
+										<th class="table-header-center header-active">Active</th>
+										<th class="table-header-center header-recovered">Recovered</th>
+										<th class="table-header-center header-dead">Deceased</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="covidValueTN" id="covidValueTN">
+									</tr>
+								</tbody>
+							</table>
+						</blockquote>
+					</div>
+					<div class="states-box">
+						<h3 class="section-heading" style="padding-left: 5px">Current Trend in Karnataka</h3>
+						<p id="updatedTimeKA" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+						<blockquote>
+							<table class="table table-hover">
+								<thead class="covidHeadingKA">
+									<tr>
+										<th class="table-header-center header-confirmed">Confirmed</th>
+										<th class="table-header-center header-active">Active</th>
+										<th class="table-header-center header-recovered">Recovered</th>
+										<th class="table-header-center header-dead">Deceased</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="covidValueKA" id="covidValueKA">
+									</tr>
+								</tbody>
+							</table>
+						</blockquote>
+					</div>
+					<div class="states-box">
+						<h3 class="section-heading" style="padding-left: 5px">Current Trend in Andhra Pradesh</h3>
+						<p id="updatedTimeAP" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+						<blockquote>
+							<table class="table table-hover">
+								<thead class="covidHeadingAP">
+									<tr>
+										<th class="table-header-center header-confirmed">Confirmed</th>
+										<th class="table-header-center header-active">Active</th>
+										<th class="table-header-center header-recovered">Recovered</th>
+										<th class="table-header-center header-dead">Deceased</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="covidValueAP" id="covidValueAP">
+									</tr>
+								</tbody>
+							</table>
+						</blockquote>
+					</div>
+					<div class="states-box">
+						<h3 class="section-heading" style="padding-left: 5px">Current Trend in Telangana</h3>
+						<p id="updatedTimeTG" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+						<blockquote>
+							<table class="table table-hover">
+								<thead class="covidHeadingTG">
+									<tr>
+										<th class="table-header-center header-confirmed">Confirmed</th>
+										<th class="table-header-center header-active">Active</th>
+										<th class="table-header-center header-recovered">Recovered</th>
+										<th class="table-header-center header-dead">Deceased</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="covidValueTG" id="covidValueTG">
+									</tr>
+								</tbody>
+							</table>
+						</blockquote>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -189,147 +198,154 @@
 
 	<center>
 		<div id="gitrepo">
-			<a style="font-size: 11px" href="https://www.worldometers.info/coronavirus/" target="_blank">Click here to view the global statistics</a> 
+			<a style="font-size: 11px" href="https://www.worldometers.info/coronavirus/" target="_blank">Click here to
+				view the global statistics</a>
 		</div>
-		
+
 		<div id="gitrepo">
-			<a style="font-size: 11px" href="https://www.mha.gov.in/notifications/circulars-covid-19" target="_blank">Click here to view the circular published by MHA department</a> 
+			<a style="font-size: 11px" href="https://www.mha.gov.in/notifications/circulars-covid-19"
+				target="_blank">Click here to view the circular published by MHA department</a>
 		</div>
 	</center>
-	
+
 	<hr>
-	
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <ul class="list-inline text-center">
-                        <center>
-                            <li>
-                                <a data-toggle="tooltip" title="Facebook" href="https://facebook.com/gokulan90" target="_blank" class="social"><img src="images/icon-facebook.png" width="36" height="36" draggable="false"></a>
-                                <!-- <a data-toggle="tooltip" title="GitHub" href="https://github.com/gokulanviswanathan" target="_blank" class="social"><img src="images/icon-github.png" width="36" height="36" draggable="false"></a> -->
+
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+					<ul class="list-inline text-center">
+						<center>
+							<li>
+								<a data-toggle="tooltip" title="Facebook" href="https://facebook.com/gokulan90"
+									target="_blank" class="social"><img src="images/icon-facebook.png" width="36"
+										height="36" draggable="false"></a>
+								<!-- <a data-toggle="tooltip" title="GitHub" href="https://github.com/gokulanviswanathan" target="_blank" class="social"><img src="images/icon-github.png" width="36" height="36" draggable="false"></a> -->
 							</li>
 							<p></p>
-							<p style="font-size:9px">Disclaimer: This page is best viewed in Google Chrome desktop browser with a zoom level at 100%</p>
-                        </center>
-                    </ul>
-                </div>
-            </div>
+							<p style="font-size:9px">Disclaimer: This page is best viewed in Google Chrome desktop
+								browser with a zoom level at 100%</p>
+						</center>
+					</ul>
+				</div>
+			</div>
 		</div>
-		
+
 	</footer>
-	
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/script/bootstrap.min.js"></script>
+	<!-- jQuery -->
+	<script src="vendor/jquery/jquery.min.js"></script>
 
-    <!-- Contact Form JavaScript -->
-    <script src="script/jqBootstrapValidation.js"></script>
-    <script src="script/contact_me.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="vendor/bootstrap/script/bootstrap.min.js"></script>
 
-    <!-- Theme JavaScript -->
+	<!-- Contact Form JavaScript -->
+	<script src="script/jqBootstrapValidation.js"></script>
+	<script src="script/contact_me.js"></script>
+
+	<!-- Theme JavaScript -->
 	<script src="script/clean-blog.min.js"></script>
-	
+
 	<script>
-    
-    function formatDate(date) {
-      var utc = date.toUTCString() // 'ddd, DD MMM YYYY HH:mm:ss GMT'
-      return utc.slice(8, 12) + utc.slice(5, 7)+", "+ utc.slice(12, 16)
-    }
-	
-    function comp(a, b) {
-        return  new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
-    }
 
-    function callCovidApi() {
-        $.ajax(
-            {
-                method: "GET",
-                url: "https://api.covid19india.org/data.json",
-                success: function(resData) {
-                    
-					var statewise = resData["statewise"];
-                    					
-					for (var i = 0; i < statewise.length - 1; i++) {
-						var stateDetails = statewise[i];
-						
-						if (stateDetails["state"] === 'Total') {
-							updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
-							$( "#updatedTime" ).append(updatedTimeTemplate);
-							
-							valueTemplate = '<td>'+ stateDetails["confirmed"] + '</td>'
-							+ '<td>'+ stateDetails["active"] + '</td>'
-							+ '<td>'+ stateDetails["recovered"] + '</td>'
-							+ '<td>'+ stateDetails["deaths"] + '</td>';
-							$( "#covidValue" ).append(valueTemplate);
+		function formatDate(date) {
+			var utc = date.toUTCString() // 'ddd, DD MMM YYYY HH:mm:ss GMT'
+			return utc.slice(8, 12) + utc.slice(5, 7) + ", " + utc.slice(12, 16)
+		}
+
+		function comp(a, b) {
+			return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
+		}
+		function numberWithCommas(x) {
+			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+		function callCovidApi() {
+			$.ajax(
+				{
+					method: "GET",
+					url: "https://api.covid19india.org/data.json",
+					success: function (resData) {
+
+						var statewise = resData["statewise"];
+
+						for (var i = 0; i < statewise.length - 1; i++) {
+							var stateDetails = statewise[i];
+
+							if (stateDetails["state"] === 'Total') {
+								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
+								$("#updatedTime").append(updatedTimeTemplate);
+
+								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '</td>'
+									+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
+									+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '</td>'
+									+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '</td>';
+								$("#covidValue").append(valueTemplate);
+							}
+
+							if (stateDetails["statecode"] === 'KL') {
+								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
+								$("#updatedTimeKL").append(updatedTimeTemplate);
+
+								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '</td>'
+									+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
+									+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '</td>'
+									+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '</td>';
+								$("#covidValueKL").append(valueTemplate);
+							}
+
+							if (stateDetails["statecode"] === 'TN') {
+								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
+								$("#updatedTimeTN").append(updatedTimeTemplate);
+
+								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '</td>'
+									+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
+									+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '</td>'
+									+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '</td>';
+								$("#covidValueTN").append(valueTemplate);
+							}
+
+							if (stateDetails["statecode"] === 'KA') {
+								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
+								$("#updatedTimeKA").append(updatedTimeTemplate);
+
+								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '</td>'
+									+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
+									+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '</td>'
+									+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '</td>';
+								$("#covidValueKA").append(valueTemplate);
+							}
+
+							if (stateDetails["statecode"] === 'AP') {
+								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
+								$("#updatedTimeAP").append(updatedTimeTemplate);
+
+								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '</td>'
+									+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
+									+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '</td>'
+									+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '</td>';
+								$("#covidValueAP").append(valueTemplate);
+							}
+
+							if (stateDetails["statecode"] === 'TG') {
+								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
+								$("#updatedTimeTG").append(updatedTimeTemplate);
+
+								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '</td>'
+									+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
+									+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '</td>'
+									+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '</td>';
+								$("#covidValueTG").append(valueTemplate);
+							}
 						}
-
-						if (stateDetails["statecode"] === 'KL') {
-							updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
-							$( "#updatedTimeKL" ).append(updatedTimeTemplate);
-							
-							valueTemplate = '<td>'+ stateDetails["confirmed"] + '</td>'
-							+ '<td>'+ stateDetails["active"] + '</td>'
-							+ '<td>'+ stateDetails["recovered"] + '</td>'
-							+ '<td>'+ stateDetails["deaths"] + '</td>';
-							$( "#covidValueKL" ).append(valueTemplate);
-						}		
-						
-						if (stateDetails["statecode"] === 'TN') {
-							updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
-							$( "#updatedTimeTN" ).append(updatedTimeTemplate);
-							
-							valueTemplate = '<td>'+ stateDetails["confirmed"] + '</td>'
-							+ '<td>'+ stateDetails["active"] + '</td>'
-							+ '<td>'+ stateDetails["recovered"] + '</td>'
-							+ '<td>'+ stateDetails["deaths"] + '</td>';
-							$( "#covidValueTN" ).append(valueTemplate);
-						}	
-						
-						if (stateDetails["statecode"] === 'KA') {
-							updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
-							$( "#updatedTimeKA" ).append(updatedTimeTemplate);
-							
-							valueTemplate = '<td>'+ stateDetails["confirmed"] + '</td>'
-							+ '<td>'+ stateDetails["active"] + '</td>'
-							+ '<td>'+ stateDetails["recovered"] + '</td>'
-							+ '<td>'+ stateDetails["deaths"] + '</td>';
-							$( "#covidValueKA" ).append(valueTemplate);
-						}	
-						
-						if (stateDetails["statecode"] === 'AP') {
-							updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
-							$( "#updatedTimeAP" ).append(updatedTimeTemplate);
-							
-							valueTemplate = '<td>'+ stateDetails["confirmed"] + '</td>'
-							+ '<td>'+ stateDetails["active"] + '</td>'
-							+ '<td>'+ stateDetails["recovered"] + '</td>'
-							+ '<td>'+ stateDetails["deaths"] + '</td>';
-							$( "#covidValueAP" ).append(valueTemplate);
-						}	
-						
-						if (stateDetails["statecode"] === 'TG') {
-							updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
-							$( "#updatedTimeTG" ).append(updatedTimeTemplate);
-							
-							valueTemplate = '<td>'+ stateDetails["confirmed"] + '</td>'
-							+ '<td>'+ stateDetails["active"] + '</td>'
-							+ '<td>'+ stateDetails["recovered"] + '</td>'
-							+ '<td>'+ stateDetails["deaths"] + '</td>';
-							$( "#covidValueTG" ).append(valueTemplate);
-						}	
+					},
+					error: function (xhr, status, error) {
+						alert(error);
 					}
-                }, 
-                error: function(xhr, status, error) {
-                    alert(error);
-                }
-        });
-    }
-    callCovidApi();
-    </script>
+				});
+		}
+		callCovidApi();
+	</script>
 
 </body>
 
