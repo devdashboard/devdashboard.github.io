@@ -17,7 +17,8 @@ h4,
 h5,
 h6 {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 800;
+  font-weight: 600;
+  font-size: 28px;
 }
 a {
   color: #333333;
@@ -141,19 +142,19 @@ hr.small {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 .intro-header .site-heading,
 .intro-header .post-heading,
 .intro-header .page-heading {
-  padding: 100px 0 50px;
+  padding: 25px 0 50px;
   color: white;
 }
 @media only screen and (min-width: 768px) {
   .intro-header .site-heading,
   .intro-header .post-heading,
   .intro-header .page-heading {
-    padding: 150px 0;
+    padding: 20px 0;
   }
 }
 .intro-header .site-heading,
@@ -249,9 +250,9 @@ hr.small {
   }
 }
 .section-heading {
-  font-size: 36px;
+  font-size: 26px;
   margin-top: 10px;
-  font-weight: 700;
+  font-weight: 600;
 }
 .caption {
   text-align: center;
@@ -393,6 +394,7 @@ img::-moz-selection {
 body {
   -webkit-tap-highlight-color: #0085A1;
 }
+
 .header-confirmed{
   color: #ff073a
 }
