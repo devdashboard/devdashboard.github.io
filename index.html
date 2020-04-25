@@ -72,8 +72,10 @@
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 					<div class="states-box">
-						<h3 class="section-heading" style="padding-left: 5px">Current Trend in India</h3>
-						<p id="updatedTime" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+						<h5 class="section-heading" style="padding-left: 5px">Current Trend in India</h5>
+						<div class="timeUpdate">
+							<p id="updatedTime" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+						</div>
 						<blockquote>
 							<table class="table table-hover">
 								<thead class="covidHeading">
@@ -109,12 +111,6 @@
 									</tr>
 								</tbody>
 							</table>
-							<center>
-								<div id="gitrepo">
-									<a style="font-size: 11px" href="state_kl.html">Click here to view district-wise
-										details</a>
-								</div>
-							</center>
 						</blockquote>
 					</div>
 					<div class="states-box">
@@ -135,12 +131,6 @@
 									</tr>
 								</tbody>
 							</table>
-							<center>
-								<div id="gitrepo">
-									<a style="font-size: 11px" href="state_tn.html">Click here to view district-wise
-										details</a>
-								</div>
-							</center>
 						</blockquote>
 					</div>
 					<div class="states-box">
@@ -161,12 +151,6 @@
 									</tr>
 								</tbody>
 							</table>
-							<center>
-								<div id="gitrepo">
-									<a style="font-size: 11px" href="state_ka.html">Click here to view district-wise
-										details</a>
-								</div>
-							</center>
 						</blockquote>
 					</div>
 					<div class="states-box">
@@ -187,13 +171,6 @@
 									</tr>
 								</tbody>
 							</table>
-
-							<center>
-								<div id="gitrepo">
-									<a style="font-size: 11px" href="state_ap.html">Click here to view district-wise
-										details</a>
-								</div>
-							</center>
 						</blockquote>
 					</div>
 					<div class="states-box">
@@ -214,13 +191,6 @@
 									</tr>
 								</tbody>
 							</table>
-
-							<center>
-								<div id="gitrepo">
-									<a style="font-size: 11px" href="state_tg.html">Click here to view district-wise
-										details</a>
-								</div>
-							</center>
 						</blockquote>
 					</div>
 				</div>
@@ -250,10 +220,10 @@
 					<ul class="list-inline text-center">
 						<center>
 							<li>
-								<a data-toggle="tooltip" title="Facebook" href="https://facebook.com/gokulan90"
+								<a data-toggle="tooltip" title="Gokulan Facebook" href="https://facebook.com/gokulan90"
 									target="_blank" class="social"><img src="images/icon-facebook.png" width="36"
 										height="36" draggable="false"></a>
-								<!-- <a data-toggle="tooltip" title="GitHub" href="https://github.com/gokulanviswanathan" target="_blank" class="social"><img src="images/icon-github.png" width="36" height="36" draggable="false"></a> -->
+								<a data-toggle="tooltip" title="ArunKumar GitHub" href="https://github.com/ArunnK13" target="_blank" class="social"><img src="images/icon-github.png" width="36" height="36" draggable="false"></a>
 							</li>
 							<p></p>
 							<p style="font-size:9px">Disclaimer: This page is best viewed in Google Chrome desktop
@@ -305,7 +275,7 @@
 							var stateDetails = statewise[i];
 
 							if (stateDetails["state"] === 'Total') {
-								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
+								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="48" height="32" draggable="false"/>';
 								$("#updatedTime").append(updatedTimeTemplate);
 
 								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '</td>'
@@ -316,7 +286,7 @@
 							}
 
 							if (stateDetails["statecode"] === 'KL') {
-								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
+								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="48" height="32" draggable="false"/>';
 								$("#updatedTimeKL").append(updatedTimeTemplate);
 
 								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '</td>'
@@ -327,7 +297,7 @@
 							}
 
 							if (stateDetails["statecode"] === 'TN') {
-								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
+								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="48" height="32" draggable="false"/>';
 								$("#updatedTimeTN").append(updatedTimeTemplate);
 
 								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '</td>'
@@ -338,7 +308,7 @@
 							}
 
 							if (stateDetails["statecode"] === 'KA') {
-								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
+								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="48" height="32" draggable="false"/>';
 								$("#updatedTimeKA").append(updatedTimeTemplate);
 
 								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '</td>'
@@ -349,7 +319,7 @@
 							}
 
 							if (stateDetails["statecode"] === 'AP') {
-								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
+								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="48" height="32" draggable="false"/>';
 								$("#updatedTimeAP").append(updatedTimeTemplate);
 
 								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '</td>'
@@ -360,7 +330,7 @@
 							}
 
 							if (stateDetails["statecode"] === 'TG') {
-								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST";
+								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="48" height="32" draggable="false"/>';
 								$("#updatedTimeTG").append(updatedTimeTemplate);
 
 								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '</td>'
