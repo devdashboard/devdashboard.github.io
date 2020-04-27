@@ -444,3 +444,7 @@ th,td{
 .round {
   border-radius: 10%;
 }
+
+.delta {
+	font-size: 13px;
+}
