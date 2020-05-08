@@ -454,3 +454,7 @@ th,td{
 	font-style: normal;
 	color: #007bff;
 }
+
+li {
+	line-height: 2;
+}
