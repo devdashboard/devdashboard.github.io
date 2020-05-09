@@ -2,8 +2,13 @@
 
 Dashboard application used to project Covid'19 live cases trend within X n Y coordinates of India
 
+## [v1.0] [LIVE]
 
-## [v0.5] [LIVE]
+### Changed
+- New UI with fixed Header and Footer sections
+
+
+## [v0.5]
 
 ### Added
 - Delta data (daily count)
