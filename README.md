@@ -32,6 +32,14 @@ We have provided hyperlinks to,
 1. Worldometer - To know about the Corona statistics globally
 2. MHA, India - To know about the circular released by Government of India
 
+-----------
+SCREENSHOTS
+-----------
+
+### v1.0 [LIVE]
+
+![v1.0](https://github.com/devdashboard/devdashboard.github.io/blob/master/screenshots/v1.0.JPG)
+
 ------------
 CONTRIBUTORS
 ------------
