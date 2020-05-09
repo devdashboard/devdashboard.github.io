@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<!-- Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-7RC5F8T37Z"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
@@ -11,69 +10,54 @@
 
 		gtag('config', 'G-7RC5F8T37Z');
 	</script>
-
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Corona Dashboard (Lite)">
 	<meta name="author" content="Gokulan Viswanathan">
-
 	<link rel="icon" type="image/jpg" sizes="16x16" href="./images/corona-title-image.jpg">
-
-	<title>Covid'19 India</title>
-
-	<!-- Bootstrap Core CSS -->
-	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-	<!-- Theme CSS -->
-	<link href="styles/custom-style.css" rel="stylesheet">
-
-	<!-- Custom Fonts -->
-	<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
-		type='text/css'>
-	<link
-		href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-		rel='stylesheet' type='text/css'>
-
+  <title>Covid'19 India</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./script/bootstrap.min.css">
+  <script src="./script/jquery.min.js"></script>
+  <script src="./script/bootstrap.min.js"></script>
+  <link href="./styles/custom-style.css" rel="stylesheet">
+  <style>
+  
+  </style>
 </head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                     
+      </button>
+      <a class="navbar-brand" href="./index.html">Covid'19 +ve cases</a>
+    </div>
+    <div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#section1">India</a></li>
+          <li><a href="#section2">Kerala</a></li>
+          <li><a href="#section3">TamilNadu</a></li>
+          <li><a href="#section4">Karnataka</a></li>
+		  <li><a href="#section5">Andhra Pradesh</a></li>
+		  <li><a href="#section6">Telangana</a></li>
+		  <li><a href="#section7">Useful links</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>    
 
-	<!-- Page Header -->
-	<!-- Set your background image for this header on the line below. -->
-	<header class="intro-header" style="background-image: url('images/simple-background-grey.png')">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-					<div class="site-heading">
-						<h2>Covid'19 India Statistics</h2>
-						<hr class="medium">
-						<span class="subheading">Lite version</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
-
-	<!-- Main Content -->
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" id="repoContainer">
-			</div>
-		</div>
-	</div>
-
-
-	<!-- Main Content -->
-	<article>
-		<div class="container" id="tabl">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-					<div class="states-box">
-						<h3 class="section-heading" style="padding-left: 5px">Current Trend in India</h3>
-						<p id="updatedTime" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div id="section1" class="container-fluid">
+  <h1>India</h1>
+  
+  <div class="states-box">
+						<p id="updatedTime" style="font-size: 11px">Last updated on: </p>
 						<blockquote>
 							<table class="table table-hover">
 								<thead class="covidHeading">
@@ -90,9 +74,16 @@
 								</tbody>
 							</table>
 						</blockquote>
-					</div>
-					<div class="states-box">
-						<h3 class="section-heading" style="padding-left: 5px">Current Trend in Kerala</h3>
+						</div>
+						<hr>
+</div>
+
+
+
+<div id="section2" class="container-fluid">
+  <h2>Kerala<h2>
+  <div class="states-box">
+						
 						<p id="updatedTimeKL" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
 						<blockquote>
 							<table class="table table-hover">
@@ -110,15 +101,18 @@
 								</tbody>
 							</table>
 							<center>
-								<div id="gitrepo">
-									<a style="font-size: 11px" href="state_kl.html">Click here to view district-wise
+								<div id="gitrepo" class="git-repo">
+									<a class="git-href" href="state_kl.html">Click here to view district-wise
 										details</a>
 								</div>
 							</center>
 						</blockquote>
 					</div>
-					<div class="states-box">
-						<h3 class="section-heading" style="padding-left: 5px">Current Trend in TamilNadu</h3>
+</div>
+<div id="section3" class="container-fluid">
+  <h2>TamilNadu</h2>
+  <div class="states-box">
+					
 						<p id="updatedTimeTN" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
 						<blockquote>
 							<table class="table table-hover">
@@ -136,15 +130,19 @@
 								</tbody>
 							</table>
 							<center>
-								<div id="gitrepo">
-									<a style="font-size: 11px" href="state_tn.html">Click here to view district-wise
+								<div id="gitrepo" class="git-repo">
+									<a class="git-href" href="state_tn.html">Click here to view district-wise
 										details</a>
 								</div>
 							</center>
 						</blockquote>
-					</div>
-					<div class="states-box">
-						<h3 class="section-heading" style="padding-left: 5px">Current Trend in Karnataka</h3>
+					</div>					
+</div>
+
+<div id="section4" class="container-fluid">
+  <h2>Karnataka</h2>
+  <div class="states-box">
+						
 						<p id="updatedTimeKA" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
 						<blockquote>
 							<table class="table table-hover">
@@ -162,15 +160,19 @@
 								</tbody>
 							</table>
 							<center>
-								<div id="gitrepo">
-									<a style="font-size: 11px" href="state_ka.html">Click here to view district-wise
+								<div id="gitrepo" class="git-repo">
+									<a class="git-href" href="state_ka.html">Click here to view district-wise
 										details</a>
 								</div>
 							</center>
 						</blockquote>
 					</div>
-					<div class="states-box">
-						<h3 class="section-heading" style="padding-left: 5px">Current Trend in Andhra Pradesh</h3>
+</div>
+
+<div id="section5" class="container-fluid">
+  <h2>Andhra Pradesh</h2>
+  <div class="states-box">
+					
 						<p id="updatedTimeAP" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
 						<blockquote>
 							<table class="table table-hover">
@@ -189,15 +191,19 @@
 							</table>
 
 							<center>
-								<div id="gitrepo">
-									<a style="font-size: 11px" href="state_ap.html">Click here to view district-wise
+								<div id="gitrepo" class="git-repo">
+									<a class="git-href" href="state_ap.html">Click here to view district-wise
 										details</a>
 								</div>
 							</center>
 						</blockquote>
 					</div>
-					<div class="states-box">
-						<h3 class="section-heading" style="padding-left: 5px">Current Trend in Telangana</h3>
+</div>
+
+<div id="section6" class="container-fluid">
+  <h2>Telangana</h2>
+  <div class="states-box">
+						
 						<p id="updatedTimeTG" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
 						<blockquote>
 							<table class="table table-hover">
@@ -216,16 +222,19 @@
 							</table>
 
 							<center>
-								<div id="gitrepo">
-									<a style="font-size: 11px" href="state_tg.html">Click here to view district-wise
+								<div id="gitrepo" class="git-repo">
+									<a class="git-href" href="state_tg.html">Click here to view district-wise
 										details</a>
 								</div>
 							</center>
 						</blockquote>
 					</div>
-					
-					<div class="states-box">
-						<h3 class="section-heading" style="padding-left: 5px">Useful Links</h3>
+</div>
+
+<div id="section7" class="container-fluid">
+<h2>Useful Links</h2>
+<div class="states-box">
+						
 						<blockquote>
 							<ul>
 								<li>
@@ -244,51 +253,9 @@
 							</ul>
 						</blockquote>
 					</div>
-				</div>
-			</div>
-		</div>
-	</article>
+</div>
 
-	<hr>
-
-	<!-- Footer -->
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-					<ul class="list-inline text-center">
-						<center>
-							<li>
-								<a data-toggle="tooltip" title="Facebook" href="https://facebook.com/gokulan90"
-									target="_blank" class="social"><img src="images/icon-facebook.png" width="36"
-										height="36" draggable="false"></a>
-								<!-- <a data-toggle="tooltip" title="GitHub" href="https://github.com/gokulanviswanathan" target="_blank" class="social"><img src="images/icon-github.png" width="36" height="36" draggable="false"></a> -->
-							</li>
-							<p></p>
-							<p style="font-size:9px">Disclaimer: This page is best viewed in Google Chrome desktop
-								browser with a zoom level at 100%</p>
-						</center>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-	</footer>
-
-	<!-- jQuery -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script src="vendor/bootstrap/script/bootstrap.min.js"></script>
-
-	<!-- Contact Form JavaScript -->
-	<script src="script/jqBootstrapValidation.js"></script>
-	<script src="script/contact_me.js"></script>
-
-	<!-- Theme JavaScript -->
-	<script src="script/clean-blog.min.js"></script>
-
-	<script>
+<script>
 
 		function formatDate(date) {
 			var utc = date.toUTCString() // 'ddd, DD MMM YYYY HH:mm:ss GMT'
@@ -387,7 +354,17 @@
 		}
 		callCovidApi();
 	</script>
+	
+	<nav class="navbar navbar-inverse navbar-fixed-bottom">
+	<div class="icon-bar">
+		<center>
+	  <a class="active" data-toggle="tooltip" title="Facebook" href="https://facebook.com/gokulan90"
+								target="_blank" class="social"><img src="images/icon-facebook.png" width="36"
+									height="36" draggable="false"></a>
+		</center>
+	</div>
+	</nav>
+
 
 </body>
-
 </html>
