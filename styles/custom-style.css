@@ -21,10 +21,14 @@
   font-family: archia
 }
 
-th,td{
-  width: 25%;
-  
+th {
+  text-align: right;
 }
+
+td  {
+	text-align: right;
+}
+
 
 
 
@@ -88,9 +92,9 @@ body {
 }
 
 #section1 {padding-top:50px;height:250px;color: black; background-color: white;}
-#section2 {padding-top:50px;height:250px;color: black; background-color: white;}
-#section3 {padding-top:50px;height:250px;color: black; background-color: white;}
-#section4 {padding-top:50px;height:250px;color: black; background-color: white;}
-#section5 {padding-top:50px;height:250px;color: black; background-color: white;}
-#section6 {padding-top:50px;height:250px;color: black; background-color: white;}
+#section2 {padding-top:50px;height:280px;color: black; background-color: white;}
+#section3 {padding-top:50px;height:280px;color: black; background-color: white;}
+#section4 {padding-top:50px;height:280px;color: black; background-color: white;}
+#section5 {padding-top:50px;height:280px;color: black; background-color: white;}
+#section6 {padding-top:50px;height:280px;color: black; background-color: white;}
 #section7 {padding-top:50px;height:950px;color: black; background-color: white;}
