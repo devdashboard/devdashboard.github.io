@@ -2,7 +2,14 @@
 
 Dashboard application used to project Covid'19 live cases trend within X n Y coordinates of India
 
-## [v1.0] [LIVE]
+
+## [v1.1] [LIVE]
+
+### Changed
+- Update footer content and make it uniform to all child pages as well
+
+
+## [v1.0]
 
 ### Changed
 - New UI with fixed Header and Footer sections
