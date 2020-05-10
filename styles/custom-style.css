@@ -29,11 +29,16 @@ td  {
 	text-align: right;
 }
 
+.district-td {
+	text-align: left;
+}
 
-
-
-
-
+.table-header-center {
+	text-align: left;
+}
+.table-header-right {
+	text-align: right;
+}
 
 blockquote {
   color: #777777;
@@ -51,11 +56,6 @@ h1 {
 	font-weight: 600;
 	font-size: 36px;
 }
-
-
-
-
-
 
 
 .delta {
@@ -83,7 +83,7 @@ li {
 	padding: 0px;
 }
 
-.icon-bar a {
+.icon-bar {
   font-size: 32px;
 }
 
