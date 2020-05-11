@@ -1,31 +1,28 @@
-.header-confirmed{
-  color: #ff073a
+.header-confirmed {
+	color: #ff073a
 }
 
-
-.header-active{
-  color:#007bff
+.header-active {
+	color: #007bff
 }
 
-
-.header-recovered{
-  color: #28a745
+.header-recovered {
+	color: #28a745
 }
 
-
-.header-dead{
-  color: #6c757d
+.header-dead {
+	color: #6c757d
 }
 
-.header-fontstyle{
-  font-family: archia
+.header-fontstyle {
+	font-family: archia
 }
 
 th {
-  text-align: right;
+	text-align: right;
 }
 
-td  {
+td {
 	text-align: right;
 }
 
@@ -36,17 +33,17 @@ td  {
 .table-header-center {
 	text-align: left;
 }
+
 .table-header-right {
 	text-align: right;
 }
 
 blockquote {
-  color: #777777;
-  font-style: none;
-  font-family: 'Calibri';
-  border: none !important;
+	color: #777777;
+	font-style: none;
+	font-family: 'Calibri';
+	border: none !important;
 }
-
 
 p {
 	font-family: 'Calibri';
@@ -56,7 +53,6 @@ h1 {
 	font-weight: 600;
 	font-size: 36px;
 }
-
 
 .delta {
 	font-size: 13px;
@@ -73,9 +69,9 @@ li {
 }
 
 .git-repo {
-	color:#007bff;
+	color: #007bff;
 	padding: 0px;
-}	
+}
 
 .git-href {
 	color: #007bff;
@@ -84,17 +80,63 @@ li {
 }
 
 .icon-bar {
-  font-size: 32px;
+	font-size: 32px;
 }
 
 body {
-	position: relative; 
+	position: relative;
 }
 
-#section1 {padding-top:50px;height:250px;color: black; background-color: white;}
-#section2 {padding-top:50px;height:280px;color: black; background-color: white;}
-#section3 {padding-top:50px;height:280px;color: black; background-color: white;}
-#section4 {padding-top:50px;height:280px;color: black; background-color: white;}
-#section5 {padding-top:50px;height:280px;color: black; background-color: white;}
-#section6 {padding-top:50px;height:280px;color: black; background-color: white;}
-#section7 {padding-top:50px;height:950px;color: black; background-color: white;}
+#section1 {
+	padding-top: 50px;
+	height: 280px;
+	color: black;
+	background-color: white;
+}
+
+#section2 {
+	padding-top: 50px;
+	height: 280px;
+	color: black;
+	background-color: white;
+}
+
+#section3 {
+	padding-top: 50px;
+	height: 280px;
+	color: black;
+	background-color: white;
+}
+
+#section4 {
+	padding-top: 50px;
+	height: 280px;
+	color: black;
+	background-color: white;
+}
+
+#section5 {
+	padding-top: 50px;
+	height: 280px;
+	color: black;
+	background-color: white;
+}
+
+#section6 {
+	padding-top: 50px;
+	height: 280px;
+	color: black;
+	background-color: white;
+}
+
+#section7 {
+	padding-top: 50px;
+	height: 950px;
+	color: black;
+	background-color: white;
+}
+
+.tooltip {
+	width: 220px;
+	height: 120px;
+}
