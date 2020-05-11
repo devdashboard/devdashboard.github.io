@@ -1,373 +1,379 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<!-- Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-7RC5F8T37Z"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'G-7RC5F8T37Z');
-	</script>
-	<meta name="description" content="Corona Dashboard (Lite)">
-	<meta name="author" content="Gokulan Viswanathan">
-	<link rel="icon" type="image/jpg" sizes="16x16" href="./images/corona-title-image.jpg">
-  <title>Covid'19 India</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./script/bootstrap.min.css">
-  <script src="./script/jquery.min.js"></script>
-  <script src="./script/bootstrap.min.js"></script>
-  <link href="./styles/custom-style.css" rel="stylesheet">
-  <style>
-  
-  </style>
-</head>
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                     
-      </button>
-      <a class="navbar-brand" href="./index.html">Covid'19 +ve cases</a>
-    </div>
-    <div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="#section1">India</a></li>
-          <li><a href="#section2">Kerala</a></li>
-          <li><a href="#section3">TamilNadu</a></li>
-          <li><a href="#section4">Karnataka</a></li>
-		  <li><a href="#section5">Andhra Pradesh</a></li>
-		  <li><a href="#section6">Telangana</a></li>
-		  <li><a href="#section7">Useful links</a></li>
-        </ul>
+   <head>
+      <!-- Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7RC5F8T37Z"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag() { dataLayer.push(arguments); }
+         gtag('js', new Date());
+         
+         gtag('config', 'G-7RC5F8T37Z');
+      </script>
+      <meta name="description" content="Corona Dashboard (Lite)">
+      <meta name="author" content="Gokulan Viswanathan">
+      <link rel="icon" type="image/jpg" sizes="16x16" href="./images/corona-title-image.jpg">
+      <title>Covid'19 India</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="./script/bootstrap.min.css">
+      <script src="./script/jquery.min.js"></script>
+      <script src="./script/bootstrap.min.js"></script>
+      <link href="./styles/custom-style.css" rel="stylesheet">
+   </head>
+   <body data-spy="scroll" data-target=".navbar" data-offset="50">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+         <div class="container-fluid">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>                     
+               </button>
+               <a class="navbar-brand" href="./index.html">Covid'19 +ve cases</a>
+            </div>
+            <div>
+               <div class="collapse navbar-collapse" id="myNavbar">
+                  <ul class="nav navbar-nav">
+                     <li><a href="#section1">India</a></li>
+                     <li><a href="#section2">Kerala</a></li>
+                     <li><a href="#section3">TamilNadu</a></li>
+                     <li><a href="#section4">Karnataka</a></li>
+                     <li><a href="#section5">Andhra Pradesh</a></li>
+                     <li><a href="#section6">Telangana</a></li>
+                     <li><a href="#section7">Useful links</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </nav>
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div id="section1" class="container-fluid">
+         <h1>India</h1>
+         <div class="states-box">
+            <p id="updatedTime" style="font-size: 11px">Last updated on: </p>
+            <blockquote>
+               <table class="table table-hover">
+                  <thead class="covidHeading">
+                     <tr>
+                        <th class="table-header-right header-confirmed">Confirmed</th>
+                        <th class="table-header-right header-active">Active</th>
+                        <th class="table-header-right header-recovered">Recovered</th>
+                        <th class="table-header-right header-dead">Deceased</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr class="covidValue" id="covidValue">
+                     </tr>
+                  </tbody>
+               </table>
+               <center>
+                  <div class="btn-group">
+                     <button type="button" class="btn btn-primary" style="background-color: #28a745" id="rRate">Recovery rate </button>
+                     <button type="button" class="btn btn-primary" style="background-color: #6c757d" id="mRate">Mortality rate </button>
+                  </div>
+               </center>
+               <script>
+                  $(document).ready(function(){
+                  $('[data-toggle="tooltip"]').tooltip();   
+                  });
+                  
+                  $(document).ready(function(){
+                  $('[data-toggle="tooltip"]').tooltip();   
+                  });
+               </script>
+            </blockquote>
+         </div>
+         <hr>
       </div>
-    </div>
-  </div>
-</nav>    
-
-
-<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-<div id="section1" class="container-fluid">
-  <h1>India</h1>
-  
-  <div class="states-box">
-						<p id="updatedTime" style="font-size: 11px">Last updated on: </p>
-						<blockquote>
-							<table class="table table-hover">
-								<thead class="covidHeading">
-									<tr>
-										<th class="table-header-right header-confirmed">Confirmed</th>
-										<th class="table-header-right header-active">Active</th>
-										<th class="table-header-right header-recovered">Recovered</th>
-										<th class="table-header-right header-dead">Deceased</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr class="covidValue" id="covidValue">
-									</tr>
-								</tbody>
-							</table>
-						</blockquote>
-						</div>
-						<hr>
-</div>
-
-
-
-<div id="section2" class="container-fluid">
-  <h2>Kerala<h2>
-  <div class="states-box">
-						
-						<p id="updatedTimeKL" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
-						<blockquote>
-							<table class="table table-hover">
-								<thead class="covidHeadingKL">
-									<tr>
-										<th class="table-header-right header-confirmed">Confirmed</th>
-										<th class="table-header-right header-active">Active</th>
-										<th class="table-header-right header-recovered">Recovered</th>
-										<th class="table-header-right header-dead">Deceased</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr class="covidValueKL" id="covidValueKL">
-									</tr>
-								</tbody>
-							</table>
-							<center>
-								<div id="gitrepo" class="git-repo">
-									<a class="git-href" href="state_kl.html">Click here to view district-wise
-										details</a>
-								</div>
-							</center>
-						</blockquote>
-					</div>
-</div>
-<div id="section3" class="container-fluid">
-  <h2>TamilNadu</h2>
-  <div class="states-box">
-					
-						<p id="updatedTimeTN" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
-						<blockquote>
-							<table class="table table-hover">
-								<thead class="covidHeadingTN">
-									<tr>
-										<th class="table-header-right header-confirmed">Confirmed</th>
-										<th class="table-header-right header-active">Active</th>
-										<th class="table-header-right header-recovered">Recovered</th>
-										<th class="table-header-right header-dead">Deceased</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr class="covidValueTN" id="covidValueTN">
-									</tr>
-								</tbody>
-							</table>
-							<center>
-								<div id="gitrepo" class="git-repo">
-									<a class="git-href" href="state_tn.html">Click here to view district-wise
-										details</a>
-								</div>
-							</center>
-						</blockquote>
-					</div>					
-</div>
-
-<div id="section4" class="container-fluid">
-  <h2>Karnataka</h2>
-  <div class="states-box">
-						
-						<p id="updatedTimeKA" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
-						<blockquote>
-							<table class="table table-hover">
-								<thead class="covidHeadingKA">
-									<tr>
-										<th class="table-header-right header-confirmed">Confirmed</th>
-										<th class="table-header-right header-active">Active</th>
-										<th class="table-header-right header-recovered">Recovered</th>
-										<th class="table-header-right header-dead">Deceased</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr class="covidValueKA" id="covidValueKA">
-									</tr>
-								</tbody>
-							</table>
-							<center>
-								<div id="gitrepo" class="git-repo">
-									<a class="git-href" href="state_ka.html">Click here to view district-wise
-										details</a>
-								</div>
-							</center>
-						</blockquote>
-					</div>
-</div>
-
-<div id="section5" class="container-fluid">
-  <h2>Andhra Pradesh</h2>
-  <div class="states-box">
-					
-						<p id="updatedTimeAP" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
-						<blockquote>
-							<table class="table table-hover">
-								<thead class="covidHeadingAP">
-									<tr>
-										<th class="table-header-right header-confirmed">Confirmed</th>
-										<th class="table-header-right header-active">Active</th>
-										<th class="table-header-right header-recovered">Recovered</th>
-										<th class="table-header-right header-dead">Deceased</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr class="covidValueAP" id="covidValueAP">
-									</tr>
-								</tbody>
-							</table>
-
-							<center>
-								<div id="gitrepo" class="git-repo">
-									<a class="git-href" href="state_ap.html">Click here to view district-wise
-										details</a>
-								</div>
-							</center>
-						</blockquote>
-					</div>
-</div>
-
-<div id="section6" class="container-fluid">
-  <h2>Telangana</h2>
-  <div class="states-box">
-						
-						<p id="updatedTimeTG" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
-						<blockquote>
-							<table class="table table-hover">
-								<thead class="covidHeadingTG">
-									<tr>
-										<th class="table-header-right header-confirmed">Confirmed</th>
-										<th class="table-header-right header-active">Active</th>
-										<th class="table-header-right header-recovered">Recovered</th>
-										<th class="table-header-right header-dead">Deceased</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr class="covidValueTG" id="covidValueTG">
-									</tr>
-								</tbody>
-							</table>
-
-							<center>
-								<div id="gitrepo" class="git-repo">
-									<a class="git-href" href="state_tg.html">Click here to view district-wise
-										details</a>
-								</div>
-							</center>
-						</blockquote>
-					</div>
-</div>
-
-<div id="section7" class="container-fluid">
-<h2>Useful Links</h2>
-<div class="states-box">
-						
-						<blockquote>
-							<ul>
-								<li>
-									Covid'19 across Globe: <a style="font-size: 16px" href="https://www.worldometers.info/coronavirus/" target="_blank"><span class="click-here-href">Click here<sup><img src="./images/new-window.png" width="28" height="22" draggable="false"/></sup></span></a>
-								</li>
-								
-								<li>
-									Government Guidelines: <a style="font-size: 11px" href="https://www.mha.gov.in/notifications/circulars-covid-19"
-									target="_blank"><span class="click-here-href">Click here<sup><img src="./images/new-window.png" width="28" height="22" draggable="false"/></sup></span></a>
-								</li>
-								
-								<li>
-									ICMR Testing Methods: <a style="font-size: 11px" href="https://www.icmr.gov.in/cteststrat.html"
-									target="_blank"><span class="click-here-href">Click here<sup><img src="./images/new-window.png" width="28" height="22" draggable="false"/></sup></span></a>
-								</li>
-							</ul>
-							<center>
-								<img src="./images/india-outline.png" width="228" height="222" draggable="false"/><!-- -->
-							</center>
-						</blockquote>
-					</div>
-</div>
-<script>
-
-		function formatDate(date) {
-			var utc = date.toUTCString() // 'ddd, DD MMM YYYY HH:mm:ss GMT'
-			return utc.slice(8, 12) + utc.slice(5, 7) + ", " + utc.slice(12, 16)
-		}
-
-		function comp(a, b) {
-			return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
-		}
-		function numberWithCommas(x) {
-			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		}
-		function callCovidApi() {
-			$.ajax(
-				{
-					method: "GET",
-					url: "https://api.covid19india.org/data.json",
-					success: function (resData) {
-
-						var statewise = resData["statewise"];
-
-						for (var i = 0; i < statewise.length - 1; i++) {
-							var stateDetails = statewise[i];
-
-							if (stateDetails["state"] === 'Total') {
-								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
-								$("#updatedTime").append(updatedTimeTemplate);
-
-								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
-									+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
-									+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>'
-									+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
-								$("#covidValue").append(valueTemplate);
-							}
-
-							if (stateDetails["statecode"] === 'KL') {
-								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
-								$("#updatedTimeKL").append(updatedTimeTemplate);
-
-								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
-									+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
-									+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>'
-									+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
-								$("#covidValueKL").append(valueTemplate);
-							}
-
-							if (stateDetails["statecode"] === 'TN') {
-								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
-								$("#updatedTimeTN").append(updatedTimeTemplate);
-
-								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
-									+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
-									+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>'
-									+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
-								$("#covidValueTN").append(valueTemplate);
-							}
-
-							if (stateDetails["statecode"] === 'KA') {
-								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
-								$("#updatedTimeKA").append(updatedTimeTemplate);
-
-								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
-									+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
-									+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>'
-									+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
-								$("#covidValueKA").append(valueTemplate);
-							}
-
-							if (stateDetails["statecode"] === 'AP') {
-								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
-								$("#updatedTimeAP").append(updatedTimeTemplate);
-
-								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
-									+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
-									+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>'
-									+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
-								$("#covidValueAP").append(valueTemplate);
-							}
-
-							if (stateDetails["statecode"] === 'TG') {
-								updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
-								$("#updatedTimeTG").append(updatedTimeTemplate);
-
-								valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
-									+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
-									+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>'
-									+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
-								$("#covidValueTG").append(valueTemplate);
-							}
-						}
-					},
-					error: function (xhr, status, error) {
-						alert(error);
-					}
-				});
-		}
-		callCovidApi();
-	</script>
-	
-	<nav class="navbar navbar-inverse navbar-fixed-bottom">
-	<div class="icon-bar">
-		<center>
-			<a class="active" data-toggle="tooltip" title="My Gov Covid'19" href="https://www.mygov.in/covid-19/"
-								target="_blank" class="social"><img href src="images/govt.svg" width="36"
-									height="36" draggable="false"></a>
-		</center>
-	</div>
-	</nav>
-
-
-</body>
+      <div id="section2" class="container-fluid">
+         <h2>
+         Kerala
+         <h2>
+         <div class="states-box">
+            <p id="updatedTimeKL" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+            <blockquote>
+               <table class="table table-hover">
+                  <thead class="covidHeadingKL">
+                     <tr>
+                        <th class="table-header-right header-confirmed">Confirmed</th>
+                        <th class="table-header-right header-active">Active</th>
+                        <th class="table-header-right header-recovered">Recovered</th>
+                        <th class="table-header-right header-dead">Deceased</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr class="covidValueKL" id="covidValueKL">
+                     </tr>
+                  </tbody>
+               </table>
+               <center>
+                  <div id="gitrepo" class="git-repo">
+                     <a class="git-href" href="state_kl.html">Click here to view district-wise
+                     details</a>
+                  </div>
+               </center>
+            </blockquote>
+         </div>
+      </div>
+      <div id="section3" class="container-fluid">
+         <h2>TamilNadu</h2>
+         <div class="states-box">
+            <p id="updatedTimeTN" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+            <blockquote>
+               <table class="table table-hover">
+                  <thead class="covidHeadingTN">
+                     <tr>
+                        <th class="table-header-right header-confirmed">Confirmed</th>
+                        <th class="table-header-right header-active">Active</th>
+                        <th class="table-header-right header-recovered">Recovered</th>
+                        <th class="table-header-right header-dead">Deceased</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr class="covidValueTN" id="covidValueTN">
+                     </tr>
+                  </tbody>
+               </table>
+               <center>
+                  <div id="gitrepo" class="git-repo">
+                     <a class="git-href" href="state_tn.html">Click here to view district-wise
+                     details</a>
+                  </div>
+               </center>
+            </blockquote>
+         </div>
+      </div>
+      <div id="section4" class="container-fluid">
+         <h2>Karnataka</h2>
+         <div class="states-box">
+            <p id="updatedTimeKA" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+            <blockquote>
+               <table class="table table-hover">
+                  <thead class="covidHeadingKA">
+                     <tr>
+                        <th class="table-header-right header-confirmed">Confirmed</th>
+                        <th class="table-header-right header-active">Active</th>
+                        <th class="table-header-right header-recovered">Recovered</th>
+                        <th class="table-header-right header-dead">Deceased</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr class="covidValueKA" id="covidValueKA">
+                     </tr>
+                  </tbody>
+               </table>
+               <center>
+                  <div id="gitrepo" class="git-repo">
+                     <a class="git-href" href="state_ka.html">Click here to view district-wise
+                     details</a>
+                  </div>
+               </center>
+            </blockquote>
+         </div>
+      </div>
+      <div id="section5" class="container-fluid">
+         <h2>Andhra Pradesh</h2>
+         <div class="states-box">
+            <p id="updatedTimeAP" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+            <blockquote>
+               <table class="table table-hover">
+                  <thead class="covidHeadingAP">
+                     <tr>
+                        <th class="table-header-right header-confirmed">Confirmed</th>
+                        <th class="table-header-right header-active">Active</th>
+                        <th class="table-header-right header-recovered">Recovered</th>
+                        <th class="table-header-right header-dead">Deceased</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr class="covidValueAP" id="covidValueAP">
+                     </tr>
+                  </tbody>
+               </table>
+               <center>
+                  <div id="gitrepo" class="git-repo">
+                     <a class="git-href" href="state_ap.html">Click here to view district-wise
+                     details</a>
+                  </div>
+               </center>
+            </blockquote>
+         </div>
+      </div>
+      <div id="section6" class="container-fluid">
+         <h2>Telangana</h2>
+         <div class="states-box">
+            <p id="updatedTimeTG" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+            <blockquote>
+               <table class="table table-hover">
+                  <thead class="covidHeadingTG">
+                     <tr>
+                        <th class="table-header-right header-confirmed">Confirmed</th>
+                        <th class="table-header-right header-active">Active</th>
+                        <th class="table-header-right header-recovered">Recovered</th>
+                        <th class="table-header-right header-dead">Deceased</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr class="covidValueTG" id="covidValueTG">
+                     </tr>
+                  </tbody>
+               </table>
+               <center>
+                  <div id="gitrepo" class="git-repo">
+                     <a class="git-href" href="state_tg.html">Click here to view district-wise
+                     details</a>
+                  </div>
+               </center>
+            </blockquote>
+         </div>
+      </div>
+      <div id="section7" class="container-fluid">
+         <h2>Useful Links</h2>
+         <div class="states-box">
+            <blockquote>
+               <ul>
+                  <li>
+                     Covid'19 across Globe: <a style="font-size: 16px" href="https://www.worldometers.info/coronavirus/" target="_blank"><span class="click-here-href">Click here<sup><img src="./images/new-window.png" width="28" height="22" draggable="false"/></sup></span></a>
+                  </li>
+                  <li>
+                     Government Guidelines: <a style="font-size: 11px" href="https://www.mha.gov.in/notifications/circulars-covid-19"
+                        target="_blank"><span class="click-here-href">Click here<sup><img src="./images/new-window.png" width="28" height="22" draggable="false"/></sup></span></a>
+                  </li>
+                  <li>
+                     ICMR Testing Methods: <a style="font-size: 11px" href="https://www.icmr.gov.in/cteststrat.html"
+                        target="_blank"><span class="click-here-href">Click here<sup><img src="./images/new-window.png" width="28" height="22" draggable="false"/></sup></span></a>
+                  </li>
+               </ul>
+               <center>
+                  <img src="./images/india-outline.png" width="228" height="222" draggable="false"/><!-- -->
+               </center>
+            </blockquote>
+         </div>
+      </div>
+      <script>
+         function formatDate(date) {
+         	var utc = date.toUTCString() // 'ddd, DD MMM YYYY HH:mm:ss GMT'
+         	return utc.slice(8, 12) + utc.slice(5, 7) + ", " + utc.slice(12, 16)
+         }
+         
+         function comp(a, b) {
+         	return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
+         }
+         function numberWithCommas(x) {
+         	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+         }
+         function callCovidApi() {
+         	$.ajax(
+         		{
+         			method: "GET",
+         			url: "https://api.covid19india.org/data.json",
+         			success: function (resData) {
+         
+         				var statewise = resData["statewise"];
+         
+         				for (var i = 0; i < statewise.length - 1; i++) {
+         					var stateDetails = statewise[i];
+         
+         					if (stateDetails["state"] === 'Total') {
+         						updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
+         						$("#updatedTime").append(updatedTimeTemplate);
+         
+         						valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
+         							+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
+         							+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>'
+         							+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
+         						$("#covidValue").append(valueTemplate);
+         						
+         						var rRateFormula = '&nbsp;<sup><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-toggle="tooltip" title="Recovery rate is the difference between total number of confirmed value and total number of deceased value and divided by the total number of active value to the whole multiplied by 100"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line> </svg></sup>';
+         						
+         						var mRateFormula = '&nbsp;<sup><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-toggle="tooltip" title="Mortality rate is the total number of Deceased value divided by the total number of Confirmed value to the whole multiplied by 100"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line> </svg></sup>';
+         						
+         						$("#rRate").append(computeRecoveryRate(stateDetails["confirmed"], stateDetails["recovered"], stateDetails["deaths"]) + rRateFormula);
+         						
+         						$("#mRate").append(computeMortalityRate(stateDetails["confirmed"], stateDetails["deaths"]) + mRateFormula);
+         					}
+         
+         					if (stateDetails["statecode"] === 'KL') {
+         						updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
+         						$("#updatedTimeKL").append(updatedTimeTemplate);
+         
+         						valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
+         							+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
+         							+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>'
+         							+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
+         						$("#covidValueKL").append(valueTemplate);
+         					}
+         
+         					if (stateDetails["statecode"] === 'TN') {
+         						updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
+         						$("#updatedTimeTN").append(updatedTimeTemplate);
+         
+         						valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
+         							+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
+         							+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>'
+         							+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
+         						$("#covidValueTN").append(valueTemplate);
+         					}
+         
+         					if (stateDetails["statecode"] === 'KA') {
+         						updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
+         						$("#updatedTimeKA").append(updatedTimeTemplate);
+         
+         						valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
+         							+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
+         							+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>'
+         							+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
+         						$("#covidValueKA").append(valueTemplate);
+         					}
+         
+         					if (stateDetails["statecode"] === 'AP') {
+         						updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
+         						$("#updatedTimeAP").append(updatedTimeTemplate);
+         
+         						valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
+         							+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
+         							+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>'
+         							+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
+         						$("#covidValueAP").append(valueTemplate);
+         					}
+         
+         					if (stateDetails["statecode"] === 'TG') {
+         						updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
+         						$("#updatedTimeTG").append(updatedTimeTemplate);
+         
+         						valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
+         							+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
+         							+ '<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>'
+         							+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
+         						$("#covidValueTG").append(valueTemplate);
+         					}
+         				}
+         			},
+         			error: function (xhr, status, error) {
+         				alert(error);
+         			}
+         		});
+         }
+         
+         function computeRecoveryRate(conf, recvr, death) {								
+         	return (Math.round(((recvr) / (conf - death))*100) + '%');
+         }
+         
+         function computeMortalityRate(conf, death) {
+         	return (Math.round((death/conf)*100) + '%');
+         }
+         
+         callCovidApi();
+      </script>
+      <nav class="navbar navbar-inverse navbar-fixed-bottom">
+         <div class="icon-bar">
+            <center>
+               <a class="active" data-toggle="tooltip" title="My Gov Covid'19" href="https://www.mygov.in/covid-19/"
+                  target="_blank" class="social"><img href src="images/govt.svg" width="36"
+                  height="36" draggable="false"></a>
+            </center>
+         </div>
+      </nav>
+   </body>
 </html>
