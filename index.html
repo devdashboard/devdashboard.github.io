@@ -378,8 +378,16 @@
 			msec -= mm * 1000 * 60;
 			var ss = Math.floor(msec / 1000);
 			msec -= ss * 1000;
-						
-			if (hh === 0) {
+
+			if (hh === 0 && mm === 0 && ss === 0) {
+				return 'Updated now';
+			} else if (hh === 0 && mm === 0 && ss === 1) {
+				return 'Updated a second ago';
+			} else if (hh === 0 && mm === 0 && ss != 0) {
+				return 'Updated ' + ss + ' seconds ago';
+			} else if (hh === 0 && mm === 1) {
+				return 'Updated a minute ago';
+			} else if (hh === 0 && mm != 0) {
 				return 'Updated ' + mm + ' minutes ago';
 			} else if (hh === 1) {
 				return 'Updated an hour ago';
