@@ -51,7 +51,7 @@
       <div id="section1" class="container-fluid">
          <h1>India</h1>
          <div class="states-box">
-            <p id="updatedTime" style="font-size: 11px">Last updated on: </p>
+            <p id="updatedTime" style="font-size: 12px"></p>
             <blockquote>
                <table class="table table-hover">
                   <thead class="covidHeading">
@@ -89,7 +89,7 @@
          Kerala
          <h2>
          <div class="states-box">
-            <p id="updatedTimeKL" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+            <p id="updatedTimeKL" style="font-size: 12px;padding-left: 5px"></p>
             <blockquote>
                <table class="table table-hover">
                   <thead class="covidHeadingKL">
@@ -117,7 +117,7 @@
       <div id="section3" class="container-fluid">
          <h2>TamilNadu</h2>
          <div class="states-box">
-            <p id="updatedTimeTN" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+            <p id="updatedTimeTN" style="font-size: 12px;padding-left: 5px"></p>
             <blockquote>
                <table class="table table-hover">
                   <thead class="covidHeadingTN">
@@ -145,7 +145,7 @@
       <div id="section4" class="container-fluid">
          <h2>Karnataka</h2>
          <div class="states-box">
-            <p id="updatedTimeKA" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+            <p id="updatedTimeKA" style="font-size: 12px;padding-left: 5px"></p>
             <blockquote>
                <table class="table table-hover">
                   <thead class="covidHeadingKA">
@@ -173,7 +173,7 @@
       <div id="section5" class="container-fluid">
          <h2>Andhra Pradesh</h2>
          <div class="states-box">
-            <p id="updatedTimeAP" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+            <p id="updatedTimeAP" style="font-size: 12px;padding-left: 5px"></p>
             <blockquote>
                <table class="table table-hover">
                   <thead class="covidHeadingAP">
@@ -201,7 +201,7 @@
       <div id="section6" class="container-fluid">
          <h2>Telangana</h2>
          <div class="states-box">
-            <p id="updatedTimeTG" style="font-size: 11px;padding-left: 5px">Last updated on: </p>
+            <p id="updatedTimeTG" style="font-size: 12px;padding-left: 5px"></p>
             <blockquote>
                <table class="table table-hover">
                   <thead class="covidHeadingTG">
@@ -274,8 +274,9 @@
          					var stateDetails = statewise[i];
          
          					if (stateDetails["state"] === 'Total') {
-         						updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
-         						$("#updatedTime").append(updatedTimeTemplate);
+         						$("#updatedTime").append(computeUpdatedTime(stateDetails["lastupdatedtime"]));
+								
+								console.log('Updated ', computeUpdatedTime(stateDetails["lastupdatedtime"]));
          
          						valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
          							+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
@@ -293,8 +294,7 @@
          					}
          
          					if (stateDetails["statecode"] === 'KL') {
-         						updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
-         						$("#updatedTimeKL").append(updatedTimeTemplate);
+         						$("#updatedTimeKL").append(computeUpdatedTime(stateDetails["lastupdatedtime"]));
          
          						valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
          							+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
@@ -304,8 +304,7 @@
          					}
          
          					if (stateDetails["statecode"] === 'TN') {
-         						updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
-         						$("#updatedTimeTN").append(updatedTimeTemplate);
+         						$("#updatedTimeTN").append(computeUpdatedTime(stateDetails["lastupdatedtime"]));
          
          						valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
          							+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
@@ -315,8 +314,7 @@
          					}
          
          					if (stateDetails["statecode"] === 'KA') {
-         						updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
-         						$("#updatedTimeKA").append(updatedTimeTemplate);
+         						$("#updatedTimeKA").append(computeUpdatedTime(stateDetails["lastupdatedtime"]));
          
          						valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
          							+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
@@ -326,8 +324,7 @@
          					}
          
          					if (stateDetails["statecode"] === 'AP') {
-         						updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
-         						$("#updatedTimeAP").append(updatedTimeTemplate);
+         						$("#updatedTimeAP").append(computeUpdatedTime(stateDetails["lastupdatedtime"]));
          
          						valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
          							+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
@@ -337,8 +334,7 @@
          					}
          
          					if (stateDetails["statecode"] === 'TG') {
-         						updatedTimeTemplate = stateDetails["lastupdatedtime"] + " IST  " + '<img src="./images/live_icon.gif" width="32" height="22" draggable="false"/>';
-         						$("#updatedTimeTG").append(updatedTimeTemplate);
+         						$("#updatedTimeTG").append(computeUpdatedTime(stateDetails["lastupdatedtime"]));
          
          						valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>'
          							+ '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>'
@@ -361,7 +357,37 @@
          function computeMortalityRate(conf, death) {
          	return (Math.round((death/conf)*100) + '%');
          }
-         
+		 
+		 function computeUpdatedTime(updateTime){
+			var formatTime = updateTime.slice(3,5) + '/' 
+			+ updateTime.slice(0,2) + '/'
+			+ updateTime.slice(6,updateTime.length);
+			var nowTime = new Date();
+			
+			var utcUpdatedTime = new Date(formatTime);
+			utcUpdatedTime = new Date(utcUpdatedTime.toUTCString().slice(0, -4));
+			
+			var utcNowTime = new Date(nowTime.toUTCString().slice(0, -4));
+			
+			var diff = utcNowTime.getTime() - utcUpdatedTime.getTime();
+
+			var msec = diff;
+			var hh = Math.floor(msec / 1000 / 60 / 60);
+			msec -= hh * 1000 * 60 * 60;
+			var mm = Math.floor(msec / 1000 / 60);
+			msec -= mm * 1000 * 60;
+			var ss = Math.floor(msec / 1000);
+			msec -= ss * 1000;
+						
+			if (hh === 0) {
+				return 'Updated ' + mm + ' minutes ago';
+			} else if (hh === 1) {
+				return 'Updated an hour ago';
+			} else {
+				return 'Updated ' + hh + ' hours ago';
+			}
+		 } 
+		 
          callCovidApi();
       </script>
       <nav class="navbar navbar-inverse navbar-fixed-bottom">
