@@ -36,9 +36,9 @@ We have provided hyperlinks to,
 SCREENSHOTS
 -----------
 
-### v1.2 [LIVE]
+### v1.3 [LIVE]
 
-![v1.2](https://github.com/devdashboard/devdashboard.github.io/blob/master/screenshots/v1.2.JPG)
+![v1.3](https://github.com/devdashboard/devdashboard.github.io/blob/master/screenshots/v1.3.JPG)
 
 ------------
 CONTRIBUTORS
