@@ -2,7 +2,13 @@
 
 Dashboard application used to project Covid'19 live cases trend within X n Y coordinates of India
 
-## [v1.2] [LIVE]
+# [v1.3] [LIVE]
+
+## Changed
+- Display of updated time
+
+
+## [v1.2]
 
 ## Added
 - Rate of recovery and mortality in the country section
