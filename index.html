@@ -75,11 +75,11 @@
                   </div>
 			   </div>
                </center>
-               <script>
+               <!-- <script>
                   $(document).ready(function(){
                   $('[data-toggle="tooltip"]').tooltip();   
                   });
-               </script>
+               </script> -->
             </blockquote>
          </div>
          <hr>
@@ -283,13 +283,13 @@
          							+ '<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
          						$("#covidValue").append(valueTemplate);
          						
-         						var rRateFormula = '&nbsp;<sup><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-toggle="tooltip" title="Recovery rate is the difference between total number of confirmed value and total number of deceased value and divided by the total number of active value to the whole multiplied by 100"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line> </svg></sup>';
+         						/* var rRateFormula = '&nbsp;<sup><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-toggle="tooltip" title="Recovery rate is the difference between total number of confirmed value and total number of deceased value and divided by the total number of active value to the whole multiplied by 100"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line> </svg></sup>';
          						
-         						var mRateFormula = '&nbsp;<sup><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-toggle="tooltip" title="Mortality rate is the total number of Deceased value divided by the total number of Confirmed value to the whole multiplied by 100"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line> </svg></sup>';
+         						var mRateFormula = '&nbsp;<sup><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-toggle="tooltip" title="Mortality rate is the total number of Deceased value divided by the total number of Confirmed value to the whole multiplied by 100"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line> </svg></sup>'; */
          						
-         						$("#rRate").append(computeRecoveryRate(stateDetails["confirmed"], stateDetails["recovered"], stateDetails["deaths"]) + rRateFormula);
+         						$("#rRate").append(computeRecoveryRate(stateDetails["confirmed"], stateDetails["recovered"], stateDetails["deaths"]) /*+ rRateFormula */);
          						
-         						$("#mRate").append(computeMortalityRate(stateDetails["confirmed"], stateDetails["deaths"]) + mRateFormula);
+         						$("#mRate").append(computeMortalityRate(stateDetails["confirmed"], stateDetails["deaths"]) /* + mRateFormula*/);
          					}
          
          					if (stateDetails["statecode"] === 'KL') {
