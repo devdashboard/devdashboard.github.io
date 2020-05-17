@@ -1,148 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Corona Dashboard (Lite)">
-    <meta name="author" content="Gokulan Viswanathan">
-	
-	<link rel="icon" type="image/jpg" sizes="16x16" href="./images/corona-title-image.jpg">
-	 
-    <title>Covid'19 Statistics</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Theme CSS -->
-	<link href="styles/custom-style.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-</head>
-
-<body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="./index.html">Covid'19 +ve cases</a>
-    </div>
-</div>
-</nav>
-
-    <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <!-- <header class="intro-header" style="background-image: url('images/simple-background-grey.png')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h2>Covid'19 Statewise Statistics</h2>
-                        <hr class="medium">
-						<span class="subheading">Lite version</span>
-                    </div>
-                </div>
+   <head>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-EQJ272HHQD"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         
+         gtag('config', 'G-EQJ272HHQD');
+      </script>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Corona Dashboard (Lite)">
+      <meta name="author" content="Gokulan Viswanathan">
+      <link rel="icon" type="image/jpg" sizes="16x16" href="./images/corona-title-image.jpg">
+      <title>Covid'19 Statistics</title>
+      
+      <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+      
+	  <link rel="stylesheet" href="./script/bootstrap.min.css">
+      <link  rel="stylesheet" href="./styles/custom-style.css">
+      <script src="./script/jquery.min.js"></script>
+      <script src="./script/bootstrap.min.js"></script>
+      <script src="./script/custom-script.js"></script>
+   </head>
+   <body>
+      <!-- Header Menu -->
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+         <div class="container-fluid">
+            <div class="navbar-header header-prop">
+               <a class="navbar-brand" href="./index.html">Covid'19 +ve cases</a>
             </div>
-        </div>
-    </header> -->
-
-	
-	<!-- Main Content -->
-    <article>
-		<div class="container" id="tabl">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-					<br>
-					<button class="next round" onclick="location.href = './index.html';">Back</button>
-					<h3 class="section-heading">Districts of Karnataka</h3>
-					<!-- <p id="updatedTime" style="font-size: 11px">Last updated on: </p> -->
-					<blockquote>
-					<table class="table table-hover">
-					<thead class="covidHeading">
-					<tr>
-						<th class="table-header-center">District</th>
-						<th class="table-header-center">Confirmed</th>
-						<!-- <th class="table-header-center">Active</th>
-						<th class="table-header-center">Recovered</th>
-						<th class="table-header-center">Deceased</th> -->
-					</tr>
-					</thead>
-					<tbody class="covidValue" id="covidValue">
-					<!-- <tr class="covidValue" id="covidValue">
-					</tr> -->
-					</tbody>
-					</table>
-					</blockquote>
-				</div>
-			</div>
-		</div>
-	</article>
-	
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/script/bootstrap.min.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="script/jqBootstrapValidation.js"></script>
-    <script src="script/contact_me.js"></script>
-
-    <!-- Theme JavaScript -->
-	<script src="script/clean-blog.min.js"></script>
-	
-	<script>
-    
-    function formatDate(date) {
-      var utc = date.toUTCString() // 'ddd, DD MMM YYYY HH:mm:ss GMT'
-      return utc.slice(8, 12) + utc.slice(5, 7)+", "+ utc.slice(12, 16)
-    }
-	
-    function comp(a, b) {
-        return  new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
-    }
-
-    function callCovidStateApi() {
-        $.ajax(
-            {
-                method: "GET",
-                url: "https://api.covid19india.org/state_district_wise.json",
-                success: function(resData) {                					
-					var statewise = resData["Karnataka"];
-					var districtDetails = statewise["districtData"];
-					
-					for (var eachDistrict in districtDetails) {
-						var entry = districtDetails[eachDistrict];
-						valueTemplate = '<tr><td class="district-td">'+ eachDistrict + '</td>'
-						+ '<td class="district-td">'+ entry["confirmed"] + '</td>';
-						//+ '<td>'+ entry["active"] + '</td>'
-						//+ '<td>'+ entry["recovered"] + '</td>'
-						//+ '<td>'+ entry["deceased"] + '</td></tr>';
-						$( "#covidValue" ).append(valueTemplate);
-					}
-				
-                }, 
-                error: function(xhr, status, error) {
-                    alert(error);
-                }
-        });
-    }
-    callCovidStateApi();
-    </script>
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
-	<div class="icon-bar">
-		<center>
-			<a class="active" data-toggle="tooltip" title="My Gov Covid'19" href="https://www.mygov.in/covid-19/"
-								target="_blank" class="social"><img href src="images/govt.svg" width="36"
-									height="36" draggable="false"></a>
-		</center>
-	</div>
-	</nav>
-</body>
-
+         </div>
+      </nav>
+      <div id="section1" class="container-fluid main-class">
+         <h2>Karnataka</h2>
+         <div class="value-box">
+            <p id="updatedTimeKA" style="font-size: 13px"></p>
+            <blockquote>
+               <table class="table table-hover">
+                  <thead class="table-heading">
+                     <tr>
+                        <th class="table-header-right header-confirmed">Confirmed</th>
+                        <th class="table-header-right header-active">Active</th>
+                        <th class="table-header-right header-recovered">Recovered</th>
+                        <th class="table-header-right header-dead">Deceased</th>
+                     </tr>
+                  </thead>
+                  <tbody class="table-body-ka" id="table-body-ka">
+                  </tbody>
+               </table>
+               <center>
+                  <div class="flex-container rate-box">
+                     <div class="btn-group-vertical">
+                        <button type="button" class="btn btn-primary" style="background-color: #28a745" id="rRateKA">Recovery rate </button>
+                        <button type="button" class="btn btn-primary" style="background-color: #6c757d" id="mRateKA">Mortality rate </button>
+                     </div>
+                  </div>
+               </center>
+            </blockquote>
+            <h3 class="section-heading">Districts</h3>
+            <blockquote>
+               <table class="table table-hover">
+                  <thead class="covidHeading">
+                     <tr>
+                        <th class="table-header">District</th>
+                        <th class="table-header-center">Confirmed</th>
+                     </tr>
+                  </thead>
+                  <tbody class="table-body-ka-dt" id="table-body-ka-dt">
+                  </tbody>
+               </table>
+            </blockquote>
+         </div>
+      </div>
+      <script>
+         callCovidApi('KA', '#updatedTimeKA', '#table-body-ka', '#rRateKA', '#mRateKA');
+         callCovidStateApi('Karnataka', '#table-body-ka-dt');
+      </script>
+	  
+      <!-- Footer menu -->
+      <nav class="navbar navbar-inverse navbar-fixed-bottom">
+         <div class="container-fluid">
+            <div class="navbar-header footer-prop">
+               <div class="btn-group btn-group-justified ">
+			      <a href="./index.html" class="btn btn-secondary footer-button">India<br/></a>
+                  <a href="./state_tn.html" class="btn btn-secondary footer-button">TN</a>
+                  <a href="./state_kl.html" class="btn btn-secondary footer-button">KL</a>
+                  <a href="./state_ka.html" class="btn active active-button">KA</a>
+                  <a href="./state_ap.html" class="btn btn-secondary footer-button">AP</a>
+                  <a href="./state_tg.html" class="btn btn-secondary footer-button">TS</a>
+               </div>
+            </div>
+         </div>
+      </nav>
+   </body>
 </html>
