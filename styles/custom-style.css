@@ -11,6 +11,10 @@ body {
 	background: #161625!important;
 }
 
+table {
+	font-size: 12px;
+}
+
 .table-header-right {
 	text-align: right;
 }
