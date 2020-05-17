@@ -1,5 +1,5 @@
 blockquote {
-	color: white;
+	color: #777777;
 	font-style: normal;
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 13px;
@@ -8,43 +8,82 @@ blockquote {
 
 body {
 	-webkit-tap-highlight-color: #0085A1;
-	background: #161625!important;
-}
-
-.table-header-right {
-	text-align: right;
-}
-
-.delta {
-	font-size: 0.8em;
 }
 
 .header-confirmed {
-	color: #ff073a;
-	text-align: right;
-	padding-right: 10px;
-	font-size: 1.35em;
+	color: black;
 }
 
-.header-active {
-	color: #007bff;
-	text-align: right;
-	padding-right: 5px;
-	font-size: 1.35em;
+.header-cprice {
+	color: #007bff
 }
 
-.header-recovered {
+.header-dhigh {
+	color: #28a745
+}
+
+.header-dlow {
+	color: #000000;
+}
+
+.header-dopen {
+	color: #FFA500
+}
+
+.header-change {
+	color: #000000;
+}
+
+.header-fontstyle {
+	font-family: archia
+}
+
+.delta {
+	font-size: 13px;
+}
+
+.numberValue {
+	text-align: right;
+	margin-left: 1px;
+	width: 1%
+}
+
+.numberValueRed {
+	color: #FF0000;
+	text-align: right;
+	margin-left: 1px;
+	width: 1%
+}
+
+.numberValueGreen {
 	color: #28a745;
 	text-align: right;
-	padding-right: 10px;
-	font-size: 1.35em;
+	margin-left: 1px;
+	width: 1%
 }
 
-.header-dead {
-	color: #6c757d;
+.numberFirst {
+	text-align: left;
+	margin-left: 1px;
+	width: 2%;
+	color: black;
+}
+
+.headerValue {
 	text-align: right;
-	padding-right: 10px;
-	font-size: 1.35em;
+	margin-left: 1px;
+	width: 1%
+}
+
+.headerFirst {
+	text-align: left;
+	margin-left: 1px;
+	width: 2%;
+	color: black;
+}
+
+.icon-bar {
+	font-size: 32px;
 }
 
 #section1 {
@@ -61,8 +100,6 @@ h2 {
 
 table {
 	font-size: 12px;
-	margin: auto;
-	padding: auto;
 }
 
 .main-class {
@@ -82,6 +119,7 @@ table {
 .active-button {
 	color: #FFFFFF;
 	background-color: #8e0505;
+	font-size: 11px;
 }
 
 .header-button {
@@ -90,57 +128,4 @@ table {
 
 .footer-button {
 	color: #ef7171;
-	padding-top: 20px;
-}
-
-.active-button {
-	color: #FFFFFF;
-	background-color: #8e0505;
-	padding-top: 20px;
-}
-
-#section1 {
-	color: white;
-	background-color: #161625;
-}
-
-.section-heading {
-	padding-top: 20px;
-}
-
-.table-body-tn-dt, 
-.table-body-kl-dt, 
-.table-body-ka-dt,
-.table-body-ap-dt,
-.table-body-tg-dt,
-.covidHeading {
-	color: grey;
-}
-
-.district-td-data {
-	text-align: center;
-	color: #ff073a;
-}
-
-.table-header-center {
-	text-align: center;
-	color: #ff073a;
-}
-
-.ju {
-	text-align: center;
-}
-
-.jum {
-	text-align: center;
-	background: #161625!important;
-}
-
-.cases-tested-in {
-	font-size: 4em;
-}
-
-.cases-time-in {
-	font-size: 14px;
-	color: grey;
 }
