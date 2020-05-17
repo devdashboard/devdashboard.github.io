@@ -1,148 +1,146 @@
-.header-confirmed {
-	color: #ff073a
+blockquote {
+	color: white;
+	font-style: normal;
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	border: none !important;
 }
 
-.header-active {
-	color: #007bff
-}
-
-.header-recovered {
-	color: #28a745
-}
-
-.header-dead {
-	color: #6c757d
-}
-
-.header-fontstyle {
-	font-family: archia
-}
-
-th {
-	text-align: right;
-}
-
-td {
-	text-align: right;
-}
-
-.district-td {
-	text-align: left;
-}
-
-.table-header-center {
-	text-align: left;
+body {
+	-webkit-tap-highlight-color: #0085A1;
+	background: #161625!important;
 }
 
 .table-header-right {
 	text-align: right;
 }
 
-blockquote {
-	color: #777777;
-	font-style: none;
-	font-family: 'Calibri';
-	border: none !important;
-}
-
-p {
-	font-family: 'Calibri';
-}
-
-h1 {
-	font-weight: 600;
-	font-size: 36px;
-}
-
 .delta {
-	font-size: 13px;
+	font-size: 0.8em;
 }
 
-.click-here-href {
-	font-size: 14px;
-	font-style: normal;
+.header-confirmed {
+	color: #ff073a;
+	text-align: right;
+	padding-right: 10px;
+	font-size: 1.35em;
+}
+
+.header-active {
 	color: #007bff;
+	text-align: right;
+	padding-right: 5px;
+	font-size: 1.35em;
 }
 
-li {
-	line-height: 2;
+.header-recovered {
+	color: #28a745;
+	text-align: right;
+	padding-right: 10px;
+	font-size: 1.35em;
 }
 
-.git-repo {
-	color: #007bff;
-	padding: 0px;
-}
-
-.git-href {
-	color: #007bff;
-	font-size: 11px;
-	padding: 0px;
-}
-
-.icon-bar {
-	font-size: 32px;
-}
-
-body {
-	position: relative;
+.header-dead {
+	color: #6c757d;
+	text-align: right;
+	padding-right: 10px;
+	font-size: 1.35em;
 }
 
 #section1 {
 	padding-top: 50px;
-	height: 320px;
+	height: 250px;
 	color: black;
 	background-color: white;
 }
 
-#section2 {
-	padding-top: 50px;
-	height: 320px;
-	color: black;
-	background-color: white;
+h2 {
+	font-weight: 600;
+	font-size: 36px;
 }
 
-#section3 {
-	padding-top: 50px;
-	height: 320px;
-	color: black;
-	background-color: white;
+table {
+	font-size: 12px;
+	margin: auto;
+	padding: auto;
 }
 
-#section4 {
-	padding-top: 50px;
-	height: 320px;
-	color: black;
-	background-color: white;
+.main-class {
+	padding-bottom: 25px;
 }
 
-#section5 {
-	padding-top: 50px;
-	height: 320px;
-	color: black;
-	background-color: white;
+.body {
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-#section6 {
-	padding-top: 50px;
-	height: 320px;
-	color: black;
-	background-color: white;
+.active-header-button {
+	color: #FFFFFF;
+	background-color: #333382;
+	font-size: 11px;
 }
 
-#section7 {
-	padding-top: 50px;
-	height: 950px;
-	color: black;
-	background-color: white;
+.active-button {
+	color: #FFFFFF;
+	background-color: #8e0505;
 }
 
-.tooltip {
-	width: 220px;
-	height: 120px;
+.header-button {
+	color: #8d8dc7;
 }
 
-.flex-container {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+.footer-button {
+	color: #ef7171;
+	padding-top: 20px;
+}
+
+.active-button {
+	color: #FFFFFF;
+	background-color: #8e0505;
+	padding-top: 20px;
+}
+
+#section1 {
+	color: white;
+	background-color: #161625;
+}
+
+.section-heading {
+	padding-top: 20px;
+}
+
+.table-body-tn-dt, 
+.table-body-kl-dt, 
+.table-body-ka-dt,
+.table-body-ap-dt,
+.table-body-tg-dt,
+.covidHeading {
+	color: grey;
+}
+
+.district-td-data {
+	text-align: center;
+	color: #ff073a;
+}
+
+.table-header-center {
+	text-align: center;
+	color: #ff073a;
+}
+
+.ju {
+	text-align: center;
+}
+
+.jum {
+	text-align: center;
+	background: #161625!important;
+}
+
+.cases-tested-in {
+	font-size: 4em;
+}
+
+.cases-time-in {
+	font-size: 14px;
+	color: grey;
 }
