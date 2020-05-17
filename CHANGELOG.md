@@ -11,7 +11,7 @@ Dashboard application used to project Covid'19 live cases trend within X n Y coo
 - New Footer tabs to display statewise details
 
 
-# [v1.3] [LIVE]
+# [v1.3]
 
 ## Changed
 - Display of updated time
