@@ -2,6 +2,15 @@
 
 Dashboard application used to project Covid'19 live cases trend within X n Y coordinates of India
 
+# [v1.4] [LIVE]
+
+## Added
+- New section in India to display the number of tested cases
+
+## Changed
+- New Footer tabs to display statewise details
+
+
 # [v1.3] [LIVE]
 
 ## Changed
