@@ -16,6 +16,9 @@ Dashboard application used to project Covid'19 live cases trend within X n Y coo
 ## Changed
 - New Footer tabs to display statewise details
 
+## Removed
+- Hyperlinks to Worldometer, Ministry of Home Affairs
+
 
 # [v1.3]
 
