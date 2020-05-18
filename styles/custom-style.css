@@ -61,6 +61,7 @@ table {
 h2 {
 	font-weight: 600;
 	font-size: 36px;
+	padding-top: 10px;
 }
 
 .main-class {
@@ -74,7 +75,8 @@ h2 {
 .active-header-button {
 	color: #FFFFFF;
 	background-color: #333382;
-	font-size: 11px;
+	font-size: 13px;
+	font-weight: 600;
 }
 
 .active-button {
@@ -83,7 +85,7 @@ h2 {
 }
 
 .header-button {
-	color: #8d8dc7;
+	color: #FFFFFF;
 }
 
 .footer-button {
@@ -111,6 +113,8 @@ h2 {
 .table-body-ka-dt,
 .table-body-ap-dt,
 .table-body-tg-dt,
+.table-body-reco,
+.table-body-mort,
 .covidHeading {
 	color: grey;
 }
@@ -123,6 +127,16 @@ h2 {
 .table-header-center {
 	text-align: center;
 	color: #ff073a;
+}
+
+.table-header-recovery {
+	text-align: center;
+	color: #28a745;
+}
+
+.table-header-mortality {
+	text-align: center;
+	color: #6c757d;
 }
 
 .ju {
@@ -145,4 +159,36 @@ h2 {
 
 .custom-tr {
     border-bottom-style: hidden;
+}
+
+.custom-tr-reco {
+	border-bottom-style: hidden;
+}
+
+.header-last-upd {
+	color: #815f5f;
+}
+
+.custom-td-reco {
+	color: #28a745;
+	text-align: center;
+}
+
+.custom-td-reco-upd {
+	color: #815f5f;
+	text-align: right;
+}
+
+.custom-tr-mort {
+	border-bottom-style: hidden;
+}
+
+.custom-td-mort {
+	color: #6c757d;
+	text-align: center;
+}
+
+.custom-td-mort-upd {
+	color: #815f5f;
+	text-align: right;
 }
