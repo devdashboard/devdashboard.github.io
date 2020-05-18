@@ -28,11 +28,6 @@ Our dashboard represents India region with Covid'19 statistics.
 3. Mortality Rate - Represents mortality rate data of India and states as well
 4. State-wise details for TamilNadu, Kerala, Karnataka, Andhra Pradesh and Telangana
 
-We have provided hyperlinks to,
-
-1. Worldometer - To know about the Corona statistics globally
-2. MHA, India - To know about the circular released by Government of India
-
 -----------
 SCREENSHOTS
 -----------
