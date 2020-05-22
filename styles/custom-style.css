@@ -4,6 +4,7 @@ blockquote {
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 13px;
 	border: none !important;
+	-webkit-user-select: none;
 }
 
 body {
@@ -56,6 +57,7 @@ table {
 	height: 250px;
 	color: black;
 	background-color: white;
+	-webkit-user-select: none; /* Safari */
 }
 
 h2 {
@@ -191,4 +193,13 @@ h2 {
 .custom-td-mort-upd {
 	color: #815f5f;
 	text-align: right;
+}
+
+.rate-box {
+	-webkit-user-select: none;
+}
+
+
+.heading-sub {
+	text-align: left;
 }
