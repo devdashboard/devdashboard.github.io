@@ -15,13 +15,17 @@
       <link rel="icon" type="image/jpg" sizes="16x16" href="./images/corona-title-image.jpg">
       <title>Covid'19 India</title>
       <meta charset="utf-8">
-	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="./script/bootstrap.min.css">
       <link  rel="stylesheet" href="./styles/custom-style.css">
       <script src="./script/jquery.min.js"></script>
       <script src="./script/bootstrap.min.js"></script>
       <script src="./script/custom-script.js"></script>
+      <script src="./script/chart.js"></script>
+      <!-- <script src= 
+         "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"> 
+         </script> -->
    </head>
    <body>
       <!-- Header Menu -->
@@ -62,16 +66,152 @@
                   </div>
                </center>
             </blockquote>
+            <h3 class="section-heading heading-sub">Heat map </h3>
+            <center>
+               <h4 class="section-heading" style="color: #ff073a">Confirmed cases</h4>
+               <canvas id="confirmedChart" width="100" height="50"></canvas>
+               <script>
+                  Chart.defaults.global.legend.display = false;
+                  var conf = document.getElementById('confirmedChart');
+                  var confirmedChart = new Chart(conf, {
+                      type: 'bar',
+                      data: {
+                          labels: ['22 May', '21 May', '20 May', '19 May', '18 May'],
+                          datasets: [{
+                              label: 'Confirmed cases in last 5 days',
+                              data: [6523, 6023, 5720, 6154, 4628],
+                              backgroundColor: [
+                                  '#ff073a',
+                                  '#ff073a',
+                                  '#ff073a',
+                                  '#ff073a',
+                                  '#ff073a'
+                              ],
+                              borderColor: [
+                                  '#ff073a',
+                                  '#ff073a',
+                                  '#ff073a',
+                                  '#ff073a',
+                                  '#ff073a'
+                              ],
+                              borderWidth: 1
+                          }]
+                      },
+                      options: {
+                          scales: {
+                              yAxes: [{
+                                  ticks: {
+                                      beginAtZero: true
+                                  }
+                              }],
+                  			xAxes: [{
+                  				barPercentage: 0.5
+                  			}]
+                          }
+                      }
+                  });
+               </script>
+               <br/>
+               <h4 class="section-heading" style="color: #28a745">Recovered cases</h4>
+               <canvas id="recoChart" width="100" height="50"></canvas>
+               <script>
+                  Chart.defaults.global.legend.display = false;
+                  var reco = document.getElementById('recoChart');
+                  var recoChart = new Chart(reco, {
+                      type: 'bar',
+                      data: {
+                          labels: ['22 May', '21 May', '20 May', '19 May', '18 May'],
+                          datasets: [{
+                              label: 'Recovered cases in last 5 days',
+                              data: [3254, 3131, 3113, 3032, 2482],
+                              backgroundColor: [
+                                  '#28a745',
+                                  '#28a745',
+                                  '#28a745',
+                                  '#28a745',
+                                  '#28a745'
+                              ],
+                              borderColor: [
+                                  '#28a745',
+                                  '#28a745',
+                                  '#28a745',
+                                  '#28a745',
+                                  '#28a745'
+                              ],
+                              borderWidth: 1
+                          }]
+                      },
+                      options: {
+                          scales: {
+                              yAxes: [{
+                                  ticks: {
+                                      beginAtZero: true
+                                  }
+                              }],
+                  			xAxes: [{
+                  				barPercentage: 0.5
+                  			}]
+                          }
+                      }
+                  });
+               </script>
+               <br/>
+               <h4 class="section-heading" style="color: #6c757d">Deceased cases</h4>
+               <canvas id="decChart" width="100" height="50"></canvas>
+               <script>
+                  Chart.defaults.global.legend.display = false;
+                  var dec = document.getElementById('decChart');
+                  var decChart = new Chart(dec, {
+                      type: 'bar',
+                      data: {
+                          labels: ['22 May', '21 May', '20 May', '19 May', '18 May'],
+                          datasets: [{
+                              label: 'Deceased cases in last 5 days',
+                              data: [142, 148, 134, 146, 131],
+                              backgroundColor: [
+                                  '#6c757d',
+                                  '#6c757d',
+                                  '#6c757d',
+                                  '#6c757d',
+                                  '#6c757d'
+                              ],
+                              borderColor: [
+                                  '#6c757d',
+                                  '#6c757d',
+                                  '#6c757d',
+                                  '#6c757d',
+                                  '#6c757d'
+                              ],
+                              borderWidth: 1
+                          }]
+                      },
+                      options: {
+                          scales: {
+                              yAxes: [{
+                                  ticks: {
+                                      beginAtZero: true
+                                  }
+                              }],
+                  			xAxes: [{
+                  				barPercentage: 0.5
+                  			}]
+                          }
+                      }
+                  });
+               </script>
+            </center>
+            <br/>
             <div class="jumbotron jum">
                <h4>Cases Tested</h4>
-			   <!-- https://www.icmr.gov.in/pdf/covid/update/ICMR_testing_update_18May2020_9AM_IST.pdf -->
+               <!-- https://www.icmr.gov.in/pdf/covid/update/ICMR_testing_update_18May2020_9AM_IST.pdf -->
                <h2 id="cases-tested-in" class="cases-tested-in"></h2>
                <h4 id="cases-time-in" class="cases-time-in">as on </h4>
-			   <br/>
-			   <br/>
-			   <center>
-			<a href="https://docs.google.com/forms/d/e/1FAIpQLSfi1JugttiwxAT5chK29XsN4Y27nJh6GtC6-5htdjGQcycnJA/viewform?vc=0&c=0&w=1">Leave feedback...</a>
-			</center>
+               <br/>
+               <br/>
+               <center>
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfi1JugttiwxAT5chK29XsN4Y27nJh6GtC6-5htdjGQcycnJA/viewform?vc=0&c=0&w=1">Leave feedback...</a>
+                  <br/>
+               </center>
             </div>
          </div>
       </div>
@@ -84,7 +224,7 @@
          <div class="container-fluid">
             <div class="navbar-header footer-prop">
                <div class="btn-group btn-group-justified ">
-				  <a href="./index.html" class="btn active active-button">India<br/></a>
+                  <a href="./index.html" class="btn active active-button">India<br/></a>
                   <a href="./state_tn.html" class="btn btn-secondary footer-button">TN<br/></a>
                   <a href="./state_kl.html" class="btn btn-secondary footer-button">KL</a>
                   <a href="./state_ka.html" class="btn btn-secondary footer-button">KA</a>
