@@ -384,7 +384,11 @@ function getChart(chartId, xVal, yVal, color) {
 									  callback: function (value) {
 										return (value / 1000).toFixed(0) + 'K'; // convert it to thousands
 									  }
-                                  }
+                                  },
+								  gridLines: {
+									display: true,
+									color: 'grey'
+								  }								  
                               }],
                   			xAxes: [{
                   				barPercentage: 0.5
@@ -431,7 +435,11 @@ function getChartForRates(chartId, xVal, yVal, color) {
 									  callback: function (value) {
 										return (value / this.max * 100).toFixed(0) + '%'; // convert it to percentage
 									  },
-                                  }
+                                  },
+								  gridLines: {
+									display: true,
+									color: 'grey'
+								  }	
                               }],
                   			xAxes: [{
                   				barPercentage: 0.5
