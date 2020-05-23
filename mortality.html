@@ -27,6 +27,7 @@
       <script src="./script/jquery.min.js"></script>
       <script src="./script/bootstrap.min.js"></script>
       <script src="./script/custom-script.js"></script>
+	  <script src="./script/chart.js"></script>
    </head>
    <body>
       <!-- Header Menu -->
@@ -55,6 +56,14 @@
                   </div>
                </center>
             </blockquote>
+			
+			<!-- <h3 class="section-heading heading-sub">Heat map </h3>
+			<p id="updated" style="font-size: 11px">( in last 5 days )</p> -->
+            <center>
+			   <br/>
+               <canvas id="mrChart" width="100" height="30"></canvas>
+			</center>
+			
             <h3 class="section-heading">States</h3>
             <blockquote>
                <table class="table table-hover">
@@ -74,6 +83,7 @@
       <script>
          callCovidApi('TT', '#updatedTime', '#table-body', '#rRate', '#mRate');
 		 computeOverallMortRate('#table-body-mort');
+		 processValuesForChart(false, false, true);
       </script>
 	  
       <!-- Footer menu -->
