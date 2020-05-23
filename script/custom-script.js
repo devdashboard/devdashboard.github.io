@@ -273,3 +273,216 @@ function sortDataByAscOrder(nodeId) {
 		list.appendChild(itemsArr[i]);
 	}
 }
+
+function processValuesForChart(homePage, recoPage, decPage) {
+	var xValLoop = [];
+	var yValConfLoop = [];
+	var yValRecoLoop = [];
+	var yValDecLoop = [];
+	
+	var xValSampleLoop = [];
+	var yValSampleLoop = [];
+	
+	var yValRrLoop = [];
+	var yValMrLoop = [];
+	
+	$.ajax({
+		async: false,
+		method: "GET",
+		url: "https://api.covid19india.org/data.json",
+		success: function (resData) {
+			var caseSeries = resData["cases_time_series"];
+			var caseSeriesLength = caseSeries.length;
+			//var dataLoop = [];
+			
+			for (var i = caseSeriesLength - 1; i >= caseSeriesLength - 5; i--) {
+				//console.log('i::', i);
+				var caseDetails = caseSeries[i];
+		
+				if (homePage === true) {
+					xValLoop.push(caseDetails["date"]);
+					yValConfLoop.push(caseDetails["dailyconfirmed"]);
+					yValRecoLoop.push(caseDetails["dailyrecovered"]);
+					yValDecLoop.push(caseDetails["dailyrecovered"]);
+				}
+				
+				if (recoPage === true) {
+					xValLoop.push(caseDetails["date"]);
+					yValRrLoop.push(computeRecoRateLastFiveDays(caseDetails["totalconfirmed"], caseDetails["totalrecovered"], caseDetails["totaldeceased"]));
+				}
+				
+				if (decPage === true) {
+					xValLoop.push(caseDetails["date"]);
+					yValMrLoop.push(computeDecRateLastFiveDays(caseDetails["totalconfirmed"], caseDetails["totaldeceased"]));
+				}
+			}	
+			
+			if (homePage === true) {
+				getChart('confirmedChart', xValLoop, yValConfLoop, '#ff073a') ;
+				getChart('recoChart', xValLoop, yValRecoLoop, '#28a745');
+				getChart('decChart', xValLoop, yValDecLoop, '#6c757d');
+				
+				var tested = resData["tested"];
+				var testedLength = tested.length;
+				
+				for (var i = testedLength - 1; i >= testedLength - 5; i--) {
+					var testedDetails = tested[i];	
+					var xVal = testedDetails["updatetimestamp"];					
+					xValSampleLoop.push(getFormattedDayAndMonth(xVal));
+					yValSampleLoop.push(testedDetails["totalsamplestested"]);
+				}
+				
+				getChart('samplesChart', xValSampleLoop, yValSampleLoop, 'white');
+			}
+			
+			if (recoPage === true) {
+				getChartForRates('rrChart', xValLoop, yValRrLoop, '#28a745');
+			}
+			
+			if (decPage === true) {
+				getChartForRates('mrChart', xValLoop, yValMrLoop, '#6c757d');
+			}
+		},
+		error: function (xhr, status, error) {
+			alert(error);
+		}
+	});
+}
+
+function getChart(chartId, xVal, yVal, color) {
+	Chart.defaults.global.legend.display = false;
+                  var conf = document.getElementById(chartId);
+                  var confirmedChart = new Chart(conf, {
+                      type: 'bar',
+                      data: {
+                          labels:  xVal,
+                          datasets: [{
+                              label: 'In last 5 days',
+                              data: yVal,
+                              backgroundColor: [
+                                  color,
+                                  color,
+                                  color,
+                                  color,
+								  color
+                              ],
+                              borderColor: [
+                                  color,
+                                  color,
+                                  color,
+                                  color,
+								  color
+                              ],
+                              borderWidth: 1
+                          }]
+                      },
+                      options: {
+                          scales: {
+                              yAxes: [{
+                                  ticks: {
+                                      beginAtZero: true,
+									  callback: function (value) {
+										return (value / 1000).toFixed(0) + 'K'; // convert it to thousands
+									  }
+                                  }
+                              }],
+                  			xAxes: [{
+                  				barPercentage: 0.5
+                  			}]
+                          }
+                      }
+                  });
+}
+
+
+function getChartForRates(chartId, xVal, yVal, color) {
+	Chart.defaults.global.legend.display = false;
+                  var conf = document.getElementById(chartId);
+                  var confirmedChart = new Chart(conf, {
+                      type: 'bar',
+                      data: {
+                          labels:  xVal,
+                          datasets: [{
+                              label: 'In last 5 days',
+                              data: yVal,
+                              backgroundColor: [
+                                  color,
+                                  color,
+                                  color,
+                                  color,
+								  color
+                              ],
+                              borderColor: [
+                                  color,
+                                  color,
+                                  color,
+                                  color,
+								  color
+                              ],
+                              borderWidth: 1
+                          }]
+                      },
+                      options: {
+                          scales: {
+                              yAxes: [{
+                                  ticks: {
+                                      beginAtZero: true,
+									  max: 100,
+									  callback: function (value) {
+										return (value / this.max * 100).toFixed(0) + '%'; // convert it to percentage
+									  },
+                                  }
+                              }],
+                  			xAxes: [{
+                  				barPercentage: 0.5
+                  			}]
+                          }
+                      }
+                  });
+}
+
+function computeRecoRateLastFiveDays(conf, recvr, death) {
+	var recoRate = Math.round(((recvr) / (conf - death)) * 100);
+	
+	if (Number.isNaN(recoRate)) {
+		return 'NA';
+	} else {
+		return (recoRate);
+	}
+}
+
+function computeDecRateLastFiveDays(conf, death) {
+	
+	var mortRate = Math.round((death / conf) * 100);
+	
+	if (Number.isNaN(mortRate)) {
+		return 'NA';
+	} else {
+		return (mortRate);
+	}
+}
+
+
+function getFormattedDayAndMonth(xVal) {
+	var tempDate = xVal.slice(3, 5) + '/' +
+		xVal.slice(0, 2) + '/' +
+		xVal.slice(6, xVal.length);
+
+	var formattedDate = new Date(tempDate);
+	
+	var month = new Array();
+		month[0] = "January";
+		month[1] = "February";
+		month[2] = "March";
+		month[3] = "April";
+		month[4] = "May";
+		month[5] = "June";
+		month[6] = "July";
+		month[7] = "August";
+		month[8] = "September";
+		month[9] = "October";
+		month[10] = "November";
+		month[11] = "December";
+	
+		return ((formattedDate.getDate()-1) + ' ' + month[formattedDate.getMonth()].slice(0,3));
+}
