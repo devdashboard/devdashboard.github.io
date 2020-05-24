@@ -32,9 +32,9 @@ Our dashboard represents India region with Covid'19 statistics.
 SCREENSHOTS
 -----------
 
-### v1.6 [LIVE]
+### v1.7 [LIVE]
 
-![v1.6](https://github.com/devdashboard/devdashboard.github.io/blob/master/screenshots/v1.6.JPG)
+![v1.7](https://github.com/devdashboard/devdashboard.github.io/blob/master/screenshots/v1.7.JPG)
 
 ------------
 CONTRIBUTORS
