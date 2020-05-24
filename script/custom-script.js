@@ -138,7 +138,7 @@ function getCasesTestedCount() {
 
 
 			$("#cases-tested-in").append(testedSamples);
-			$("#cases-time-in").append(testedOverAll[count - 1]["updatetimestamp"]);
+			//$("#cases-time-in").append(testedOverAll[count - 1]["updatetimestamp"]);
 
 
 		},
