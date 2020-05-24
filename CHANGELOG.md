@@ -2,7 +2,17 @@
 
 Dashboard application used to project Covid'19 live cases trend within X n Y coordinates of India
 
-# [v1.6] [LIVE]
+# [v1.7] [LIVE]
+
+## Added
+- New section to display 'All-in-One' chart for last 10 days
+
+## Changed
+- Stitched the other charts to display the dynamic data for last 10 days instead of 5 days.
+- Revamped the style of rate buttons for Recovery & Mortality
+
+
+# [v1.6]
 
 ## Added
 - New section to display pictorial representation of data for last 5 days
