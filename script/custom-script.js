@@ -26,7 +26,7 @@ function callCovidApi(stateRequired, timeRequired, bodyRequired, rRateRequired, 
 					$(timeRequired).append(computeUpdatedTime(stateDetails["lastupdatedtime"]));
 
 					valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/> <span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>' +
-						'<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>' +
+						/* '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + */ '</td>' +
 						'<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/> <span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>' +
 						'<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/> <span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
 					$(bodyRequired).append(valueTemplate);
