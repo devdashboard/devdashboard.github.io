@@ -203,3 +203,7 @@ h2 {
 .heading-sub {
 	text-align: left;
 }
+
+#rRatePct, #mRatePct {
+	font-size: 22px;
+}
