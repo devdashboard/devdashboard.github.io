@@ -303,7 +303,7 @@ function processValuesForChart(homePage, recoPage, decPage) {
 					xValLoop.push(caseDetails["date"]);
 					yValConfLoop.push(caseDetails["dailyconfirmed"]);
 					yValRecoLoop.push(caseDetails["dailyrecovered"]);
-					yValDecLoop.push(caseDetails["dailyrecovered"]);
+					yValDecLoop.push(caseDetails["dailydeceased"]);
 				}
 				
 				if (recoPage === true) {
