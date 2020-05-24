@@ -293,14 +293,13 @@ function processValuesForChart(homePage, recoPage, decPage) {
 		success: function (resData) {
 			var caseSeries = resData["cases_time_series"];
 			var caseSeriesLength = caseSeries.length;
-			//var dataLoop = [];
 			
-			for (var i = caseSeriesLength - 1; i >= caseSeriesLength - 5; i--) {
-				//console.log('i::', i);
+			for (var i = caseSeriesLength - 1; i >= caseSeriesLength - 10; i--) {
 				var caseDetails = caseSeries[i];
 		
 				if (homePage === true) {
 					xValLoop.push(caseDetails["date"]);
+					console.log('DC:: ', caseDetails["dailyconfirmed"]);
 					yValConfLoop.push(caseDetails["dailyconfirmed"]);
 					yValRecoLoop.push(caseDetails["dailyrecovered"]);
 					yValDecLoop.push(caseDetails["dailydeceased"]);
@@ -325,7 +324,7 @@ function processValuesForChart(homePage, recoPage, decPage) {
 				var tested = resData["tested"];
 				var testedLength = tested.length;
 				
-				for (var i = testedLength - 1; i >= testedLength - 5; i--) {
+				for (var i = testedLength - 1; i >= testedLength - 10; i--) {
 					var testedDetails = tested[i];	
 					var xVal = testedDetails["updatetimestamp"];					
 					xValSampleLoop.push(getFormattedDayAndMonth(xVal));
@@ -357,10 +356,15 @@ function getChart(chartId, xVal, yVal, color) {
                       data: {
                           labels:  xVal,
                           datasets: [{
-                              label: 'In last 5 days',
+                              label: 'In last 10 days',
                               data: yVal,
                               backgroundColor: [
                                   color,
+                                  color,
+                                  color,
+                                  color,
+								  color,
+								  color,
                                   color,
                                   color,
                                   color,
@@ -368,6 +372,11 @@ function getChart(chartId, xVal, yVal, color) {
                               ],
                               borderColor: [
                                   color,
+                                  color,
+                                  color,
+                                  color,
+								  color,
+								  color,
                                   color,
                                   color,
                                   color,
@@ -387,11 +396,16 @@ function getChart(chartId, xVal, yVal, color) {
                                   },
 								  gridLines: {
 									display: true,
-									color: 'grey'
+									color: 'rgba(200, 200, 200, 0.15)'
 								  }								  
                               }],
                   			xAxes: [{
-                  				barPercentage: 0.5
+                  				barPercentage: 0.3,
+								ticks: {
+									autoSkip: false,
+									maxRotation: 90,
+									minRotation: 90
+								}
                   			}]
                           }
                       }
@@ -407,10 +421,15 @@ function getChartForRates(chartId, xVal, yVal, color) {
                       data: {
                           labels:  xVal,
                           datasets: [{
-                              label: 'In last 5 days',
+                              label: 'In last 10 days',
                               data: yVal,
                               backgroundColor: [
                                   color,
+                                  color,
+                                  color,
+                                  color,
+								  color,
+								  color,
                                   color,
                                   color,
                                   color,
@@ -418,6 +437,11 @@ function getChartForRates(chartId, xVal, yVal, color) {
                               ],
                               borderColor: [
                                   color,
+                                  color,
+                                  color,
+                                  color,
+								  color,
+								  color,
                                   color,
                                   color,
                                   color,
@@ -438,12 +462,17 @@ function getChartForRates(chartId, xVal, yVal, color) {
                                   },
 								  gridLines: {
 									display: true,
-									color: 'grey'
+									color: 'rgba(200, 200, 200, 0.15)'
 								  }	
                               }],
                   			xAxes: [{
-                  				barPercentage: 0.5
-                  			}]
+                  				barPercentage: 0.3,
+								ticks: {
+									autoSkip: false,
+									maxRotation: 90,
+									minRotation: 90
+								}
+							}]
                           }
                       }
                   });
