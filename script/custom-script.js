@@ -21,14 +21,14 @@ function callCovidApi(stateRequired, timeRequired, bodyRequired, rRateRequired, 
 
 			for (var i = 0; i < statewise.length - 1; i++) {
 				var stateDetails = statewise[i];
-				
+
 				if (stateDetails["statecode"] === stateRequired) {
 					$(timeRequired).append(computeUpdatedTime(stateDetails["lastupdatedtime"]));
 
-					valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>' +
+					valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/> <span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>' +
 						'<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>' +
-						'<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>' +
-						'<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/>&nbsp;<span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
+						'<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/> <span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>' +
+						'<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/> <span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
 					$(bodyRequired).append(valueTemplate);
 					$(rRateRequired).append(computeRecoveryRate(stateDetails["confirmed"], stateDetails["recovered"], stateDetails["deaths"]));
 
@@ -44,7 +44,7 @@ function callCovidApi(stateRequired, timeRequired, bodyRequired, rRateRequired, 
 
 function computeRecoveryRate(conf, recvr, death) {
 	var recoRate = Math.round(((recvr) / (conf - death)) * 100);
-	
+
 	if (Number.isNaN(recoRate)) {
 		return 'NA';
 	} else {
@@ -53,9 +53,9 @@ function computeRecoveryRate(conf, recvr, death) {
 }
 
 function computeMortalityRate(conf, death) {
-	
+
 	var mortRate = Math.round((death / conf) * 100);
-	
+
 	if (Number.isNaN(mortRate)) {
 		return 'NA';
 	} else {
@@ -135,7 +135,7 @@ function getCasesTestedCount() {
 			var count = testedOverAll.length;
 
 			var testedSamples = testedOverAll[count - 1]["totalsamplestested"];
-		
+
 
 			$("#cases-tested-in").append(testedSamples);
 			$("#cases-time-in").append(testedOverAll[count - 1]["updatetimestamp"]);
@@ -158,15 +158,15 @@ function computeOverallRecoRate(bodyRequired) {
 
 			for (var i = 0; i < statewise.length - 1; i++) {
 				var stateDetails = statewise[i];
-				
-				if (stateDetails["statecode"] != 'TT') {					
-					valueTemplate = '<tr class="custom-tr-reco"><td class="custom-td-reco-state">' + stateDetails["state"].slice(0,19) + '</td>'
-					+ '<td class="custom-td-reco">' + computeRecoveryRate(stateDetails["confirmed"], stateDetails["recovered"], stateDetails["deaths"]) + '</td>'
-					+ '<td class="custom-td-reco-upd">' + computeUpdatedTimeState(stateDetails["lastupdatedtime"]) + '</td>' + '</tr>';
+
+				if (stateDetails["statecode"] != 'TT') {
+					valueTemplate = '<tr class="custom-tr-reco"><td class="custom-td-reco-state">' + stateDetails["state"].slice(0, 19) + '</td>' +
+						'<td class="custom-td-reco">' + computeRecoveryRate(stateDetails["confirmed"], stateDetails["recovered"], stateDetails["deaths"]) + '</td>' +
+						'<td class="custom-td-reco-upd">' + computeUpdatedTimeState(stateDetails["lastupdatedtime"]) + '</td>' + '</tr>';
 					$(bodyRequired).append(valueTemplate);
 				}
 			}
-			
+
 			sortDataByAscOrder(bodyRequired.slice(1, bodyRequired.length));
 		},
 		error: function (xhr, status, error) {
@@ -185,15 +185,15 @@ function computeOverallMortRate(bodyRequired) {
 
 			for (var i = 0; i < statewise.length - 1; i++) {
 				var stateDetails = statewise[i];
-				
-				if (stateDetails["statecode"] != 'TT') {					
-					valueTemplate = '<tr class="custom-tr-mort"><td class="custom-td-mort-state">' + stateDetails["state"].slice(0,19) + '</td>'
-					+ '<td class="custom-td-mort">' + computeMortalityRate(stateDetails["confirmed"], stateDetails["deaths"]) + '</td>'
-					+ '<td class="custom-td-mort-upd">' + computeUpdatedTimeState(stateDetails["lastupdatedtime"]) + '</td>' + '</tr>';
+
+				if (stateDetails["statecode"] != 'TT') {
+					valueTemplate = '<tr class="custom-tr-mort"><td class="custom-td-mort-state">' + stateDetails["state"].slice(0, 19) + '</td>' +
+						'<td class="custom-td-mort">' + computeMortalityRate(stateDetails["confirmed"], stateDetails["deaths"]) + '</td>' +
+						'<td class="custom-td-mort-upd">' + computeUpdatedTimeState(stateDetails["lastupdatedtime"]) + '</td>' + '</tr>';
 					$(bodyRequired).append(valueTemplate);
 				}
 			}
-			
+
 			sortDataByAscOrder(bodyRequired.slice(1, bodyRequired.length));
 		},
 		error: function (xhr, status, error) {
@@ -235,15 +235,15 @@ function computeUpdatedTimeState(updateTime) {
 		return mm + ' minutes ago';
 	} else if (hh === 1) {
 		return 'an hour ago';
-	} else if (hh <= 23){
+	} else if (hh <= 23) {
 		return hh + ' hours ago';
-	} else if (hh <= 47){
+	} else if (hh <= 47) {
 		return 'a day ago';
-	} else if (hh <= 167){
+	} else if (hh <= 167) {
 		return 'few days ago';
-	} else if (hh <= 719){
+	} else if (hh <= 719) {
 		return 'few week(s) ago';
-	} else if (hh <= 1339){
+	} else if (hh <= 1339) {
 		return 'a month ago';
 	} else {
 		return 'few month(s) ago';
@@ -279,13 +279,13 @@ function processValuesForChart(homePage, recoPage, decPage) {
 	var yValConfLoop = [];
 	var yValRecoLoop = [];
 	var yValDecLoop = [];
-	
+
 	var xValSampleLoop = [];
 	var yValSampleLoop = [];
-	
+
 	var yValRrLoop = [];
 	var yValMrLoop = [];
-	
+
 	$.ajax({
 		async: false,
 		method: "GET",
@@ -293,51 +293,51 @@ function processValuesForChart(homePage, recoPage, decPage) {
 		success: function (resData) {
 			var caseSeries = resData["cases_time_series"];
 			var caseSeriesLength = caseSeries.length;
-			
+
 			for (var i = caseSeriesLength - 1; i >= caseSeriesLength - 10; i--) {
 				var caseDetails = caseSeries[i];
-		
+
 				if (homePage === true) {
 					xValLoop.push(caseDetails["date"]);
-					console.log('DC:: ', caseDetails["dailyconfirmed"]);
 					yValConfLoop.push(caseDetails["dailyconfirmed"]);
 					yValRecoLoop.push(caseDetails["dailyrecovered"]);
 					yValDecLoop.push(caseDetails["dailydeceased"]);
 				}
-				
+
 				if (recoPage === true) {
 					xValLoop.push(caseDetails["date"]);
 					yValRrLoop.push(computeRecoRateLastFiveDays(caseDetails["totalconfirmed"], caseDetails["totalrecovered"], caseDetails["totaldeceased"]));
 				}
-				
+
 				if (decPage === true) {
 					xValLoop.push(caseDetails["date"]);
 					yValMrLoop.push(computeDecRateLastFiveDays(caseDetails["totalconfirmed"], caseDetails["totaldeceased"]));
 				}
-			}	
-			
+			}
+
 			if (homePage === true) {
-				getChart('confirmedChart', xValLoop, yValConfLoop, '#ff073a') ;
+				getChart('confirmedChart', xValLoop, yValConfLoop, '#ff073a');
 				getChart('recoChart', xValLoop, yValRecoLoop, '#28a745');
 				getChart('decChart', xValLoop, yValDecLoop, '#6c757d');
-				
+				getAllInOneChart(xValLoop, yValConfLoop, yValRecoLoop, yValDecLoop);
+
 				var tested = resData["tested"];
 				var testedLength = tested.length;
-				
+
 				for (var i = testedLength - 1; i >= testedLength - 10; i--) {
-					var testedDetails = tested[i];	
-					var xVal = testedDetails["updatetimestamp"];					
+					var testedDetails = tested[i];
+					var xVal = testedDetails["updatetimestamp"];
 					xValSampleLoop.push(getFormattedDayAndMonth(xVal));
 					yValSampleLoop.push(testedDetails["totalsamplestested"]);
 				}
-				
+
 				getChart('samplesChart', xValSampleLoop, yValSampleLoop, 'white');
 			}
-			
+
 			if (recoPage === true) {
 				getChartForRates('rrChart', xValLoop, yValRrLoop, '#28a745');
 			}
-			
+
 			if (decPage === true) {
 				getChartForRates('mrChart', xValLoop, yValMrLoop, '#6c757d');
 			}
@@ -350,137 +350,195 @@ function processValuesForChart(homePage, recoPage, decPage) {
 
 function getChart(chartId, xVal, yVal, color) {
 	Chart.defaults.global.legend.display = false;
-                  var conf = document.getElementById(chartId);
-                  var confirmedChart = new Chart(conf, {
-                      type: 'bar',
-                      data: {
-                          labels:  xVal,
-                          datasets: [{
-                              label: 'In last 10 days',
-                              data: yVal,
-                              backgroundColor: [
-                                  color,
-                                  color,
-                                  color,
-                                  color,
-								  color,
-								  color,
-                                  color,
-                                  color,
-                                  color,
-								  color
-                              ],
-                              borderColor: [
-                                  color,
-                                  color,
-                                  color,
-                                  color,
-								  color,
-								  color,
-                                  color,
-                                  color,
-                                  color,
-								  color
-                              ],
-                              borderWidth: 1
-                          }]
-                      },
-                      options: {
-                          scales: {
-                              yAxes: [{
-                                  ticks: {
-                                      beginAtZero: true,
-									  callback: function (value) {
-										return (value / 1000).toFixed(0) + 'K'; // convert it to thousands
-									  }
-                                  },
-								  gridLines: {
-									display: true,
-									color: 'rgba(200, 200, 200, 0.15)'
-								  }								  
-                              }],
-                  			xAxes: [{
-                  				barPercentage: 0.3,
-								ticks: {
-									autoSkip: false,
-									maxRotation: 90,
-									minRotation: 90
-								}
-                  			}]
-                          }
-                      }
-                  });
+	var conf = document.getElementById(chartId);
+	var confirmedChart = new Chart(conf, {
+		type: 'bar',
+		data: {
+			labels: xVal,
+			datasets: [{
+				label: 'In last 10 days',
+				data: yVal,
+				backgroundColor: [
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color
+				],
+				borderColor: [
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+						callback: function (value) {
+							return (value / 1000).toFixed(0) + 'K'; // convert it to thousands
+						}
+					},
+					gridLines: {
+						display: true,
+						color: 'rgba(200, 200, 200, 0.15)'
+					}
+				}],
+				xAxes: [{
+					barPercentage: 0.3,
+					ticks: {
+						autoSkip: false,
+						maxRotation: 90,
+						minRotation: 90
+					}
+				}]
+			}
+		}
+	});
 }
 
 
 function getChartForRates(chartId, xVal, yVal, color) {
 	Chart.defaults.global.legend.display = false;
-                  var conf = document.getElementById(chartId);
-                  var confirmedChart = new Chart(conf, {
-                      type: 'bar',
-                      data: {
-                          labels:  xVal,
-                          datasets: [{
-                              label: 'In last 10 days',
-                              data: yVal,
-                              backgroundColor: [
-                                  color,
-                                  color,
-                                  color,
-                                  color,
-								  color,
-								  color,
-                                  color,
-                                  color,
-                                  color,
-								  color
-                              ],
-                              borderColor: [
-                                  color,
-                                  color,
-                                  color,
-                                  color,
-								  color,
-								  color,
-                                  color,
-                                  color,
-                                  color,
-								  color
-                              ],
-                              borderWidth: 1
-                          }]
-                      },
-                      options: {
-                          scales: {
-                              yAxes: [{
-                                  ticks: {
-                                      beginAtZero: true,
-									  max: 100,
-									  callback: function (value) {
-										return (value / this.max * 100).toFixed(0) + '%'; // convert it to percentage
-									  },
-                                  },
-								  gridLines: {
-									display: true,
-									color: 'rgba(200, 200, 200, 0.15)'
-								  }	
-                              }],
-                  			xAxes: [{
-                  				barPercentage: 0.3,
-								ticks: {
-									autoSkip: false,
-									maxRotation: 90,
-									minRotation: 90
-								}
-							}]
-                          }
-                      }
-                  });
+	var conf = document.getElementById(chartId);
+	var confirmedChart = new Chart(conf, {
+		type: 'bar',
+		data: {
+			labels: xVal,
+			datasets: [{
+				label: 'In last 10 days',
+				data: yVal,
+				backgroundColor: [
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color
+				],
+				borderColor: [
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+						max: 100,
+						callback: function (value) {
+							return (value / this.max * 100).toFixed(0) + '%'; // convert it to percentage
+						},
+					},
+					gridLines: {
+						display: true,
+						color: 'rgba(200, 200, 200, 0.15)'
+					}
+				}],
+				xAxes: [{
+					barPercentage: 0.3,
+					ticks: {
+						autoSkip: false,
+						maxRotation: 90,
+						minRotation: 90
+					}
+				}]
+			}
+		}
+	});
+}
+
+
+function getAllInOneChart(xValLoop, yValConfLoop, yValRecoLoop, yValDecLoop) {
+	var ctx = document.getElementById("allInOneChart");
+
+	var data = {
+		labels: xValLoop,
+		datasets: [{
+				label: "Confirmed",
+				backgroundColor: "#ff073a",
+				data: yValConfLoop
+			},
+
+			{
+				label: "Recovered",
+				backgroundColor: "#28a745",
+				data: yValRecoLoop
+			},
+
+			{
+				label: "Deceased",
+				backgroundColor: "#6c757d",
+				data: yValDecLoop
+			}
+		]
+	};
+
+	var myBarChart = new Chart(ctx, {
+		type: 'bar',
+		data: data,
+		options: {
+			barValueSpacing: 20,
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+						callback: function (value) {
+							return (value / 1000).toFixed(0) + 'K'; // convert it to thousands
+						},
+						gridLines: {
+							display: true,
+							color: 'rgba(200, 200, 200, 0.15)'
+						}
+					}
+				}],
+				xAxes: [{
+					barPercentage: 1,
+					ticks: {
+						autoSkip: false,
+						maxRotation: 90,
+						minRotation: 90
+					}
+				}]
+			}
+		}
+	});
+
 }
 
 function computeRecoRateLastFiveDays(conf, recvr, death) {
 	var recoRate = Math.round(((recvr) / (conf - death)) * 100);
-	
+
 	if (Number.isNaN(recoRate)) {
 		return 'NA';
 	} else {
@@ -489,9 +547,9 @@ function computeRecoRateLastFiveDays(conf, recvr, death) {
 }
 
 function computeDecRateLastFiveDays(conf, death) {
-	
+
 	var mortRate = Math.round((death / conf) * 100);
-	
+
 	if (Number.isNaN(mortRate)) {
 		return 'NA';
 	} else {
@@ -506,20 +564,20 @@ function getFormattedDayAndMonth(xVal) {
 		xVal.slice(6, xVal.length);
 
 	var formattedDate = new Date(tempDate);
-	
+
 	var month = new Array();
-		month[0] = "January";
-		month[1] = "February";
-		month[2] = "March";
-		month[3] = "April";
-		month[4] = "May";
-		month[5] = "June";
-		month[6] = "July";
-		month[7] = "August";
-		month[8] = "September";
-		month[9] = "October";
-		month[10] = "November";
-		month[11] = "December";
-	
-		return ((formattedDate.getDate()-1) + ' ' + month[formattedDate.getMonth()].slice(0,3));
+	month[0] = "January";
+	month[1] = "February";
+	month[2] = "March";
+	month[3] = "April";
+	month[4] = "May";
+	month[5] = "June";
+	month[6] = "July";
+	month[7] = "August";
+	month[8] = "September";
+	month[9] = "October";
+	month[10] = "November";
+	month[11] = "December";
+
+	return ((formattedDate.getDate() - 1) + ' ' + month[formattedDate.getMonth()].slice(0, 3));
 }
