@@ -26,6 +26,7 @@
       <script src="./script/jquery.min.js"></script>
       <script src="./script/bootstrap.min.js"></script>
       <script src="./script/custom-script.js"></script>
+	  <script src="./script/chart.js"></script>
    </head>
    <body>
       <!-- Header Menu -->
@@ -41,6 +42,7 @@
          </div>
       </nav>
 	  
+	  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <div id="section1" class="container-fluid main-class">
          <h2>Kerala</h2>
          <div class="value-box">
@@ -67,6 +69,25 @@
                   </div>
                </center>
             </blockquote>
+			
+			<h3 class="section-heading heading-sub">Heat map </h3>
+			<p id="updated" style="font-size: 11px">( in last 10 days )</p>
+            <center>
+			   <h4 class="section-heading" style="color: white">All-in-One</h4>
+               <canvas id="allInOneChart" width="100" height="50"></canvas>
+               <br/> 	
+               <h4 class="section-heading" style="color: #ff073a">Confirmed cases</h4>
+               <canvas id="confirmedChart" width="100" height="50"></canvas>
+               <br/>
+               <h4 class="section-heading" style="color: #28a745">Recovered cases</h4>
+               <canvas id="recoChart" width="100" height="50"></canvas>
+               
+               <br/>
+               <h4 class="section-heading" style="color: #6c757d">Deceased cases</h4>
+               <canvas id="decChart" width="100" height="50"></canvas>
+            </center>
+            <br/>
+			
             <h3 class="section-heading">Districts</h3>
             <blockquote>
                <table class="table table-hover">
@@ -82,9 +103,12 @@
             </blockquote>
          </div>
       </div>
+	  </div>
+	  
       <script>
          callCovidApi('KL', '#updatedTimeKL', '#table-body-kl', '#rRateKL', '#mRateKL');
          callCovidStateApi('Kerala', '#table-body-kl-dt');
+		 processValuesForStateChart('kl');
       </script>
 	  
       <!-- Footer menu -->
