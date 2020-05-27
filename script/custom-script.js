@@ -600,7 +600,8 @@ function processValuesForStateChart(stateCode) {
 				var stateDetails = statesSeries[i];
 								
 				if (stateDetails["status"] === 'Confirmed') {
-					xValLoop.push(stateDetails["date"].replace(/-/g, " "));
+					var xVal = stateDetails["date"];
+					xValLoop.push(xVal.replace(/-/g, " ").slice(0, xVal.length-2));
 					yValConfLoop.push(stateDetails[stateCode]);
 				}
 				
