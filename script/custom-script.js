@@ -316,9 +316,9 @@ function processValuesForChart(homePage, recoPage, decPage) {
 			}
 
 			if (homePage === true) {
-				getChart('confirmedChart', xValLoop, yValConfLoop, '#ff073a');
-				getChart('recoChart', xValLoop, yValRecoLoop, '#28a745');
-				getChart('decChart', xValLoop, yValDecLoop, '#6c757d');
+				getChart('confirmedChart', xValLoop, yValConfLoop, '#ff073a', 'Confirmed');
+				getChart('recoChart', xValLoop, yValRecoLoop, '#28a745', 'Recovered');
+				getChart('decChart', xValLoop, yValDecLoop, '#6c757d', 'Deceased');
 				getAllInOneChart(xValLoop, yValConfLoop, yValRecoLoop, yValDecLoop);
 
 				var tested = resData["tested"];
@@ -331,15 +331,15 @@ function processValuesForChart(homePage, recoPage, decPage) {
 					yValSampleLoop.push(testedDetails["totalsamplestested"]);
 				}
 
-				getChart('samplesChart', xValSampleLoop, yValSampleLoop, 'white');
+				getChart('samplesChart', xValSampleLoop, yValSampleLoop, 'white', 'Total Tested');
 			}
 
 			if (recoPage === true) {
-				getChartForRates('rrChart', xValLoop, yValRrLoop, '#28a745');
+				getChartForRates('rrChart', xValLoop, yValRrLoop, '#28a745', 'Recovery Rate');
 			}
 
 			if (decPage === true) {
-				getChartForRates('mrChart', xValLoop, yValMrLoop, '#6c757d');
+				getChartForRates('mrChart', xValLoop, yValMrLoop, '#6c757d', 'Mortality Rate');
 			}
 		},
 		error: function (xhr, status, error) {
@@ -348,7 +348,7 @@ function processValuesForChart(homePage, recoPage, decPage) {
 	});
 }
 
-function getChart(chartId, xVal, yVal, color) {
+function getChart(chartId, xVal, yVal, color, labelVal) {
 	Chart.defaults.global.legend.display = false;
 	var conf = document.getElementById(chartId);
 	var confirmedChart = new Chart(conf, {
@@ -356,7 +356,7 @@ function getChart(chartId, xVal, yVal, color) {
 		data: {
 			labels: xVal,
 			datasets: [{
-				label: 'In last 10 days',
+				label: labelVal,
 				data: yVal,
 				backgroundColor: [
 					color,
@@ -413,7 +413,7 @@ function getChart(chartId, xVal, yVal, color) {
 }
 
 
-function getChartForRates(chartId, xVal, yVal, color) {
+function getChartForRates(chartId, xVal, yVal, color, labelVal) {
 	Chart.defaults.global.legend.display = false;
 	var conf = document.getElementById(chartId);
 	var confirmedChart = new Chart(conf, {
@@ -421,7 +421,7 @@ function getChartForRates(chartId, xVal, yVal, color) {
 		data: {
 			labels: xVal,
 			datasets: [{
-				label: 'In last 10 days',
+				label: labelVal,
 				data: yVal,
 				backgroundColor: [
 					color,
@@ -580,4 +580,163 @@ function getFormattedDayAndMonth(xVal) {
 	month[11] = "December";
 
 	return ((formattedDate.getDate() - 1) + ' ' + month[formattedDate.getMonth()].slice(0, 3));
+}
+
+function processValuesForStateChart(stateCode) {
+	var xValLoop = [];
+	var yValConfLoop = [];
+	var yValRecoLoop = [];
+	var yValDecLoop = [];
+
+	$.ajax({
+		async: false,
+		method: "GET",
+		url: "https://api.covid19india.org/states_daily.json",
+		success: function (resData) {
+			var statesSeries = resData["states_daily"];
+			var statesSeriesLength = statesSeries.length;
+
+			for (var i = statesSeriesLength - 1; i >= statesSeriesLength - 30; i--) {
+				var stateDetails = statesSeries[i];
+								
+				if (stateDetails["status"] === 'Confirmed') {
+					xValLoop.push(stateDetails["date"].replace(/-/g, " "));
+					yValConfLoop.push(stateDetails[stateCode]);
+				}
+				
+				if (stateDetails["status"] == 'Recovered') {
+					yValRecoLoop.push(stateDetails[stateCode]);
+				}
+				
+				if (stateDetails["status"] == 'Deceased') {
+					yValDecLoop.push(stateDetails[stateCode]);
+				}
+			}
+
+			getChartForStates('confirmedChart', xValLoop, yValConfLoop, '#ff073a', 'Confirmed');
+			getChartForStates('recoChart', xValLoop, yValRecoLoop, '#28a745', 'Recovered');
+			getChartForStates('decChart', xValLoop, yValDecLoop, '#6c757d', 'Deceased');
+			getAllInOneChartForStates(xValLoop, yValConfLoop, yValRecoLoop, yValDecLoop);
+		},
+		error: function (xhr, status, error) {
+			alert(error);
+		}
+	});
+}
+
+
+function getChartForStates(chartId, xVal, yVal, color, labelParam) {
+	Chart.defaults.global.legend.display = false;
+	var conf = document.getElementById(chartId);
+	var confirmedChart = new Chart(conf, {
+		type: 'bar',
+		data: {
+			labels: xVal,
+			datasets: [{
+				label: labelParam,
+				data: yVal,
+				backgroundColor: [
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color
+				],
+				borderColor: [
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color,
+					color
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true
+					},
+					gridLines: {
+						display: true,
+						color: 'rgba(200, 200, 200, 0.15)'
+					}
+				}],
+				xAxes: [{
+					barPercentage: 0.3,
+					ticks: {
+						autoSkip: false,
+						maxRotation: 90,
+						minRotation: 90
+					}
+				}]
+			}
+		}
+	});
+}
+
+
+function getAllInOneChartForStates(xValLoop, yValConfLoop, yValRecoLoop, yValDecLoop) {
+	var ctx = document.getElementById("allInOneChart");
+
+	var data = {
+		labels: xValLoop,
+		datasets: [{
+				label: "Confirmed",
+				backgroundColor: "#ff073a",
+				data: yValConfLoop
+			},
+
+			{
+				label: "Recovered",
+				backgroundColor: "#28a745",
+				data: yValRecoLoop
+			},
+
+			{
+				label: "Deceased",
+				backgroundColor: "#6c757d",
+				data: yValDecLoop
+			}
+		]
+	};
+
+	var myBarChart = new Chart(ctx, {
+		type: 'bar',
+		data: data,
+		options: {
+			barValueSpacing: 20,
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+						gridLines: {
+							display: true,
+							color: 'rgba(200, 200, 200, 0.15)'
+						}
+					}
+				}],
+				xAxes: [{
+					barPercentage: 1,
+					ticks: {
+						autoSkip: false,
+						maxRotation: 90,
+						minRotation: 90
+					}
+				}]
+			}
+		}
+	});
+
 }
