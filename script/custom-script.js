@@ -26,7 +26,7 @@ function callCovidApi(stateRequired, timeRequired, bodyRequired, rRateRequired, 
 					$(timeRequired).append(computeUpdatedTime(stateDetails["lastupdatedtime"]));
 
 					valueTemplate = '<td class="header-confirmed">' + numberWithCommas(stateDetails["confirmed"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/> <span class="delta">' + numberWithCommas(stateDetails["deltaconfirmed"]) + '</span></td>' +
-						/* '<td class="header-active">' + numberWithCommas(stateDetails["active"]) + */ '</td>' +
+						'<td class="header-active">' + numberWithCommas(stateDetails["active"]) + '</td>' +
 						'<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/> <span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>' +
 						'<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/> <span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
 					$(bodyRequired).append(valueTemplate);
@@ -43,7 +43,7 @@ function callCovidApi(stateRequired, timeRequired, bodyRequired, rRateRequired, 
 }
 
 function computeRecoveryRate(conf, recvr, death) {
-	var recoRate = Math.round(((recvr) / (conf - death)) * 100);
+	var recoRate = (((recvr) / (conf - death)) * 100).toFixed(2);
 
 	if (Number.isNaN(recoRate)) {
 		return 'NA';
@@ -54,7 +54,7 @@ function computeRecoveryRate(conf, recvr, death) {
 
 function computeMortalityRate(conf, death) {
 
-	var mortRate = Math.round((death / conf) * 100);
+	var mortRate = ((death / conf) * 100).toFixed(2);
 
 	if (Number.isNaN(mortRate)) {
 		return 'NA';
