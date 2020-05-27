@@ -5,6 +5,7 @@ blockquote {
 	font-size: 13px;
 	border: none !important;
 	-webkit-user-select: none;
+	width: 100%;
 }
 
 body {
@@ -12,9 +13,6 @@ body {
 	background: #161625!important;
 }
 
-table {
-	font-size: 12px;
-}
 
 .table-header-right {
 	text-align: right;
@@ -205,5 +203,28 @@ h2 {
 }
 
 #rRatePct, #mRatePct {
-	font-size: 22px;
+	font-size: 19px;
+}
+
+.table {
+	font-size: 10px;
+	width: 100%;
+}
+
+#rRate,
+#rRateTN,
+#rRateKL,
+#rRateKA,
+#rRateAP,
+#rRateTG {
+	font-size: 12px;
+}
+
+#mRate,
+#mRateTN,
+#mRateKL,
+#mRateKA,
+#mRateAP,
+#mRateTG  {
+	font-size: 12px;
 }
