@@ -391,7 +391,7 @@ function getChart(chartId, xVal, yVal, color, labelVal) {
 					ticks: {
 						beginAtZero: true,
 						callback: function (value) {
-							return (value / 1000).toFixed(0) + 'K'; // convert it to thousands
+							return (value / 1000).toFixed(2) + 'K'; // convert it to thousands
 						}
 					},
 					gridLines: {
@@ -457,7 +457,7 @@ function getChartForRates(chartId, xVal, yVal, color, labelVal) {
 						beginAtZero: true,
 						max: 100,
 						callback: function (value) {
-							return (value / this.max * 100).toFixed(0) + '%'; // convert it to percentage
+							return (value / this.max * 100).toFixed(2) + '%'; // convert it to percentage
 						},
 					},
 					gridLines: {
@@ -533,11 +533,10 @@ function getAllInOneChart(xValLoop, yValConfLoop, yValRecoLoop, yValDecLoop) {
 			}
 		}
 	});
-
 }
 
 function computeRecoRateLastFiveDays(conf, recvr, death) {
-	var recoRate = Math.round(((recvr) / (conf - death)) * 100);
+	var recoRate = (((recvr) / (conf - death)) * 100).toFixed(2);
 
 	if (Number.isNaN(recoRate)) {
 		return 'NA';
@@ -548,7 +547,7 @@ function computeRecoRateLastFiveDays(conf, recvr, death) {
 
 function computeDecRateLastFiveDays(conf, death) {
 
-	var mortRate = Math.round((death / conf) * 100);
+	var mortRate = ((death / conf) * 100).toFixed(2);
 
 	if (Number.isNaN(mortRate)) {
 		return 'NA';
