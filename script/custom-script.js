@@ -391,7 +391,7 @@ function getChart(chartId, xVal, yVal, color, labelVal) {
 					ticks: {
 						beginAtZero: true,
 						callback: function (value) {
-							return (value / 1000).toFixed(2) + 'K'; // convert it to thousands
+							return (value / 1000) + 'K'; // convert it to thousands
 						}
 					},
 					gridLines: {
