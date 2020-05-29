@@ -323,15 +323,15 @@ function processValuesForChart(homePage, recoPage, decPage) {
 
 				var tested = resData["tested"];
 				var testedLength = tested.length;
-
+				
 				for (var i = testedLength - 1; i >= testedLength - 10; i--) {
 					var testedDetails = tested[i];
 					var xVal = testedDetails["updatetimestamp"];
 					xValSampleLoop.push(getFormattedDayAndMonth(xVal));
-					yValSampleLoop.push(testedDetails["totalsamplestested"]);
+					yValSampleLoop.push((tested[i]["totalsamplestested"]-tested[i-1]["totalsamplestested"]));
 				}
 
-				getChart('samplesChart', xValSampleLoop, yValSampleLoop, 'white', 'Total Tested');
+				getChart('samplesChart', xValSampleLoop, yValSampleLoop, 'white', 'Tests in a day');
 			}
 
 			if (recoPage === true) {
