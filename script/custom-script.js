@@ -799,7 +799,13 @@ function chartReDraw(countVal) {
 
 			if (caseSeriesLength >= loopLesser) {
 				$("#next").attr("hidden", false);
-				for (var i = caseSeriesLength - loopLesser; i > caseSeriesLength - (loopGreater); i--) {
+				if (countVal === 1) {
+					initVal = loopLesser+1;
+				} else {
+					initVal = loopLesser;
+				}
+				
+				for (var i = caseSeriesLength - (initVal); i > caseSeriesLength - (loopGreater+1); i--) {
 					if (i >= 0) {
 						var caseDetails = caseSeries[i];
 						xValLoop.push(caseDetails["date"]);
