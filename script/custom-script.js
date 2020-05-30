@@ -323,12 +323,12 @@ function processValuesForChart(homePage, recoPage, decPage) {
 
 				var tested = resData["tested"];
 				var testedLength = tested.length;
-				
+
 				for (var i = testedLength - 1; i >= testedLength - 10; i--) {
 					var testedDetails = tested[i];
 					var xVal = testedDetails["updatetimestamp"];
 					xValSampleLoop.push(getFormattedDayAndMonth(xVal));
-					yValSampleLoop.push((tested[i]["totalsamplestested"]-tested[i-1]["totalsamplestested"]));
+					yValSampleLoop.push((tested[i]["totalsamplestested"] - tested[i - 1]["totalsamplestested"]));
 				}
 
 				getChart('samplesChart', xValSampleLoop, yValSampleLoop, 'white', 'Tests in a day');
@@ -504,10 +504,14 @@ function getAllInOneChart(xValLoop, yValConfLoop, yValRecoLoop, yValDecLoop) {
 		]
 	};
 
-	var myBarChart = new Chart(ctx, {
+	var myBarChart = document.getElementById("allInOneChart").getContext("2d");
+	if (window.bar != undefined)
+		window.bar.destroy();
+	window.bar = new Chart(ctx, {
 		type: 'bar',
 		data: data,
 		options: {
+			showTooltips: false,
 			barValueSpacing: 20,
 			scales: {
 				yAxes: [{
@@ -597,17 +601,17 @@ function processValuesForStateChart(stateCode) {
 
 			for (var i = statesSeriesLength - 1; i >= statesSeriesLength - 30; i--) {
 				var stateDetails = statesSeries[i];
-								
+
 				if (stateDetails["status"] === 'Confirmed') {
 					var xVal = stateDetails["date"];
-					xValLoop.push(xVal.replace(/-/g, " ").slice(0, xVal.length-2));
+					xValLoop.push(xVal.replace(/-/g, " ").slice(0, xVal.length - 2));
 					yValConfLoop.push(stateDetails[stateCode]);
 				}
-				
+
 				if (stateDetails["status"] == 'Recovered') {
 					yValRecoLoop.push(stateDetails[stateCode]);
 				}
-				
+
 				if (stateDetails["status"] == 'Deceased') {
 					yValDecLoop.push(stateDetails[stateCode]);
 				}
@@ -739,4 +743,80 @@ function getAllInOneChartForStates(xValLoop, yValConfLoop, yValRecoLoop, yValDec
 		}
 	});
 
+}
+
+var clicks = 0;
+
+function allInOneExtendedChart(stateChange) {
+
+	if (stateChange === 'prev') {
+		clicks -= 1;
+	}
+
+	if (stateChange === 'next') {
+		clicks += 1;
+	}
+
+	document.getElementById("allInOneChart").innerHTML = "";
+	chartReDraw(clicks);
+}
+
+
+function chartReDraw(countVal) {
+	var xValLoop = [];
+	var yValConfLoop = [];
+	var yValRecoLoop = [];
+	var yValDecLoop = [];
+
+	var xValSampleLoop = [];
+	var yValSampleLoop = [];
+
+	var yValRrLoop = [];
+	var yValMrLoop = [];
+
+	$.ajax({
+		async: false,
+		method: "GET",
+		url: "https://api.covid19india.org/data.json",
+		success: function (resData) {
+			var caseSeries = resData["cases_time_series"];
+			var caseSeriesLength = caseSeries.length;
+			var loopLesser;
+			var loopGreater;
+
+			if (countVal === 0) {
+				$("#prev").attr("hidden", true);
+				loopLesser = 1;
+				loopGreater = 10;
+			} else if (countVal < 0) {
+				$("#prev").attr("hidden", true);
+				return;
+			} else {
+				$("#prev").attr("hidden", false);
+				loopLesser = countVal * 10;
+				loopGreater = loopLesser + 10;
+			}
+
+			if (caseSeriesLength >= loopLesser) {
+				$("#next").attr("hidden", false);
+				for (var i = caseSeriesLength - loopLesser; i >= caseSeriesLength - loopGreater; i--) {
+					if (i >= 0) {
+						var caseDetails = caseSeries[i];
+						xValLoop.push(caseDetails["date"]);
+						yValConfLoop.push(caseDetails["dailyconfirmed"]);
+						yValRecoLoop.push(caseDetails["dailyrecovered"]);
+						yValDecLoop.push(caseDetails["dailydeceased"]);
+					}
+
+					if (i == 0) {
+						$("#next").attr("hidden", true);
+					}
+				}
+				getAllInOneChart(xValLoop, yValConfLoop, yValRecoLoop, yValDecLoop);
+			}
+		},
+		error: function (xhr, status, error) {
+			alert(error);
+		}
+	});
 }
