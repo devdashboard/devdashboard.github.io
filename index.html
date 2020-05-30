@@ -40,14 +40,13 @@
             </div>
          </div>
       </nav>
-	  
-	  <!-- Add Bootstrap Grid -->
-	  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <div id="section1" class="container-fluid main-class">
-         <h2>India</h2>
-         <div class="value-box">
-            <p id="updatedTime" style="font-size: 13px"></p>
-            <!-- <blockquote> -->
+      <!-- Add Bootstrap Grid -->
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+         <div id="section1" class="container-fluid main-class">
+            <h2>India</h2>
+            <div class="value-box">
+               <p id="updatedTime" style="font-size: 13px"></p>
+               <!-- <blockquote> -->
                <table class="table table-hover font-table">
                   <thead class="table-heading">
                      <tr>
@@ -60,7 +59,7 @@
                   <tbody class="table-body" id="table-body">
                   </tbody>
                </table>
-			   <!-- </blockquote> -->
+               <!-- </blockquote> -->
                <center>
                   <div class="flex-container rate-box">
                      <div class="btn-group-vertical">
@@ -68,46 +67,47 @@
                         <button type="button" class="btn btn-primary" style="background-color: #6c757d" id="mRate">Mortality rate </button>
                      </div>
                   </div>
-				</center>
-            
-            <h3 class="section-heading heading-sub">Heat map </h3>
-			<p id="updated" style="font-size: 11px">( in last 10 days )</p>
-			
-            <center>
-			   <h4 class="section-heading" style="color: white">All-in-One</h4>
-               <canvas id="allInOneChart" width="100" height="50"></canvas>
-               <br/> 	
-               <h4 class="section-heading" style="color: #ff073a">Confirmed cases</h4>
-               <canvas id="confirmedChart" width="100" height="50"></canvas>
-               <br/>
-               <h4 class="section-heading" style="color: #28a745">Recovered cases</h4>
-               <canvas id="recoChart" width="100" height="50"></canvas>
-               
-               <br/>
-               <h4 class="section-heading" style="color: #6c757d">Deceased cases</h4>
-               <canvas id="decChart" width="100" height="50"></canvas>
-            </center>
-            <br/>
-            <div class="jumbotron jum">
-               <h4>Total Samples Tested</h4>
-               <!-- https://www.icmr.gov.in/pdf/covid/update/ICMR_testing_update_18May2020_9AM_IST.pdf -->
-               <h2 id="cases-tested-in" class="cases-tested-in"></h2>
-               <!-- <h4 id="cases-time-in" class="cases-time-in">as on </h4> -->
-               <br/>
-			   <canvas id="samplesChart" width="100" height="40"></canvas>
-               <br/>
-               <center>
-                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfi1JugttiwxAT5chK29XsN4Y27nJh6GtC6-5htdjGQcycnJA/viewform?vc=0&c=0&w=1">Leave feedback...</a>
-                  <br/>
                </center>
+               <h3 class="section-heading heading-sub">Heat map </h3>
+               <p id="updated" style="font-size: 11px">( 10 days interval )</p>
+               <center>
+                  <h4 class="section-heading" style="color: white">All-in-One</h4>
+                  <canvas id="allInOneChart" width="50" height="30"></canvas>
+                  <img id = "prev" src = "./images/prev-icon.png" height="16" width="16" onclick="allInOneExtendedChart('prev')" hidden="true">
+                  <img id = "next" src = "./images/next-icon.png" height="16" width="16" onclick="allInOneExtendedChart('next')">
+               </center>
+               <br/> 	
+               <center>
+                  <h4 class="section-heading" style="color: #ff073a">Confirmed cases</h4>
+                  <canvas id="confirmedChart" width="100" height="50"></canvas>
+                  <br/>
+                  <h4 class="section-heading" style="color: #28a745">Recovered cases</h4>
+                  <canvas id="recoChart" width="100" height="50"></canvas>
+                  <br/>
+                  <h4 class="section-heading" style="color: #6c757d">Deceased cases</h4>
+                  <canvas id="decChart" width="100" height="50"></canvas>
+               </center>
+               <br/>
+               <div class="jumbotron jum">
+                  <h4>Total Samples Tested</h4>
+                  <!-- https://www.icmr.gov.in/pdf/covid/update/ICMR_testing_update_18May2020_9AM_IST.pdf -->
+                  <h2 id="cases-tested-in" class="cases-tested-in"></h2>
+                  <!-- <h4 id="cases-time-in" class="cases-time-in">as on </h4> -->
+                  <br/>
+                  <canvas id="samplesChart" width="100" height="40"></canvas>
+                  <br/>
+                  <center>
+                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSfi1JugttiwxAT5chK29XsN4Y27nJh6GtC6-5htdjGQcycnJA/viewform?vc=0&c=0&w=1">Leave feedback...</a>
+                     <br/>
+                  </center>
+               </div>
             </div>
          </div>
       </div>
-	  </div>
       <script>
          callCovidApi('TT', '#updatedTime', '#table-body', '#rRate', '#mRate');
          getCasesTestedCount('#cases-tested-in');
-		 processValuesForChart(true, false, false);
+         processValuesForChart(true, false, false);
       </script>
       <!-- Footer menu -->
       <nav class="navbar navbar-inverse navbar-fixed-bottom">
