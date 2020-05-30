@@ -784,8 +784,8 @@ function chartReDraw(countVal) {
 			var loopLesser;
 			var loopGreater;
 
-			console.log('C:: ', countVal);
-			console.log('L:: ', caseSeriesLength);
+			//console.log('C:: ', countVal);
+			//console.log('L:: ', caseSeriesLength);
 			
 			if (countVal === 0) {
 				$("#prev").attr("hidden", true);
@@ -811,7 +811,7 @@ function chartReDraw(countVal) {
 				}
 				
 				for (var i = caseSeriesLength - initVal; i >= caseSeriesLength - exitVal; i--) {
-					console.log(i);
+					//console.log(i);
 					if (i >= 0) {
 						var caseDetails = caseSeries[i];
 						xValLoop.push(caseDetails["date"]);
