@@ -36,6 +36,11 @@ body {
 	font-size: 1.35em;
 }
 
+.table-header-active {
+	text-align: center;
+	color: #007bff;
+}
+
 .header-recovered {
 	color: #28a745;
 	text-align: right;
@@ -122,6 +127,11 @@ h2 {
 .district-td-data {
 	text-align: center;
 	color: #ff073a;
+}
+
+.district-td-data-active {
+	text-align: center;
+	color: #007bff;
 }
 
 .table-header-center {
