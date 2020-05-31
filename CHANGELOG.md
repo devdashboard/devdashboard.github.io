@@ -2,7 +2,13 @@
 
 Dashboard application used to project Covid'19 live cases trend within X n Y coordinates of India
 
-# [v1.7] [LIVE]
+# [v1.8] [LIVE]
+
+## Added
+- Enable charts to handle historical data since beginning of the time
+- Display 'Active' cases count across Districts
+
+# [v1.7]
 
 ## Added
 - New section to display 'All-in-One' chart for last 10 days
