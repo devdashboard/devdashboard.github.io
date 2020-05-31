@@ -61,6 +61,7 @@
                </table>
                <!-- </blockquote> -->
                <center>
+					<br/>
                   <div class="flex-container rate-box">
                      <div class="btn-group-vertical">
                         <button type="button" class="btn btn-primary" style="background-color: #28a745" id="rRate">Recovery rate </button>
@@ -75,17 +76,27 @@
                   <canvas id="allInOneChart" width="50" height="30"></canvas>
                   <img id = "prev" src = "./images/prev-icon.png" height="16" width="16" onclick="allInOneExtendedChart('prev')" hidden="true">
                   <img id = "next" src = "./images/next-icon.png" height="16" width="16" onclick="allInOneExtendedChart('next')">
+				  <p style="color: #80868b; font-size: 10px; padding-top:15px">Few days may not have the data or zero value.<br/>Hence there will be no bars in the Chart</p>
                </center>
                <br/> 	
                <center>
                   <h4 class="section-heading" style="color: #ff073a">Confirmed cases</h4>
                   <canvas id="confirmedChart" width="100" height="50"></canvas>
+				  <img id = "prevConf" src = "./images/prev-icon.png" height="16" width="16" onclick="confirmedChart('prev')" hidden="true">
+                  <img id = "nextConf" src = "./images/next-icon.png" height="16" width="16" onclick="confirmedChart('next')">
+				  <p style="color: #80868b; font-size: 10px; padding-top:15px">Few days may not have the data or zero value.<br/>Hence there will be no bars in the Chart</p>
                   <br/>
                   <h4 class="section-heading" style="color: #28a745">Recovered cases</h4>
                   <canvas id="recoChart" width="100" height="50"></canvas>
+				   <img id = "prevReco" src = "./images/prev-icon.png" height="16" width="16" onclick="recoChart('prev')" hidden="true">
+                  <img id = "nextReco" src = "./images/next-icon.png" height="16" width="16" onclick="recoChart('next')">
+				  <p style="color: #80868b; font-size: 10px; padding-top:15px">Few days may not have the data or zero value.<br/>Hence there will be no bars in the Chart</p>
                   <br/>
                   <h4 class="section-heading" style="color: #6c757d">Deceased cases</h4>
                   <canvas id="decChart" width="100" height="50"></canvas>
+				   <img id = "prevDec" src = "./images/prev-icon.png" height="16" width="16" onclick="decChart('prev')" hidden="true">
+                  <img id = "nextDec" src = "./images/next-icon.png" height="16" width="16" onclick="decChart('next')">
+				  <p style="color: #80868b; font-size: 10px; padding-top:15px">Few days may not have the data or zero value.<br/>Hence there will be no bars in the Chart</p>
                </center>
                <br/>
                <div class="jumbotron jum">
@@ -94,7 +105,11 @@
                   <h2 id="cases-tested-in" class="cases-tested-in"></h2>
                   <!-- <h4 id="cases-time-in" class="cases-time-in">as on </h4> -->
                   <br/>
-                  <canvas id="samplesChart" width="100" height="40"></canvas>
+                  <canvas id="samplesChart" width="100" height="50"></canvas>
+				   <img id = "prevSamp" src = "./images/prev-icon.png" height="16" width="16" onclick="sampChart('prev')" hidden="true">
+                  <img id = "nextSamp" src = "./images/next-icon.png" height="16" width="16" onclick="sampChart('next')">
+				  <p style="color: #80868b; font-size: 10px; padding-top:15px">Few days may have 2 or more bars in the Chart. <br/>This represents the test results published at 9am and 9pm</p>
+                  <br/>
                   <br/>
                   <center>
                      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfi1JugttiwxAT5chK29XsN4Y27nJh6GtC6-5htdjGQcycnJA/viewform?vc=0&c=0&w=1">Leave feedback...</a>

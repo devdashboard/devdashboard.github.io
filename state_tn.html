@@ -72,20 +72,32 @@
             <!-- </blockquote> -->
 			
 			<h3 class="section-heading heading-sub">Heat map </h3>
-			<p id="updated" style="font-size: 11px">( in last 10 days )</p>
+			<p id="updated" style="font-size: 11px">( 10 days interval )</p>
             <center>
 			   <h4 class="section-heading" style="color: white">All-in-One</h4>
                <canvas id="allInOneChart" width="100" height="60"></canvas>
+			   <img id = "prevAllState" src = "./images/prev-icon.png" height="16" width="16" onclick="allInOneState('prev', 'tn')" hidden="true">
+                  <img id = "nextAllState" src = "./images/next-icon.png" height="16" width="16" onclick="allInOneState('next', 'tn')">
+				  <p style="color: #80868b; font-size: 10px; padding-top:15px">Few days may not have the data or zero value.<br/>Hence there will be no bars in the Chart</p>
                <br/> 	
                <h4 class="section-heading" style="color: #ff073a">Confirmed cases</h4>
                <canvas id="confirmedChart" width="100" height="60"></canvas>
+			   <img id = "prevConf" src = "./images/prev-icon.png" height="16" width="16" onclick="confirmedChartState('prev', 'tn')" hidden="true">
+                  <img id = "nextConf" src = "./images/next-icon.png" height="16" width="16" onclick="confirmedChartState('next', 'tn')">
+				  <p style="color: #80868b; font-size: 10px; padding-top:15px">Few days may not have the data or zero value.<br/>Hence there will be no bars in the Chart</p>
                <br/>
                <h4 class="section-heading" style="color: #28a745">Recovered cases</h4>
                <canvas id="recoChart" width="100" height="60"></canvas>
+			   <img id = "prevReco" src = "./images/prev-icon.png" height="16" width="16" onclick="recoChartState('prev', 'tn')" hidden="true">
+                  <img id = "nextReco" src = "./images/next-icon.png" height="16" width="16" onclick="recoChartState('next', 'tn')">
+				  <p style="color: #80868b; font-size: 10px; padding-top:15px">Few days may not have the data or zero value.<br/>Hence there will be no bars in the Chart</p>
                
                <br/>
                <h4 class="section-heading" style="color: #6c757d">Deceased cases</h4>
                <canvas id="decChart" width="100" height="60"></canvas>
+			   <img id = "prevDec" src = "./images/prev-icon.png" height="16" width="16" onclick="decChartState('prev', 'tn')" hidden="true">
+                  <img id = "nextDec" src = "./images/next-icon.png" height="16" width="16" onclick="decChartState('next', 'tn')">
+				  <p style="color: #80868b; font-size: 10px; padding-top:15px">Few days may not have the data or zero value.<br/>Hence there will be no bars in the Chart</p>
             </center>
             <br/>
 			
@@ -96,6 +108,7 @@
                      <tr>
                         <th class="table-header">District</th>
                         <th class="table-header-center">Confirmed</th>
+						<th class="table-header-active">Active</th>
                      </tr>
                   </thead>
                   <tbody class="table-body-tn-dt" id="table-body-tn-dt">
