@@ -1,3 +1,18 @@
+var allInOne;
+var allConf;
+var allReco;
+var allDec;
+var allSamp;
+
+var allRecRate;
+var allDecRate;
+
+var allInOneStates;
+
+var allConfState;
+var allRecoState;
+var allDecState;
+
 function formatDate(date) {
 	var utc = date.toUTCString() // 'ddd, DD MMM YYYY HH:mm:ss GMT'
 	return utc.slice(8, 12) + utc.slice(5, 7) + ", " + utc.slice(12, 16)
@@ -113,7 +128,8 @@ function callCovidStateApi(state, stateId) {
 			for (var eachDistrict in districtDetails) {
 				var entry = districtDetails[eachDistrict];
 				valueTemplate = '<tr class="custom-tr"><td class="district-td">' + eachDistrict + '</td>' +
-					'<td class="district-td-data">' + entry["confirmed"] + '</td>';
+					'<td class="district-td-data">' + entry["confirmed"] + '</td>' +
+					'<td class="district-td-data-active">' + entry["active"] + '</td>';
 				$(stateId).append(valueTemplate);
 			}
 
@@ -331,7 +347,7 @@ function processValuesForChart(homePage, recoPage, decPage) {
 					yValSampleLoop.push((tested[i]["totalsamplestested"] - tested[i - 1]["totalsamplestested"]));
 				}
 
-				getChart('samplesChart', xValSampleLoop, yValSampleLoop, 'white', 'Tests in a day');
+				getChart('samplesChart', xValSampleLoop, yValSampleLoop, 'white', 'Tests in a day', '');
 			}
 
 			if (recoPage === true) {
@@ -350,41 +366,74 @@ function processValuesForChart(homePage, recoPage, decPage) {
 
 function getChart(chartId, xVal, yVal, color, labelVal) {
 	Chart.defaults.global.legend.display = false;
-	var conf = document.getElementById(chartId);
-	var confirmedChart = new Chart(conf, {
+	var ctx = document.getElementById(chartId).getContext("2d");
+	var data = {
+		labels: xVal,
+		datasets: [{
+			label: labelVal,
+			backgroundColor: color,
+			data: yVal
+		}]
+	};
+
+	if (chartId != undefined && chartId === 'confirmedChart') {
+		loadChartForConf(ctx, data);
+	}
+
+	if (chartId != undefined && chartId === 'recoChart') {
+		loadChartForReco(ctx, data);
+	}
+
+	if (chartId != undefined && chartId === 'decChart') {
+		loadChartForDec(ctx, data);
+	}
+
+	if (chartId != undefined && chartId === 'samplesChart') {
+		loadChartForSamp(ctx, data);
+	}
+	/* if (allConf != undefined) {
+		allConf.destroy();
+	}
+			
+		allConf = new Chart(ctx, {
 		type: 'bar',
-		data: {
-			labels: xVal,
-			datasets: [{
-				label: labelVal,
-				data: yVal,
-				backgroundColor: [
-					color,
-					color,
-					color,
-					color,
-					color,
-					color,
-					color,
-					color,
-					color,
-					color
-				],
-				borderColor: [
-					color,
-					color,
-					color,
-					color,
-					color,
-					color,
-					color,
-					color,
-					color,
-					color
-				],
-				borderWidth: 1
-			}]
-		},
+		data: data,
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+						callback: function (value) {
+							return (value / 1000) + 'K'; // convert it to thousands
+						}
+					},
+					gridLines: {
+						display: true,
+						color: 'rgba(200, 200, 200, 0.15)'
+					}
+				}],
+				xAxes: [{
+					barPercentage: 0.3,
+					ticks: {
+						autoSkip: false,
+						maxRotation: 90,
+						minRotation: 90
+					}
+				}]
+			}
+		}
+	}); */
+}
+
+
+function loadChartForConf(ctx, data) {
+	if (allConf != undefined) {
+		allConf.destroy();
+	}
+
+	allConf = new Chart(ctx, {
+		type: 'bar',
+		data: data,
 		options: {
 			scales: {
 				yAxes: [{
@@ -410,6 +459,228 @@ function getChart(chartId, xVal, yVal, color, labelVal) {
 			}
 		}
 	});
+}
+
+
+function loadChartForReco(ctx, data) {
+	if (allReco != undefined) {
+		allReco.destroy();
+	}
+
+	allReco = new Chart(ctx, {
+		type: 'bar',
+		data: data,
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+						callback: function (value) {
+							return (value / 1000) + 'K'; // convert it to thousands
+						}
+					},
+					gridLines: {
+						display: true,
+						color: 'rgba(200, 200, 200, 0.15)'
+					}
+				}],
+				xAxes: [{
+					barPercentage: 0.3,
+					ticks: {
+						autoSkip: false,
+						maxRotation: 90,
+						minRotation: 90
+					}
+				}]
+			}
+		}
+	});
+}
+
+
+function loadChartForDec(ctx, data) {
+	if (allDec != undefined) {
+		allDec.destroy();
+	}
+
+	allDec = new Chart(ctx, {
+		type: 'bar',
+		data: data,
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+						callback: function (value) {
+							return (value / 1000) + 'K'; // convert it to thousands
+						}
+					},
+					gridLines: {
+						display: true,
+						color: 'rgba(200, 200, 200, 0.15)'
+					}
+				}],
+				xAxes: [{
+					barPercentage: 0.3,
+					ticks: {
+						autoSkip: false,
+						maxRotation: 90,
+						minRotation: 90
+					}
+				}]
+			}
+		}
+	});
+}
+
+
+function loadChartForSamp(ctx, data) {
+	if (allSamp != undefined) {
+		allSamp.destroy();
+	}
+
+	allSamp = new Chart(ctx, {
+		type: 'bar',
+		data: data,
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+						callback: function (value) {
+							return (value / 1000) + 'K'; // convert it to thousands
+						}
+					},
+					gridLines: {
+						display: true,
+						color: 'rgba(200, 200, 200, 0.15)'
+					}
+				}],
+				xAxes: [{
+					barPercentage: 0.3,
+					ticks: {
+						autoSkip: false,
+						maxRotation: 90,
+						minRotation: 90
+					}
+				}]
+			}
+		}
+	});
+}
+
+
+function loadChartForConfState(ctx, data) {
+
+	if (allConfState != undefined) {
+		allConfState.destroy();
+	}
+
+	allConfState = new Chart(ctx, {
+		type: 'bar',
+		data: data,
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+						//callback: function (value) {
+						//return (value / this.max * 100).toFixed(2) + '%'; // convert it to percentage
+						//},
+					},
+					gridLines: {
+						display: true,
+						color: 'rgba(200, 200, 200, 0.15)'
+					}
+				}],
+				xAxes: [{
+					barPercentage: 0.3,
+					ticks: {
+						autoSkip: false,
+						maxRotation: 90,
+						minRotation: 90
+					}
+				}]
+			}
+		}
+	});
+
+}
+
+
+function loadChartForRecoState(ctx, data) {
+
+	if (allRecoState != undefined) {
+		allRecoState.destroy();
+	}
+
+	allRecoState = new Chart(ctx, {
+		type: 'bar',
+		data: data,
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+						//callback: function (value) {
+						//return (value / this.max * 100).toFixed(2) + '%'; // convert it to percentage
+						//},
+					},
+					gridLines: {
+						display: true,
+						color: 'rgba(200, 200, 200, 0.15)'
+					}
+				}],
+				xAxes: [{
+					barPercentage: 0.3,
+					ticks: {
+						autoSkip: false,
+						maxRotation: 90,
+						minRotation: 90
+					}
+				}]
+			}
+		}
+	});
+
+}
+
+
+function loadChartForDecState(ctx, data) {
+
+	if (allDecState != undefined) {
+		allDecState.destroy();
+	}
+
+	allDecState = new Chart(ctx, {
+		type: 'bar',
+		data: data,
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+						//callback: function (value) {
+						//return (value / this.max * 100).toFixed(2) + '%'; // convert it to percentage
+						//},
+					},
+					gridLines: {
+						display: true,
+						color: 'rgba(200, 200, 200, 0.15)'
+					}
+				}],
+				xAxes: [{
+					barPercentage: 0.3,
+					ticks: {
+						autoSkip: false,
+						maxRotation: 90,
+						minRotation: 90
+					}
+				}]
+			}
+		}
+	});
+
 }
 
 
@@ -455,9 +726,8 @@ function getChartForRates(chartId, xVal, yVal, color, labelVal) {
 				yAxes: [{
 					ticks: {
 						beginAtZero: true,
-						max: 100,
 						callback: function (value) {
-							return (value / this.max * 100).toFixed(2) + '%'; // convert it to percentage
+							return value + '%'; // convert it to percentage
 						},
 					},
 					gridLines: {
@@ -504,10 +774,11 @@ function getAllInOneChart(xValLoop, yValConfLoop, yValRecoLoop, yValDecLoop) {
 		]
 	};
 
-	var myBarChart = document.getElementById("allInOneChart").getContext("2d");
-	if (window.bar != undefined)
-		window.bar.destroy();
-	window.bar = new Chart(ctx, {
+
+	//var myBarChart = document.getElementById("allInOneChart").getContext("2d");
+	if (allInOne != undefined)
+		allInOne.destroy();
+	allInOne = new Chart(ctx, {
 		type: 'bar',
 		data: data,
 		options: {
@@ -562,11 +833,12 @@ function computeDecRateLastFiveDays(conf, death) {
 
 
 function getFormattedDayAndMonth(xVal) {
-	var tempDate = xVal.slice(3, 5) + '/' +
+	var formatTime = xVal.slice(3, 5) + '/' +
 		xVal.slice(0, 2) + '/' +
 		xVal.slice(6, xVal.length);
 
-	var formattedDate = new Date(tempDate);
+	var newDate = new Date(formatTime);
+	newDate.setDate(newDate.getDate() - 1);
 
 	var month = new Array();
 	month[0] = "January";
@@ -582,7 +854,7 @@ function getFormattedDayAndMonth(xVal) {
 	month[10] = "November";
 	month[11] = "December";
 
-	return ((formattedDate.getDate() - 1) + ' ' + month[formattedDate.getMonth()].slice(0, 3));
+	return ((newDate.getDate()) + ' ' + month[newDate.getMonth()].slice(0, 3));
 }
 
 function processValuesForStateChart(stateCode) {
@@ -631,63 +903,27 @@ function processValuesForStateChart(stateCode) {
 
 function getChartForStates(chartId, xVal, yVal, color, labelParam) {
 	Chart.defaults.global.legend.display = false;
-	var conf = document.getElementById(chartId);
-	var confirmedChart = new Chart(conf, {
-		type: 'bar',
-		data: {
-			labels: xVal,
-			datasets: [{
-				label: labelParam,
-				data: yVal,
-				backgroundColor: [
-					color,
-					color,
-					color,
-					color,
-					color,
-					color,
-					color,
-					color,
-					color,
-					color
-				],
-				borderColor: [
-					color,
-					color,
-					color,
-					color,
-					color,
-					color,
-					color,
-					color,
-					color,
-					color
-				],
-				borderWidth: 1
-			}]
-		},
-		options: {
-			scales: {
-				yAxes: [{
-					ticks: {
-						beginAtZero: true
-					},
-					gridLines: {
-						display: true,
-						color: 'rgba(200, 200, 200, 0.15)'
-					}
-				}],
-				xAxes: [{
-					barPercentage: 0.3,
-					ticks: {
-						autoSkip: false,
-						maxRotation: 90,
-						minRotation: 90
-					}
-				}]
-			}
-		}
-	});
+	var ctx = document.getElementById(chartId).getContext("2d");
+	var data = {
+		labels: xVal,
+		datasets: [{
+			label: labelParam,
+			backgroundColor: color,
+			data: yVal
+		}]
+	};
+
+	if (chartId != undefined && chartId === 'confirmedChart') {
+		loadChartForConfState(ctx, data);
+	}
+
+	if (chartId != undefined && chartId === 'recoChart') {
+		loadChartForRecoState(ctx, data);
+	}
+
+	if (chartId != undefined && chartId === 'decChart') {
+		loadChartForDecState(ctx, data);
+	}
 }
 
 
@@ -716,7 +952,11 @@ function getAllInOneChartForStates(xValLoop, yValConfLoop, yValRecoLoop, yValDec
 		]
 	};
 
-	var myBarChart = new Chart(ctx, {
+
+	if (allInOneStates != undefined) {
+		allInOneStates.destroy();
+	}
+	allInOneStates = new Chart(ctx, {
 		type: 'bar',
 		data: data,
 		options: {
@@ -786,7 +1026,7 @@ function chartReDraw(countVal) {
 
 			//console.log('C:: ', countVal);
 			//console.log('L:: ', caseSeriesLength);
-			
+
 			if (countVal === 0) {
 				$("#prev").attr("hidden", true);
 				loopLesser = 0;
@@ -803,13 +1043,13 @@ function chartReDraw(countVal) {
 			if (caseSeriesLength >= loopLesser) {
 				$("#next").attr("hidden", false);
 				if (countVal === 1) {
-					initVal = loopLesser+1;
+					initVal = loopLesser + 1;
 					exitVal = loopGreater;
 				} else {
-					initVal = loopLesser+1;
+					initVal = loopLesser + 1;
 					exitVal = loopGreater;
 				}
-				
+
 				for (var i = caseSeriesLength - initVal; i >= caseSeriesLength - exitVal; i--) {
 					//console.log(i);
 					if (i >= 0) {
@@ -825,6 +1065,960 @@ function chartReDraw(countVal) {
 					}
 				}
 				getAllInOneChart(xValLoop, yValConfLoop, yValRecoLoop, yValDecLoop);
+			}
+		},
+		error: function (xhr, status, error) {
+			alert(error);
+		}
+	});
+}
+
+
+var clickConf = 0;
+
+function confirmedChart(stateChange) {
+
+	if (stateChange === 'prev') {
+		clickConf -= 1;
+	}
+
+	if (stateChange === 'next') {
+		clickConf += 1;
+	}
+
+	document.getElementById("confirmedChart").innerHTML = "";
+	chartReDrawConfirmed(clickConf);
+}
+
+var clickReco = 0;
+
+function recoChart(stateChange) {
+
+	if (stateChange === 'prev') {
+		clickReco -= 1;
+	}
+
+	if (stateChange === 'next') {
+		clickReco += 1;
+	}
+
+	document.getElementById("recoChart").innerHTML = "";
+	chartReDrawRecovered(clickReco);
+}
+
+
+var clickDec = 0;
+
+function decChart(stateChange) {
+
+	if (stateChange === 'prev') {
+		clickDec -= 1;
+	}
+
+	if (stateChange === 'next') {
+		clickDec += 1;
+	}
+
+	document.getElementById("decChart").innerHTML = "";
+	chartReDrawDeceased(clickDec);
+}
+
+
+var clickSamp = 0;
+
+function sampChart(stateChange) {
+
+	if (stateChange === 'prev') {
+		clickSamp -= 1;
+	}
+
+	if (stateChange === 'next') {
+		clickSamp += 1;
+	}
+
+	document.getElementById("samplesChart").innerHTML = "";
+	chartReDrawSample(clickSamp);
+}
+
+
+var recoRate = 0;
+
+function allRecoRate(stateChange) {
+
+	if (stateChange === 'prev') {
+		recoRate -= 1;
+	}
+
+	if (stateChange === 'next') {
+		recoRate += 1;
+	}
+
+	document.getElementById("rrChart").innerHTML = "";
+	chartReDrawRecoRate(recoRate);
+}
+
+var mortRate = 0;
+
+function allMortRate(stateChange) {
+
+	if (stateChange === 'prev') {
+		mortRate -= 1;
+	}
+
+	if (stateChange === 'next') {
+		mortRate += 1;
+	}
+
+	document.getElementById("mrChart").innerHTML = "";
+	chartReDrawMortRate(mortRate);
+}
+
+
+var clickAllState = 0;
+
+function allInOneState(stateChange, stateCode) {
+
+	if (stateChange === 'prev') {
+		clickAllState -= 1;
+	}
+
+	if (stateChange === 'next') {
+		clickAllState += 1;
+	}
+
+	document.getElementById("allInOneChart").innerHTML = "";
+	chartReDrawAllInOneState(clickAllState, stateCode);
+}
+
+
+var clickConfState = 0;
+
+function confirmedChartState(stateChange, stateCode) {
+
+	if (stateChange === 'prev') {
+		clickConfState -= 1;
+	}
+
+	if (stateChange === 'next') {
+		clickConfState += 1;
+	}
+
+	document.getElementById("confirmedChart").innerHTML = "";
+	chartReDrawConfState(clickConfState, stateCode);
+}
+
+var clickRecoState = 0;
+
+function recoChartState(stateChange, stateCode) {
+
+	if (stateChange === 'prev') {
+		clickRecoState -= 1;
+	}
+
+	if (stateChange === 'next') {
+		clickRecoState += 1;
+	}
+
+	document.getElementById("recoChart").innerHTML = "";
+	chartReDrawRecoState(clickRecoState, stateCode);
+}
+
+
+var clickDecState = 0;
+
+function decChartState(stateChange, stateCode) {
+
+	if (stateChange === 'prev') {
+		clickDecState -= 1;
+	}
+
+	if (stateChange === 'next') {
+		clickDecState += 1;
+	}
+
+	document.getElementById("decChart").innerHTML = "";
+	chartReDrawDecState(clickDecState, stateCode);
+}
+
+function chartReDrawConfirmed(clickConf) {
+	var xValLoop = [];
+	var yValConfLoop = [];
+	var yValRecoLoop = [];
+	var yValDecLoop = [];
+
+	var xValSampleLoop = [];
+	var yValSampleLoop = [];
+
+	var yValRrLoop = [];
+	var yValMrLoop = [];
+
+	$.ajax({
+		async: false,
+		method: "GET",
+		url: "https://api.covid19india.org/data.json",
+		success: function (resData) {
+			var caseSeries = resData["cases_time_series"];
+			var caseSeriesLength = caseSeries.length;
+			var loopLesser;
+			var loopGreater;
+
+			//console.log('C:: ', countVal);
+			//console.log('L:: ', caseSeriesLength);
+
+			if (clickConf === 0) {
+				$("#prevConf").attr("hidden", true);
+				loopLesser = 0;
+				loopGreater = 10;
+			} else if (clickConf < 0) {
+				$("#prevConf").attr("hidden", true);
+				return;
+			} else {
+				$("#prevConf").attr("hidden", false);
+				loopLesser = clickConf * 10;
+				loopGreater = loopLesser + 10;
+			}
+
+			if (caseSeriesLength >= loopLesser) {
+				$("#nextConf").attr("hidden", false);
+				if (clickConf === 1) {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				} else {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				}
+
+				for (var i = caseSeriesLength - initVal; i >= caseSeriesLength - exitVal; i--) {
+					//console.log(i);
+					if (i >= 0) {
+						var caseDetails = caseSeries[i];
+						xValLoop.push(caseDetails["date"]);
+						yValConfLoop.push(caseDetails["dailyconfirmed"]);
+						yValRecoLoop.push(caseDetails["dailyrecovered"]);
+						yValDecLoop.push(caseDetails["dailydeceased"]);
+					}
+
+					if (i == 0) {
+						$("#nextConf").attr("hidden", true);
+					}
+				}
+				//getChart(xValLoop, yValConfLoop, yValRecoLoop, yValDecLoop);
+				getChart('confirmedChart', xValLoop, yValConfLoop, '#ff073a', 'Confirmed', '');
+			}
+		},
+		error: function (xhr, status, error) {
+			alert(error);
+		}
+	});
+}
+
+
+function chartReDrawRecovered(clickReco) {
+	var xValLoop = [];
+	var yValConfLoop = [];
+	var yValRecoLoop = [];
+	var yValDecLoop = [];
+
+	var xValSampleLoop = [];
+	var yValSampleLoop = [];
+
+	var yValRrLoop = [];
+	var yValMrLoop = [];
+
+	$.ajax({
+		async: false,
+		method: "GET",
+		url: "https://api.covid19india.org/data.json",
+		success: function (resData) {
+			var caseSeries = resData["cases_time_series"];
+			var caseSeriesLength = caseSeries.length;
+			var loopLesser;
+			var loopGreater;
+
+			//console.log('C:: ', countVal);
+			//console.log('L:: ', caseSeriesLength);
+
+			if (clickReco === 0) {
+				$("#prevReco").attr("hidden", true);
+				loopLesser = 0;
+				loopGreater = 10;
+			} else if (clickReco < 0) {
+				$("#prevReco").attr("hidden", true);
+				return;
+			} else {
+				$("#prevReco").attr("hidden", false);
+				loopLesser = clickReco * 10;
+				loopGreater = loopLesser + 10;
+			}
+
+			if (caseSeriesLength >= loopLesser) {
+				$("#nextReco").attr("hidden", false);
+				if (clickReco === 1) {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				} else {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				}
+
+				for (var i = caseSeriesLength - initVal; i >= caseSeriesLength - exitVal; i--) {
+					//console.log(i);
+					if (i >= 0) {
+						var caseDetails = caseSeries[i];
+						xValLoop.push(caseDetails["date"]);
+						yValConfLoop.push(caseDetails["dailyconfirmed"]);
+						yValRecoLoop.push(caseDetails["dailyrecovered"]);
+						yValDecLoop.push(caseDetails["dailydeceased"]);
+					}
+
+					if (i == 0) {
+						$("#nextReco").attr("hidden", true);
+					}
+				}
+				//getChart(xValLoop, yValConfLoop, yValRecoLoop, yValDecLoop);
+				getChart('recoChart', xValLoop, yValRecoLoop, '#28a745', 'Recovered', '');
+			}
+		},
+		error: function (xhr, status, error) {
+			alert(error);
+		}
+	});
+}
+
+
+function chartReDrawDeceased(clickDec) {
+	var xValLoop = [];
+	var yValConfLoop = [];
+	var yValRecoLoop = [];
+	var yValDecLoop = [];
+
+	var xValSampleLoop = [];
+	var yValSampleLoop = [];
+
+	var yValRrLoop = [];
+	var yValMrLoop = [];
+
+	$.ajax({
+		async: false,
+		method: "GET",
+		url: "https://api.covid19india.org/data.json",
+		success: function (resData) {
+			var caseSeries = resData["cases_time_series"];
+			var caseSeriesLength = caseSeries.length;
+			var loopLesser;
+			var loopGreater;
+
+			//console.log('C:: ', countVal);
+			//console.log('L:: ', caseSeriesLength);
+
+			if (clickDec === 0) {
+				$("#prevDec").attr("hidden", true);
+				loopLesser = 0;
+				loopGreater = 10;
+			} else if (clickDec < 0) {
+				$("#prevDec").attr("hidden", true);
+				return;
+			} else {
+				$("#prevDec").attr("hidden", false);
+				loopLesser = clickDec * 10;
+				loopGreater = loopLesser + 10;
+			}
+
+			if (caseSeriesLength >= loopLesser) {
+				$("#nextDec").attr("hidden", false);
+				if (clickDec === 1) {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				} else {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				}
+
+				for (var i = caseSeriesLength - initVal; i >= caseSeriesLength - exitVal; i--) {
+					//console.log(i);
+					if (i >= 0) {
+						var caseDetails = caseSeries[i];
+						xValLoop.push(caseDetails["date"]);
+						yValConfLoop.push(caseDetails["dailyconfirmed"]);
+						yValRecoLoop.push(caseDetails["dailyrecovered"]);
+						yValDecLoop.push(caseDetails["dailydeceased"]);
+					}
+
+					if (i == 0) {
+						$("#nextDec").attr("hidden", true);
+					}
+				}
+				//getChart(xValLoop, yValConfLoop, yValRecoLoop, yValDecLoop);
+				getChart('decChart', xValLoop, yValDecLoop, '#6c757d', 'Deceased', '');
+			}
+		},
+		error: function (xhr, status, error) {
+			alert(error);
+		}
+	});
+}
+
+
+function chartReDrawSample(clickSamp) {
+	var xValLoop = [];
+	var yValConfLoop = [];
+	var yValRecoLoop = [];
+	var yValDecLoop = [];
+
+	var xValSampleLoop = [];
+	var yValSampleLoop = [];
+
+	var yValRrLoop = [];
+	var yValMrLoop = [];
+
+	$.ajax({
+		async: false,
+		method: "GET",
+		url: "https://api.covid19india.org/data.json",
+		success: function (resData) {
+			var tested = resData["tested"];
+			var testedLength = tested.length;
+			var loopLesser;
+			var loopGreater;
+
+			//console.log('C:: ', countVal);
+			//console.log('L:: ', caseSeriesLength);
+
+			if (clickSamp === 0) {
+				$("#prevSamp").attr("hidden", true);
+				loopLesser = 0;
+				loopGreater = 10;
+			} else if (clickSamp < 0) {
+				$("#prevSamp").attr("hidden", true);
+				return;
+			} else {
+				$("#prevSamp").attr("hidden", false);
+				loopLesser = clickSamp * 10;
+				loopGreater = loopLesser + 10;
+			}
+
+			if (testedLength >= loopLesser) {
+				$("#nextSamp").attr("hidden", false);
+				if (clickSamp === 1) {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				} else {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				}
+
+
+				for (var i = testedLength - initVal; i >= testedLength - exitVal; i--) {
+					if (i >= 0) {
+						var testedDetails = tested[i];
+						var xVal = testedDetails["updatetimestamp"];
+						var formattedDate = getFormattedDayAndMonth(xVal);
+
+						if (formattedDate === '18 Mar') {
+							$("#nextSamp").attr("hidden", true);
+						}
+
+						xValSampleLoop.push(formattedDate);
+						var greater = tested[i]["totalsamplestested"];
+						var lesser = tested[i - 1]["totalsamplestested"];
+
+						if (greater == undefined) {
+							$("#nextSamp").attr("hidden", true);
+							return;
+						}
+
+						if (greater === "") {
+							yValSampleLoop.push('0');
+						} else if (lesser === "") {
+							yValSampleLoop.push('0');
+						} else {
+							yValSampleLoop.push(greater - lesser);
+						}
+					}
+
+					if (i == 0) {
+						$("#nextSamp").attr("hidden", true);
+					}
+				}
+
+				//getChart(xValLoop, yValConfLoop, yValRecoLoop, yValDecLoop);
+				getChart('samplesChart', xValSampleLoop, yValSampleLoop, 'white', 'Tests in a day', '');
+			}
+		},
+		error: function (xhr, status, error) {
+			alert(error);
+		}
+	});
+}
+
+
+function chartReDrawRecoRate(recoRate) {
+	var xValLoop = [];
+	var yValConfLoop = [];
+	var yValRecoLoop = [];
+	var yValDecLoop = [];
+
+	var xValSampleLoop = [];
+	var yValSampleLoop = [];
+
+	var yValRrLoop = [];
+	var yValMrLoop = [];
+
+	$.ajax({
+		async: false,
+		method: "GET",
+		url: "https://api.covid19india.org/data.json",
+		success: function (resData) {
+			var caseSeries = resData["cases_time_series"];
+			var caseSeriesLength = caseSeries.length;
+			var loopLesser;
+			var loopGreater;
+
+			//console.log('C:: ', countVal);
+			//console.log('L:: ', caseSeriesLength);
+
+			if (recoRate === 0) {
+				$("#prevRecoRate").attr("hidden", true);
+				loopLesser = 0;
+				loopGreater = 10;
+			} else if (recoRate < 0) {
+				$("#prevRecoRate").attr("hidden", true);
+				return;
+			} else {
+				$("#prevRecoRate").attr("hidden", false);
+				loopLesser = recoRate * 10;
+				loopGreater = loopLesser + 10;
+			}
+
+			if (caseSeriesLength >= loopLesser) {
+				$("#nextRecoRate").attr("hidden", false);
+				if (recoRate === 1) {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				} else {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				}
+
+				for (var i = caseSeriesLength - initVal; i >= caseSeriesLength - exitVal; i--) {
+					//console.log(i);
+					if (i >= 0) {
+						var caseDetails = caseSeries[i];
+
+						xValLoop.push(caseDetails["date"]);
+						yValRrLoop.push(computeRecoRateLastFiveDays(caseDetails["totalconfirmed"], caseDetails["totalrecovered"], caseDetails["totaldeceased"]));
+
+					}
+
+					if (i == 0) {
+						$("#nextRecoRate").attr("hidden", true);
+					}
+				}
+				getChartForRates('rrChart', xValLoop, yValRrLoop, '#28a745', 'Recovery Rate');
+			}
+		},
+		error: function (xhr, status, error) {
+			alert(error);
+		}
+	});
+}
+
+
+function chartReDrawMortRate(mortRate) {
+	var xValLoop = [];
+	var yValConfLoop = [];
+	var yValRecoLoop = [];
+	var yValDecLoop = [];
+
+	var xValSampleLoop = [];
+	var yValSampleLoop = [];
+
+	var yValRrLoop = [];
+	var yValMrLoop = [];
+
+	$.ajax({
+		async: false,
+		method: "GET",
+		url: "https://api.covid19india.org/data.json",
+		success: function (resData) {
+			var caseSeries = resData["cases_time_series"];
+			var caseSeriesLength = caseSeries.length;
+			var loopLesser;
+			var loopGreater;
+
+			//console.log('C:: ', countVal);
+			//console.log('L:: ', caseSeriesLength);
+
+			if (mortRate === 0) {
+				$("#prevMortRate").attr("hidden", true);
+				loopLesser = 0;
+				loopGreater = 10;
+			} else if (mortRate < 0) {
+				$("#prevMortRate").attr("hidden", true);
+				return;
+			} else {
+				$("#prevMortRate").attr("hidden", false);
+				loopLesser = mortRate * 10;
+				loopGreater = loopLesser + 10;
+			}
+
+			if (caseSeriesLength >= loopLesser) {
+				$("#nextMortRate").attr("hidden", false);
+				if (mortRate === 1) {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				} else {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				}
+
+				for (var i = caseSeriesLength - initVal; i >= caseSeriesLength - exitVal; i--) {
+					//console.log(i);
+					if (i >= 0) {
+						var caseDetails = caseSeries[i];
+
+						xValLoop.push(caseDetails["date"]);
+						yValMrLoop.push(computeDecRateLastFiveDays(caseDetails["totalconfirmed"], caseDetails["totaldeceased"]));
+
+					}
+
+					if (i == 0) {
+						$("#nextMortRate").attr("hidden", true);
+					}
+				}
+				getChartForRates('mrChart', xValLoop, yValMrLoop, '#6c757d', 'Mortality Rate');
+			}
+		},
+		error: function (xhr, status, error) {
+			alert(error);
+		}
+	});
+}
+
+
+function chartReDrawAllInOneState(clickAllState, stateCode) {
+	var xValLoop = [];
+	var yValConfLoop = [];
+	var yValRecoLoop = [];
+	var yValDecLoop = [];
+
+	var xValSampleLoop = [];
+	var yValSampleLoop = [];
+
+	var yValRrLoop = [];
+	var yValMrLoop = [];
+
+	$.ajax({
+		async: false,
+		method: "GET",
+		url: "https://api.covid19india.org/states_daily.json",
+		success: function (resData) {
+			var statesSeries = resData["states_daily"];
+			var statesSeriesLength = statesSeries.length;
+
+			var loopLesser;
+			var loopGreater;
+
+			//console.log('C:: ', countVal);
+			//console.log('L:: ', caseSeriesLength);
+
+			if (clickAllState === 0) {
+				$("#prevAllState").attr("hidden", true);
+				loopLesser = 0;
+				loopGreater = 30;
+			} else if (clickAllState < 0) {
+				$("#prevAllState").attr("hidden", true);
+				return;
+			} else {
+				$("#prevAllState").attr("hidden", false);
+				loopLesser = clickAllState * 30;
+				loopGreater = loopLesser + 30;
+			}
+
+			if (statesSeriesLength >= loopLesser) {
+				$("#nextAllState").attr("hidden", false);
+				if (clickAllState === 1) {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				} else {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				}
+
+				for (var i = statesSeriesLength - initVal; i >= statesSeriesLength - exitVal; i--) {
+					if (i >= 0) {
+						var stateDetails = statesSeries[i];
+
+						if (stateDetails["status"] === 'Confirmed') {
+
+							var xVal = stateDetails["date"];
+							xValLoop.push(xVal.replace(/-/g, " ").slice(0, xVal.length - 2));
+							yValConfLoop.push(stateDetails[stateCode]);
+						}
+
+						if (stateDetails["status"] == 'Recovered') {
+							yValRecoLoop.push(stateDetails[stateCode]);
+						}
+
+						if (stateDetails["status"] == 'Deceased') {
+							yValDecLoop.push(stateDetails[stateCode]);
+						}
+					}
+					if (i == 0) {
+						$("#nextAllState").attr("hidden", true);
+					}
+				}
+				//getChart(xValLoop, yValConfLoop, yValRecoLoop, yValDecLoop);
+				getAllInOneChartForStates(xValLoop, yValConfLoop, yValRecoLoop, yValDecLoop);
+			}
+		},
+		error: function (xhr, status, error) {
+			alert(error);
+		}
+	});
+}
+
+
+function chartReDrawConfState(clickConfState, stateCode) {
+	var xValLoop = [];
+	var yValConfLoop = [];
+	var yValRecoLoop = [];
+	var yValDecLoop = [];
+
+	var xValSampleLoop = [];
+	var yValSampleLoop = [];
+
+	var yValRrLoop = [];
+	var yValMrLoop = [];
+
+	$.ajax({
+		async: false,
+		method: "GET",
+		url: "https://api.covid19india.org/states_daily.json",
+		success: function (resData) {
+			var statesSeries = resData["states_daily"];
+			var statesSeriesLength = statesSeries.length;
+
+			var loopLesser;
+			var loopGreater;
+
+			//console.log('C:: ', countVal);
+			//console.log('L:: ', caseSeriesLength);
+
+			if (clickConfState === 0) {
+				$("#prevConf").attr("hidden", true);
+				loopLesser = 0;
+				loopGreater = 30;
+			} else if (clickConfState < 0) {
+				$("#prevConf").attr("hidden", true);
+				return;
+			} else {
+				$("#prevConf").attr("hidden", false);
+				loopLesser = clickConfState * 30;
+				loopGreater = loopLesser + 30;
+			}
+
+			if (statesSeriesLength >= loopLesser) {
+				$("#nextConf").attr("hidden", false);
+				if (clickConfState === 1) {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				} else {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				}
+
+				for (var i = statesSeriesLength - initVal; i >= statesSeriesLength - exitVal; i--) {
+					if (i >= 0) {
+						var stateDetails = statesSeries[i];
+
+						if (stateDetails["status"] === 'Confirmed') {
+
+							var xVal = stateDetails["date"];
+							xValLoop.push(xVal.replace(/-/g, " ").slice(0, xVal.length - 2));
+							yValConfLoop.push(stateDetails[stateCode]);
+						}
+
+						if (stateDetails["status"] == 'Recovered') {
+							yValRecoLoop.push(stateDetails[stateCode]);
+						}
+
+						if (stateDetails["status"] == 'Deceased') {
+							yValDecLoop.push(stateDetails[stateCode]);
+						}
+					}
+					if (i == 0) {
+						$("#nextConf").attr("hidden", true);
+					}
+				}
+
+				getChartForStates('confirmedChart', xValLoop, yValConfLoop, '#ff073a', 'Confirmed');
+			}
+		},
+		error: function (xhr, status, error) {
+			alert(error);
+		}
+	});
+}
+
+
+function chartReDrawRecoState(clickRecoState, stateCode) {
+	var xValLoop = [];
+	var yValConfLoop = [];
+	var yValRecoLoop = [];
+	var yValDecLoop = [];
+
+	var xValSampleLoop = [];
+	var yValSampleLoop = [];
+
+	var yValRrLoop = [];
+	var yValMrLoop = [];
+
+	$.ajax({
+		async: false,
+		method: "GET",
+		url: "https://api.covid19india.org/states_daily.json",
+		success: function (resData) {
+			var statesSeries = resData["states_daily"];
+			var statesSeriesLength = statesSeries.length;
+
+			var loopLesser;
+			var loopGreater;
+
+			//console.log('C:: ', countVal);
+			//console.log('L:: ', caseSeriesLength);
+
+			if (clickRecoState === 0) {
+				$("#prevReco").attr("hidden", true);
+				loopLesser = 0;
+				loopGreater = 30;
+			} else if (clickRecoState < 0) {
+				$("#prevReco").attr("hidden", true);
+				return;
+			} else {
+				$("#prevReco").attr("hidden", false);
+				loopLesser = clickRecoState * 30;
+				loopGreater = loopLesser + 30;
+			}
+
+			if (statesSeriesLength >= loopLesser) {
+				$("#nextReco").attr("hidden", false);
+				if (clickRecoState === 1) {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				} else {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				}
+
+				for (var i = statesSeriesLength - initVal; i >= statesSeriesLength - exitVal; i--) {
+					if (i >= 0) {
+						var stateDetails = statesSeries[i];
+
+						if (stateDetails["status"] === 'Confirmed') {
+
+							var xVal = stateDetails["date"];
+							xValLoop.push(xVal.replace(/-/g, " ").slice(0, xVal.length - 2));
+							yValConfLoop.push(stateDetails[stateCode]);
+						}
+
+						if (stateDetails["status"] == 'Recovered') {
+							yValRecoLoop.push(stateDetails[stateCode]);
+						}
+
+						if (stateDetails["status"] == 'Deceased') {
+							yValDecLoop.push(stateDetails[stateCode]);
+						}
+					}
+					if (i == 0) {
+						$("#nextReco").attr("hidden", true);
+					}
+				}
+
+				getChartForStates('recoChart', xValLoop, yValRecoLoop, '#28a745', 'Recovered');
+			}
+		},
+		error: function (xhr, status, error) {
+			alert(error);
+		}
+	});
+}
+
+
+function chartReDrawDecState(clickDecState, stateCode) {
+	var xValLoop = [];
+	var yValConfLoop = [];
+	var yValRecoLoop = [];
+	var yValDecLoop = [];
+
+	var xValSampleLoop = [];
+	var yValSampleLoop = [];
+
+	var yValRrLoop = [];
+	var yValMrLoop = [];
+
+	$.ajax({
+		async: false,
+		method: "GET",
+		url: "https://api.covid19india.org/states_daily.json",
+		success: function (resData) {
+			var statesSeries = resData["states_daily"];
+			var statesSeriesLength = statesSeries.length;
+
+			var loopLesser;
+			var loopGreater;
+
+			//console.log('C:: ', countVal);
+			//console.log('L:: ', caseSeriesLength);
+
+			if (clickDecState === 0) {
+				$("#prevDec").attr("hidden", true);
+				loopLesser = 0;
+				loopGreater = 30;
+			} else if (clickDecState < 0) {
+				$("#prevDec").attr("hidden", true);
+				return;
+			} else {
+				$("#prevDec").attr("hidden", false);
+				loopLesser = clickDecState * 30;
+				loopGreater = loopLesser + 30;
+			}
+
+			if (statesSeriesLength >= loopLesser) {
+				$("#nextDec").attr("hidden", false);
+				if (clickDecState === 1) {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				} else {
+					initVal = loopLesser + 1;
+					exitVal = loopGreater;
+				}
+
+				for (var i = statesSeriesLength - initVal; i >= statesSeriesLength - exitVal; i--) {
+					if (i >= 0) {
+						var stateDetails = statesSeries[i];
+
+						if (stateDetails["status"] === 'Confirmed') {
+
+							var xVal = stateDetails["date"];
+							xValLoop.push(xVal.replace(/-/g, " ").slice(0, xVal.length - 2));
+							yValConfLoop.push(stateDetails[stateCode]);
+						}
+
+						if (stateDetails["status"] == 'Recovered') {
+							yValRecoLoop.push(stateDetails[stateCode]);
+						}
+
+						if (stateDetails["status"] == 'Deceased') {
+							yValDecLoop.push(stateDetails[stateCode]);
+						}
+					}
+					if (i == 0) {
+						$("#nextDec").attr("hidden", true);
+					}
+				}
+
+				getChartForStates('decChart', xValLoop, yValDecLoop, '#6c757d', 'Deceased');
 			}
 		},
 		error: function (xhr, status, error) {
