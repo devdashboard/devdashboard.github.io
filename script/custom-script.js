@@ -45,9 +45,14 @@ function callCovidApi(stateRequired, timeRequired, bodyRequired, rRateRequired, 
 						'<td class="header-recovered">' + numberWithCommas(stateDetails["recovered"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/> <span class="delta">' + numberWithCommas(stateDetails["deltarecovered"]) + '</span></td>' +
 						'<td class="header-dead">' + numberWithCommas(stateDetails["deaths"]) + '<br><img src="./images/triangle.png" width="10" height="10" draggable="false"/> <span class="delta">' + numberWithCommas(stateDetails["deltadeaths"]) + '</span></td>';
 					$(bodyRequired).append(valueTemplate);
-					$(rRateRequired).append(computeRecoveryRate(stateDetails["confirmed"], stateDetails["recovered"], stateDetails["deaths"]));
+					
+					var recoRate = computeRecoveryRate(stateDetails["confirmed"], stateDetails["recovered"], stateDetails["deaths"]);
+					
+					var mortRate = computeMortalityRate(stateDetails["confirmed"], stateDetails["deaths"]);
+					
+					$(rRateRequired).append(gaugeReco(recoRate.slice(0, recoRate.length-1), rRateRequired.slice(1, rRateRequired.length)));
 
-					$(mRateRequired).append(computeMortalityRate(stateDetails["confirmed"], stateDetails["deaths"]));
+					$(mRateRequired).append(gaugeMort(mortRate.slice(0, mortRate.length-1), mRateRequired.slice(1, mRateRequired.length)));
 				}
 			}
 		},
@@ -2025,4 +2030,60 @@ function chartReDrawDecState(clickDecState, stateCode) {
 			alert(error);
 		}
 	});
+}
+
+function gaugeReco(recoValue, elementId) {
+	google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+		var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Recovery');
+      
+      data.addRows(1);
+      data.setCell(0, 0, recoValue);
+
+        var options = {
+          width: 400,
+		  height: 120,
+          redFrom: 0,
+		  redTo: 10,
+		  yellowFrom: 10,
+		  yellowTo: 30,
+          greenFrom: 30,
+		  greenTo: 100,
+		  min: 0,
+		  max: 100,
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById(elementId));
+        chart.draw(data, options);
+      }
+}
+
+
+function gaugeMort(mortValue, elementId) {
+	  google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+		var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Mortality');
+      
+      data.addRows(1);
+      data.setCell(0, 0, mortValue);
+      
+
+        var options = {
+          width: 400,
+		  height: 120,
+          redFrom: 0,
+		  redTo: 100,
+		  min: 0,
+		  max: 100,
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById(elementId));
+        chart.draw(data, options);
+      }
 }
