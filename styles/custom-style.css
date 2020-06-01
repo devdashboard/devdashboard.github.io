@@ -228,6 +228,7 @@ h2 {
 #rRateAP,
 #rRateTG {
 	font-size: 12px;
+	display: inline-block;
 }
 
 #mRate,
@@ -237,4 +238,5 @@ h2 {
 #mRateAP,
 #mRateTG  {
 	font-size: 12px;
+	display: inline-block;
 }
