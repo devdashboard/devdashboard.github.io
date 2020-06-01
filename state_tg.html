@@ -28,6 +28,7 @@
       <script src="./script/bootstrap.min.js"></script>
       <script src="./script/custom-script.js"></script>
 	  <script src="./script/chart.js"></script>
+	  <script src="./script/loader.js"></script>
    </head>
    <body>
       <!-- Header Menu -->
@@ -62,11 +63,11 @@
                   </tbody>
                </table>
                <center>
-                  <div class="flex-container rate-box">
-                     <div class="btn-group-vertical">
-                        <button type="button" class="btn btn-primary" style="background-color: #28a745" id="rRateTG">Recovery rate </button>
-                        <button type="button" class="btn btn-primary" style="background-color: #6c757d" id="mRateTG">Mortality rate </button>
-                     </div>
+			      <div class="flex-container rate-box">
+                      <div>
+						<span id="rRateTG"></span>
+						<span id="mRateTG"></span>
+					 </div>		
                   </div>
                </center>
             <!-- </blockquote> -->
