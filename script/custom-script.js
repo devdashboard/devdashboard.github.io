@@ -48,11 +48,17 @@ function callCovidApi(stateRequired, timeRequired, bodyRequired, rRateRequired, 
 					
 					var recoRate = computeRecoveryRate(stateDetails["confirmed"], stateDetails["recovered"], stateDetails["deaths"]);
 					
+					
 					var mortRate = computeMortalityRate(stateDetails["confirmed"], stateDetails["deaths"]);
 					
-					$(rRateRequired).append(gaugeReco(recoRate.slice(0, recoRate.length-1), rRateRequired.slice(1, rRateRequired.length)));
-
-					$(mRateRequired).append(gaugeMort(mortRate.slice(0, mortRate.length-1), mRateRequired.slice(1, mRateRequired.length)));
+					if (rRateRequired === '#rRatePct') {
+						$(rRateRequired).append(gaugeReco(recoRate.slice(0, recoRate.length-1), rRateRequired.slice(1, rRateRequired.length)));
+					} else if (mRateRequired === '#mRatePct') {
+						$(mRateRequired).append(gaugeMort(mortRate.slice(0, mortRate.length-1), mRateRequired.slice(1, mRateRequired.length)));
+					} else {	
+						var actRate = parseFloat(100) - (parseFloat(sliceRates(recoRate)) + parseFloat(sliceRates(mortRate)));
+						$(rRateRequired).append(pieChartCreate(rRateRequired.slice(1, rRateRequired.length), sliceRates(recoRate), sliceRates(mortRate), actRate));
+					}
 				}
 			}
 		},
@@ -2061,19 +2067,17 @@ function gaugeReco(recoValue, elementId) {
       }
 }
 
-
 function gaugeMort(mortValue, elementId) {
 	  google.charts.load('current', {'packages':['gauge']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-		var data = new google.visualization.DataTable();
+	  var data = new google.visualization.DataTable();
       data.addColumn('number', 'Mortality');
       
       data.addRows(1);
       data.setCell(0, 0, mortValue);
       
-
         var options = {
           width: 400,
 		  height: 120,
@@ -2086,4 +2090,35 @@ function gaugeMort(mortValue, elementId) {
         var chart = new google.visualization.Gauge(document.getElementById(elementId));
         chart.draw(data, options);
       }
+}
+
+
+function pieChartCreate(elementId, rec, mort, act) {
+	  google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+          ['Rates', 'Overall'],
+          ['Recovery %', parseFloat(rec)],
+		  ['Mortality %', parseFloat(mort)],
+		  ['Active %', parseFloat(act)],
+        ]);
+
+        var options = {
+			legend: 'none',
+			backgroundColor: '#161625',
+			is3D: true,
+			slices: {0: {color: '#28a745'}, 1: {color: '#6c757d'}, 2: {color: '#007bff'}},
+			width: 300,
+			height: 200,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById(elementId));
+        chart.draw(data, options);
+      }
+}
+
+function sliceRates(rateVal) {
+	return (rateVal.slice(0, rateVal.length-1));
 }
