@@ -117,7 +117,10 @@
                   <br/>
                   <br/>
                   <center>
-                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSfi1JugttiwxAT5chK29XsN4Y27nJh6GtC6-5htdjGQcycnJA/viewform?vc=0&c=0&w=1">Leave feedback...</a>
+                     <span>
+					 <a id="myBtn">About</a> | 
+					 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfi1JugttiwxAT5chK29XsN4Y27nJh6GtC6-5htdjGQcycnJA/viewform?vc=0&c=0&w=1">Send feedback</a>
+					 </span>
                      <br/>
                   </center>
                </div>
@@ -144,5 +147,56 @@
             </div>
          </div>
       </nav>
+
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+	  <!-- Modal content -->
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <span class="close">&times;</span>
+		  <h3></h3>
+		</div>
+		<div class="modal-body">
+		  <center>
+		  <h4>Covid'19 India Dashboard is<br/>Open Source Initiative</h4>
+		  
+		  </center>
+		</div>
+		<div class="modal-footer">
+		  <center>
+		  <p class="foot">Statistical data provided by <a style="color: blue" href="https://api.covid19india.org">api.covid19india.org</a></p>
+		  </center>
+		  <br/>
+		  <br/>
+		</div>
+	  </div>
+
+	</div> 
+	  
+	 <script>
+		var modal = document.getElementById("myModal");
+		var btn = document.getElementById("myBtn");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks the button, open the modal 
+		btn.onclick = function() {
+		  modal.style.display = "block";
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+		  modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+		  if (event.target == modal) {
+			modal.style.display = "none";
+		  }
+		}
+	 </script>
    </body>
 </html>
