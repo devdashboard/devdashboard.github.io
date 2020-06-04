@@ -1065,7 +1065,7 @@ function chartReDraw(countVal) {
 					//console.log(i);
 					if (i >= 0) {
 						var caseDetails = caseSeries[i];
-						xValLoop.push(caseDetails["date"]);
+						xValLoop.push(caseDetails["date"].slice(0,6));
 						yValConfLoop.push(caseDetails["dailyconfirmed"]);
 						yValRecoLoop.push(caseDetails["dailyrecovered"]);
 						yValDecLoop.push(caseDetails["dailydeceased"]);
@@ -1303,7 +1303,7 @@ function chartReDrawConfirmed(clickConf) {
 					//console.log(i);
 					if (i >= 0) {
 						var caseDetails = caseSeries[i];
-						xValLoop.push(caseDetails["date"]);
+						xValLoop.push(caseDetails["date"].slice(0,6));
 						yValConfLoop.push(caseDetails["dailyconfirmed"]);
 						yValRecoLoop.push(caseDetails["dailyrecovered"]);
 						yValDecLoop.push(caseDetails["dailydeceased"]);
@@ -1376,7 +1376,7 @@ function chartReDrawRecovered(clickReco) {
 					//console.log(i);
 					if (i >= 0) {
 						var caseDetails = caseSeries[i];
-						xValLoop.push(caseDetails["date"]);
+						xValLoop.push(caseDetails["date"].slice(0,6));
 						yValConfLoop.push(caseDetails["dailyconfirmed"]);
 						yValRecoLoop.push(caseDetails["dailyrecovered"]);
 						yValDecLoop.push(caseDetails["dailydeceased"]);
@@ -1449,7 +1449,7 @@ function chartReDrawDeceased(clickDec) {
 					//console.log(i);
 					if (i >= 0) {
 						var caseDetails = caseSeries[i];
-						xValLoop.push(caseDetails["date"]);
+						xValLoop.push(caseDetails["date"].slice(0,6));
 						yValConfLoop.push(caseDetails["dailyconfirmed"]);
 						yValRecoLoop.push(caseDetails["dailyrecovered"]);
 						yValDecLoop.push(caseDetails["dailydeceased"]);
@@ -1616,7 +1616,7 @@ function chartReDrawRecoRate(recoRate) {
 					if (i >= 0) {
 						var caseDetails = caseSeries[i];
 
-						xValLoop.push(caseDetails["date"]);
+						xValLoop.push(caseDetails["date"].slice(0,6));
 						yValRrLoop.push(computeRecoRateLastFiveDays(caseDetails["totalconfirmed"], caseDetails["totalrecovered"], caseDetails["totaldeceased"]));
 
 					}
@@ -1688,7 +1688,7 @@ function chartReDrawMortRate(mortRate) {
 					if (i >= 0) {
 						var caseDetails = caseSeries[i];
 
-						xValLoop.push(caseDetails["date"]);
+						xValLoop.push(caseDetails["date"].slice(0,6));
 						yValMrLoop.push(computeDecRateLastFiveDays(caseDetails["totalconfirmed"], caseDetails["totaldeceased"]));
 
 					}
