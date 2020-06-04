@@ -325,19 +325,19 @@ function processValuesForChart(homePage, recoPage, decPage) {
 				var caseDetails = caseSeries[i];
 
 				if (homePage === true) {
-					xValLoop.push(caseDetails["date"]);
+					xValLoop.push(caseDetails["date"].slice(0,6));
 					yValConfLoop.push(caseDetails["dailyconfirmed"]);
 					yValRecoLoop.push(caseDetails["dailyrecovered"]);
 					yValDecLoop.push(caseDetails["dailydeceased"]);
 				}
 
 				if (recoPage === true) {
-					xValLoop.push(caseDetails["date"]);
+					xValLoop.push(caseDetails["date"].slice(0,6));
 					yValRrLoop.push(computeRecoRateLastFiveDays(caseDetails["totalconfirmed"], caseDetails["totalrecovered"], caseDetails["totaldeceased"]));
 				}
 
 				if (decPage === true) {
-					xValLoop.push(caseDetails["date"]);
+					xValLoop.push(caseDetails["date"].slice(0,6));
 					yValMrLoop.push(computeDecRateLastFiveDays(caseDetails["totalconfirmed"], caseDetails["totaldeceased"]));
 				}
 			}
