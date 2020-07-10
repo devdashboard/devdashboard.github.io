@@ -1,0 +1,9 @@
+{
+  "name": "Covid19 India",
+  "short_name": "Covid19",
+  "lang": "en-US",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "black",
+  "theme_color": "black"
+}
